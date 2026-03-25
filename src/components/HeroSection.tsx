@@ -28,15 +28,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         />
 
-        {/* Tagline row */}
-        <motion.p
-          className="font-body text-[10px] md:text-xs tracking-[0.3em] uppercase text-muted-foreground"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          ESTD&nbsp;&nbsp;/&nbsp;&nbsp;Director of Photography&nbsp;&nbsp;/&nbsp;&nbsp;1997
-        </motion.p>
 
         {/* Field line */}
         <motion.p
