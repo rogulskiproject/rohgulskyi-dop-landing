@@ -1,33 +1,30 @@
 
 
-## Plan: Redesign Hero Section to Match Reference Screenshot
+## Plan: Work Section Background Image with Scroll-Based Blur Effect
 
-The reference screenshot shows a dramatically different hero layout: full-screen dark/black background with a cinematic image, the name "bohdan rohulskyi" in a custom rounded/bubble typeface centered on screen, "ESTD / DIRECTOR OF PHOTOGRAPHY / 1997" centered below the name, then further down the field line and a single short positioning paragraph, followed by two CTA buttons side by side. The header uses "BR" as a logo mark with nav items "About.", "Work.", "Blog." with dots.
+### What we're building
+Add the uploaded image as a fixed background for the Work section, with a dynamic blur effect driven by scroll position:
+- **Blurry** when the section first enters the viewport (scrolling in)
+- **Sharp/focused** when the section is centered in the viewport
+- **Blurry again** when scrolling past
 
-The user also provided a white logo PNG (`BOHDAN_white_no_bg._1.png`) which is the custom wordmark — this should be used as the hero name instead of text, since it matches the distinctive rounded typeface in the reference.
+### Steps
 
-### Changes
+1. **Copy the uploaded image** to `src/assets/work-bg.png`
 
-**1. Copy the white logo to project assets**
-- Copy `user-uploads://BOHDAN_white_no_bg._1.png` to `src/assets/logo-white.png`
+2. **Update `WorkSection.tsx`**:
+   - Import the image and `useScroll`, `useTransform` from Framer Motion
+   - Add a `useRef` on the section element
+   - Use `useScroll` with the section ref to get scroll progress (`0 → 1`)
+   - Map scroll progress to blur value using `useTransform`:
+     - `0.0` (entering) → `blur(12px)`
+     - `0.5` (centered) → `blur(0px)`
+     - `1.0` (leaving) → `blur(12px)`
+   - Render the image as an absolute-positioned background with `object-cover`, slight overlay for contrast, and apply the dynamic blur via `motion.div` style
 
-**2. Redesign `HeroSection.tsx`**
-- Full-viewport dark hero with the background image covering the entire section
-- Replace the text heading "BOHDAN ROHULSKYI" with the white logo PNG image, centered
-- Below the logo: "ESTD &nbsp; DIRECTOR OF PHOTOGRAPHY &nbsp; 1997" in a centered row, small uppercase tracking
-- Below that: "DOCUMENTARY, FASHION AND COMMERCIAL CAMPAIGNS" — wide-spaced uppercase, centered
-- Below that: the short positioning paragraph (single paragraph, centered) — only the first paragraph, not all four
-- Two CTA buttons centered: "BOOK A CALL" (filled/dark button with subtle bg) and "SEE MY WORK" (text/outline)
-- Remove: the multi-paragraph positioning text, the client logos strip, the role/location line (absorbed into the logo area)
-- Stronger gradient overlay on the hero image — mostly dark with the image subtly visible
-
-**3. Update `SiteHeader.tsx`**
-- Change left logo text from "Bohdan Rohulskyi" to "BR"
-- Update nav items to include dots: "About.", "Work.", "Blog." (keeping Blog as placeholder, matching reference)
-- Make header transparent on dark hero (remove bg-background, use transparent with light text)
-
-### Files Modified
-- `src/components/HeroSection.tsx` — full redesign
-- `src/components/SiteHeader.tsx` — logo and nav style update
-- New asset: `src/assets/logo-white.png`
+### Technical Details
+- Uses Framer Motion's `useScroll({ target, offset })` with `offset: ["start end", "end start"]` to track the section through the viewport
+- `useTransform(scrollYProgress, [0, 0.4, 0.5, 0.6, 1], [12, 2, 0, 2, 12])` for smooth blur ramp
+- The blur is applied via inline `filter` style on a `motion.img` element
+- A dark overlay sits on top of the image for text readability
 
