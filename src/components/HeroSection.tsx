@@ -5,7 +5,7 @@ import logoWhite from "@/assets/logo-white.png";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
-      {/* Background image */}
+      {/* Background video */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
@@ -19,7 +19,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center gap-6 px-4">
+      <div className="relative z-10 flex flex-col items-center gap-5 px-4">
         {/* Logo wordmark */}
         <motion.img
           src={logoWhite}
@@ -30,10 +30,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         />
 
-
-        {/* Field line */}
+        {/* Field line — label/meta style */}
         <motion.p
-          className="font-body text-[10px] md:text-xs tracking-[0.25em] uppercase text-muted-foreground/80"
+          className="font-body text-[11px] md:text-xs tracking-[0.2em] uppercase text-foreground/50 font-normal"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.45 }}
@@ -41,9 +40,9 @@ const HeroSection = () => {
           Documentary, fashion and commercial campaigns
         </motion.p>
 
-        {/* Short positioning paragraph */}
+        {/* Short positioning paragraph — body style */}
         <motion.p
-          className="mt-4 max-w-xl font-body text-sm md:text-base leading-relaxed text-foreground/80"
+          className="mt-3 max-w-lg font-body text-sm md:text-[15px] font-normal leading-[1.55] text-foreground/75"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55 }}
@@ -51,7 +50,7 @@ const HeroSection = () => {
           Bohdan Rohulskyi is a Director of Photography working across documentary films, fashion stories and branded campaigns. He creates cinematic imagery rooted in natural light, tactile realism and emotionally precise framing.
         </motion.p>
 
-        {/* CTA buttons */}
+        {/* CTA buttons — nav/label weight */}
         <motion.div
           className="mt-6 flex flex-col sm:flex-row gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -60,13 +59,13 @@ const HeroSection = () => {
         >
           <a
             href="/book"
-            className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background font-body text-xs tracking-widest uppercase hover:bg-foreground/90 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
           >
             Book a Call
           </a>
           <a
             href="/work"
-            className="inline-flex items-center justify-center px-8 py-4 border border-foreground/40 text-foreground font-body text-xs tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 border border-foreground/30 text-foreground font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
           >
             See My Work
           </a>

@@ -20,7 +20,7 @@ const GenresSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight uppercase text-foreground">
+          <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
             Best fit for
           </h2>
         </motion.div>
@@ -35,7 +35,7 @@ const GenresSection = () => {
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className="border-t border-border py-5 md:py-6 pr-8"
             >
-              <span className="font-body text-sm md:text-base text-foreground/80 leading-relaxed">
+              <span className="font-body text-sm md:text-[15px] font-normal text-foreground/75 leading-[1.5]">
                 {genre}
               </span>
             </motion.div>
@@ -47,7 +47,7 @@ const GenresSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 font-body text-sm text-muted-foreground max-w-2xl leading-relaxed"
+          className="mt-10 font-body text-sm font-normal text-foreground/55 max-w-2xl leading-[1.55]"
         >
           Bohdan is particularly well suited to projects that need visual sophistication, emotional realism and a strong sense of narrative without overcomplicating the production.
         </motion.p>
