@@ -19,7 +19,7 @@ const SiteHeader = () => {
             <Link
               key={item.label}
               to={item.href}
-              className="font-body text-xs md:text-sm tracking-wide text-foreground/70 hover:text-foreground transition-colors"
+              className="font-body text-[13px] font-medium tracking-[0.06em] text-foreground/60 hover:text-foreground transition-colors"
             >
               {item.label}
             </Link>
