@@ -1,9 +1,36 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import notesBg from "@/assets/notes-bg.jpg";
 
 const NotesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const blurValue = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.5, 0.6, 1],
+    [12, 2, 0, 2, 12]
+  );
+
+  const filterStyle = useTransform(blurValue, (v) => `blur(${v}px)`);
+
   return (
-    <section className="py-24 md:py-32 border-t border-border">
-      <div className="container">
+    <section
+      ref={sectionRef}
+      className="relative py-24 md:py-32 border-t border-border overflow-hidden"
+    >
+      <motion.img
+        src={notesBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: filterStyle }}
+      />
+      <div className="absolute inset-0 bg-background/60" />
+
+      <div className="relative z-10 container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
