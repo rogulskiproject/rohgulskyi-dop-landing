@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoBR from "@/assets/logo-br-white.png";
 
 const navItems = [
   { label: "About.", href: "/about" },
