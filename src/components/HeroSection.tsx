@@ -4,7 +4,7 @@ import logoWhite from "@/assets/logo-white.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center pb-[8vh] pt-16 md:pt-20">
       {/* Background video */}
       <div className="absolute inset-0 z-0">
         <video
