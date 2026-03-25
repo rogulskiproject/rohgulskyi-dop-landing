@@ -12,7 +12,7 @@ const SiteHeader = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="container flex items-center justify-between h-16 md:h-20">
         <Link to="/">
-          <img src={logoBR} alt="BR" <img src={logoBR} alt="BR" className="h-10 md:h-14 w-auto" /> />
+          <img src={logoBR} alt="BR" className="h-10 md:h-14 w-auto" />
         </Link>
         <nav className="flex items-center gap-6 md:gap-8">
           {navItems.map((item) => (
