@@ -7,13 +7,15 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Cinematic close-up through camera viewfinder"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover grayscale opacity-40"
-          width={1920}
-          height={1080}
-        />
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
