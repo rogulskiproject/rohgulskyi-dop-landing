@@ -137,7 +137,7 @@ const WorkSection = () => {
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
                   {project.hasVideo ? (
                     <iframe
-                      src="https://player.vimeo.com/video/1107691277?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
+                      src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0`}
                       className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
                       style={{
                         border: "none",
