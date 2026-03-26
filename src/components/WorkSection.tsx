@@ -7,6 +7,7 @@ const projects = [
   { title: "Project Three", subtitle: "Vogue Italia", category: "Commercial", link: "" },
   { title: "Project Four", subtitle: "Nike", category: "Branded Content", link: "" },
   { title: "Project Five", subtitle: "Dior", category: "Documentary", link: "" },
+  { title: "Project Six", subtitle: "Chanel", category: "Campaign", link: "" },
 ];
 
 const loopedProjects = [...projects, ...projects, ...projects];
