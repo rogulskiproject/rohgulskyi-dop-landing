@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const projects = [
   { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", link: "/work/dylan-bachelet", hasVideo: true },
-  { title: "Project Two", subtitle: "PUMA", category: "Fashion Film", link: "" },
+  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", link: "", hasVideo: true, vimeoId: "1010047613" },
   { title: "Project Three", subtitle: "Vogue Italia", category: "Commercial", link: "" },
   { title: "Project Four", subtitle: "Nike", category: "Branded Content", link: "" },
   { title: "Project Five", subtitle: "Dior", category: "Documentary", link: "" },
