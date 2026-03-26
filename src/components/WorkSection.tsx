@@ -2,7 +2,7 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 const projects = [
-  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", link: "/work/dylan-bachelet", hasVideo: true },
+  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", link: "/work/dylan-bachelet", hasVideo: true, vimeoId: "1107691277" },
   { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", link: "", hasVideo: true, vimeoId: "1010047613" },
   { title: "Project Three", subtitle: "Vogue Italia", category: "Commercial", link: "" },
   { title: "Project Four", subtitle: "Nike", category: "Branded Content", link: "" },
