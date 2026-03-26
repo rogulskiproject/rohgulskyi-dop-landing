@@ -84,7 +84,7 @@ const WorkSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="flex-shrink-0 w-[calc(50vw-2.25rem)] md:w-[calc(50vw-4.5rem)] max-w-[640px] group cursor-pointer"
+                className="flex-shrink-0 w-[calc((100vw-3.75rem)/2)] md:w-[calc((100vw-7rem)/2)] max-w-[640px] group cursor-pointer"
                 onClick={() => project.link && navigate(project.link)}
               >
                 <div className="aspect-[3/2] bg-muted/30 overflow-hidden relative">
