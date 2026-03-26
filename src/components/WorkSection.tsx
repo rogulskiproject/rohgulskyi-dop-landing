@@ -130,8 +130,15 @@ const WorkSection = () => {
                   {project.hasVideo ? (
                     <iframe
                       src="https://player.vimeo.com/video/1107691277?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
-                      className="absolute inset-0 w-full h-full pointer-events-none"
-                      style={{ border: "none", transform: "scale(1.3)", transformOrigin: "center center" }}
+                      className="absolute pointer-events-none"
+                      style={{
+                        border: "none",
+                        top: "-10%",
+                        left: "-10%",
+                        width: "120%",
+                        height: "120%",
+                        objectFit: "cover",
+                      }}
                       allow="autoplay"
                       title={project.title}
                     />
