@@ -1,7 +1,17 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-const projects = [
+interface Project {
+  title: string;
+  subtitle: string;
+  category: string;
+  link: string;
+  hasVideo?: boolean;
+  vimeoId?: string;
+  youtubeId?: string;
+}
+
+const projects: Project[] = [
   { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", link: "/work/dylan-bachelet", hasVideo: true, vimeoId: "1107691277" },
   { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", link: "/work/yaroslava-mohushih", hasVideo: true, vimeoId: "1010047613" },
   { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", link: "/work/orserio", hasVideo: true, vimeoId: "1172857771" },
