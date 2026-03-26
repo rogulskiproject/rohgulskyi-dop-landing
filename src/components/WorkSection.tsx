@@ -157,9 +157,9 @@ const WorkSection = () => {
                         allow="autoplay; fullscreen"
                         title={project.title}
                       />
-                    ) : project.hasVideo && (project as any).youtubeId ? (
+                    ) : project.hasVideo && project.youtubeId ? (
                       <iframe
-                        src={`https://www.youtube.com/embed/${(project as any).youtubeId}?autoplay=1&mute=1&loop=1&playlist=${(project as any).youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1`}
+                        src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1`}
                         className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
                         style={{
                           border: "none",
