@@ -10,6 +10,7 @@ const projects = [
 ];
 
 const loopedProjects = [...projects, ...projects, ...projects];
+const VIDEO_ASPECT_RATIO = 16 / 9;
 
 const WorkSection = () => {
   const navigate = useNavigate();
@@ -19,9 +20,14 @@ const WorkSection = () => {
   const dragStart = useRef({ x: 0, scrollLeft: 0 });
   const animFrame = useRef<number>(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () => {
+      setIsMobile(window.innerWidth < 768);
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
+    };
+
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -46,13 +52,13 @@ const WorkSection = () => {
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    // Start at middle copy
     track.scrollLeft = getOneSetWidth();
 
     const onScroll = () => {
       cancelAnimationFrame(animFrame.current);
       animFrame.current = requestAnimationFrame(resetToMiddle);
     };
+
     track.addEventListener("scroll", onScroll);
     return () => track.removeEventListener("scroll", onScroll);
   }, [resetToMiddle, getOneSetWidth, isMobile]);
@@ -80,23 +86,26 @@ const WorkSection = () => {
     }
   };
 
-  // Item width: 100vw on mobile, 50vw on desktop
   const itemClass = isMobile ? "w-screen" : "w-[50vw]";
   const totalWidth = isMobile
     ? `${loopedProjects.length * 100}vw`
     : `${loopedProjects.length * 50}vw`;
+  const frameWidth = Math.max(isMobile ? viewport.width : viewport.width / 2, 1);
+  const frameHeight = Math.max(viewport.height, 1);
+  const coverWidth = Math.max(frameWidth, frameHeight * VIDEO_ASPECT_RATIO);
+  const coverHeight = Math.max(frameHeight, frameWidth / VIDEO_ASPECT_RATIO);
 
   return (
     <section className="relative h-screen w-full overflow-hidden border-t border-border">
-      <div className="absolute top-6 left-6 md:top-8 md:left-10 z-20">
-        <span className="font-body text-[10px] tracking-[0.2em] uppercase text-foreground/50 font-normal">
+      <div className="absolute top-6 left-6 z-20 md:top-8 md:left-10">
+        <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
           Selected Work
         </span>
       </div>
 
       <div
         ref={trackRef}
-        className="h-full w-full overflow-x-auto overflow-y-hidden select-none"
+        className="h-full w-full select-none overflow-x-auto overflow-y-hidden"
         style={{
           scrollSnapType: "x mandatory",
           scrollbarWidth: "none",
@@ -113,64 +122,55 @@ const WorkSection = () => {
           {loopedProjects.map((project, i) => {
             const displayIndex = (i % projects.length) + 1;
             const indexStr = String(displayIndex).padStart(2, "0");
-            // On mobile every item snaps; on desktop only even items snap
             const shouldSnap = isMobile ? true : i % 2 === 0;
 
             return (
               <div
                 key={`${project.title}-${i}`}
-                className={`relative h-full group flex-shrink-0 ${itemClass}`}
+                className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
                 onClick={() => {
                   if (!didDrag.current && project.link) navigate(project.link);
                 }}
               >
-                {/* Full-bleed media */}
-                <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden bg-muted/20">
                   {project.hasVideo ? (
                     <iframe
                       src="https://player.vimeo.com/video/1107691277?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
-                      className="absolute pointer-events-none"
+                      className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
                       style={{
                         border: "none",
-                        top: "-25%",
-                        left: "-25%",
-                        width: "150%",
-                        height: "150%",
+                        width: `${coverWidth}px`,
+                        height: `${coverHeight}px`,
                       }}
-                      allow="autoplay"
+                      allow="autoplay; fullscreen"
                       title={project.title}
                     />
                   ) : (
                     <div className="absolute inset-0 bg-muted/20" />
                   )}
 
-                  {/* Hover */}
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500" />
-
-                  {/* Bottom gradient */}
                   <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
                 </div>
 
-                {/* Text overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 flex flex-col gap-0.5">
-                  <span className="font-display text-5xl md:text-7xl font-bold text-foreground/15 leading-none">
+                <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-0.5 p-5 md:p-8 lg:p-10">
+                  <span className="font-display text-5xl font-bold text-foreground/15 leading-none md:text-7xl">
                     {indexStr}
                   </span>
-                  <h3 className="font-display text-lg md:text-2xl font-semibold tracking-tight text-foreground mt-2">
+                  <h3 className="mt-2 font-display text-lg font-semibold tracking-tight text-foreground md:text-2xl">
                     {project.title}
                   </h3>
-                  <p className="font-body text-xs md:text-sm font-normal text-foreground/60 tracking-wide">
+                  <p className="font-body text-xs font-normal tracking-wide text-foreground/60 md:text-sm">
                     {project.subtitle}
                   </p>
-                  <span className="font-body text-[10px] md:text-[11px] tracking-[0.12em] uppercase text-foreground/35 mt-1">
+                  <span className="mt-1 font-body text-[10px] uppercase tracking-[0.12em] text-foreground/35 md:text-[11px]">
                     {project.category}
                   </span>
                 </div>
 
-                {/* Vertical divider (desktop only, between pairs) */}
                 {!isMobile && i % 2 === 0 && (
-                  <div className="absolute top-0 right-0 w-px h-full bg-foreground/10 z-10" />
+                  <div className="absolute top-0 right-0 z-10 h-full w-px bg-foreground/10" />
                 )}
               </div>
             );
