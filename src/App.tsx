@@ -10,6 +10,7 @@ import YaroslavaMohushih from "./pages/YaroslavaMohushih.tsx";
 import Orserio from "./pages/Orserio.tsx";
 import ValentinDay from "./pages/ValentinDay.tsx";
 import AnotherMagazine from "./pages/AnotherMagazine.tsx";
+import HozierFrancesca from "./pages/HozierFrancesca.tsx";
 
 const queryClient = new QueryClient();
 
