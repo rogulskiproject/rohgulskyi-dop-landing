@@ -74,7 +74,7 @@ const WorkSection = () => {
                 className="flex-shrink-0 w-72 md:w-96 group cursor-pointer"
                 onClick={() => project.link && navigate(project.link)}
               >
-                <div className="aspect-[3/4] bg-muted/40 border border-border/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/40 transition-colors overflow-hidden">
+                <div className="<div className="aspect-[3/2] bg-muted/40 border border-border/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/40 transition-colors overflow-hidden"> bg-muted/40 border border-border/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/40 transition-colors overflow-hidden">
                   {project.hasVideo ? (
                     <iframe
                       src="https://player.vimeo.com/video/1107691277?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
