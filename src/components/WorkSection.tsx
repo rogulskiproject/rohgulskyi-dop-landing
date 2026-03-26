@@ -133,11 +133,10 @@ const WorkSection = () => {
                       className="absolute pointer-events-none"
                       style={{
                         border: "none",
-                        top: "-10%",
-                        left: "-10%",
-                        width: "120%",
-                        height: "120%",
-                        objectFit: "cover",
+                        top: "-25%",
+                        left: "-25%",
+                        width: "150%",
+                        height: "150%",
                       }}
                       allow="autoplay"
                       title={project.title}
