@@ -13,6 +13,7 @@ const placeholderProjects = [
 ];
 
 const WorkSection = () => {
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
