@@ -7,7 +7,7 @@ const projects = [
   { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", link: "/work/orserio", hasVideo: true, vimeoId: "1172857771" },
   { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", link: "/work/valentin-day", hasVideo: true, vimeoId: "1166656782" },
   { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", link: "/work/another-magazine", hasVideo: true, vimeoId: "1010017917" },
-  { title: "Project Six", subtitle: "Chanel", category: "Campaign", link: "" },
+  { title: "Hozier - Francesca", subtitle: "Hozier", category: "Music Video", link: "/work/hozier-francesca", hasVideo: true, youtubeId: "K1u_hL11auM" },
 ];
 
 const loopedProjects = [...projects, ...projects, ...projects];
