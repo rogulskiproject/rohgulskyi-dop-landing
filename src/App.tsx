@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
 import YaroslavaMohushih from "./pages/YaroslavaMohushih.tsx";
 import Orserio from "./pages/Orserio.tsx";
+import ValentinDay from "./pages/ValentinDay.tsx";
 
 const queryClient = new QueryClient();
 
