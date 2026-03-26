@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import workBg from "@/assets/work-bg.png";
 
 const placeholderProjects = [
-  { title: "Project One", category: "Documentary" },
+  { title: "Dylan Bachelet", category: "Imagine Magazine", hasVideo: true, link: "/work/dylan-bachelet" },
   { title: "Project Two", category: "Fashion" },
   { title: "Project Three", category: "Commercial" },
   { title: "Project Four", category: "Branded" },
@@ -12,6 +13,7 @@ const placeholderProjects = [
 ];
 
 const WorkSection = () => {
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -70,14 +72,32 @@ const WorkSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex-shrink-0 w-72 md:w-96 group cursor-pointer"
+                onClick={() => project.link && navigate(project.link)}
               >
-                <div className="aspect-[3/4] bg-muted/40 border border-border/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/40 transition-colors">
-                  <span className="font-body text-[10px] tracking-[0.12em] uppercase text-foreground/40 font-normal">
-                    Project image
-                  </span>
+                <div className="aspect-[3/4] bg-muted/40 border border-border/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/40 transition-colors overflow-hidden">
+                  {project.hasVideo ? (
+                    <iframe
+                      src="https://player.vimeo.com/video/1107691277?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0"
+                      className="w-full h-full object-cover pointer-events-none scale-[1.5]"
+                      allow="autoplay"
+                      title={project.title}
+                    />
+                  ) : (
+                    <span className="font-body text-[10px] tracking-[0.12em] uppercase text-foreground/40 font-normal">
+                      Project image
+                    </span>
+                  )}
                 </div>
                 <div className="mt-3">
-                  <h3 className="font-display text-sm font-semibold tracking-tight text-foreground">
+                  <h3
+                    className="font-display text-sm font-semibold tracking-tight text-foreground hover:text-foreground/70 transition-colors"
+                    onClick={(e) => {
+                      if (project.link) {
+                        e.stopPropagation();
+                        navigate(project.link);
+                      }
+                    }}
+                  >
                     {project.title}
                   </h3>
                   <p className="font-body text-[11px] font-normal text-foreground/50 tracking-[0.04em] mt-1">
