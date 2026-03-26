@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import workBg from "@/assets/work-bg.png";
 
 const placeholderProjects = [
-  { title: "Project One", category: "Documentary" },
+  { title: "Dylan Bachelet", category: "Imagine Magazine", hasVideo: true, link: "/work/dylan-bachelet" },
   { title: "Project Two", category: "Fashion" },
   { title: "Project Three", category: "Commercial" },
   { title: "Project Four", category: "Branded" },
