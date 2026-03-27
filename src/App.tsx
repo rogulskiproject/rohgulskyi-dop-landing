@@ -11,6 +11,7 @@ import Orserio from "./pages/Orserio.tsx";
 import ValentinDay from "./pages/ValentinDay.tsx";
 import AnotherMagazine from "./pages/AnotherMagazine.tsx";
 import HozierFrancesca from "./pages/HozierFrancesca.tsx";
+import SelectedWorks from "./pages/SelectedWorks.tsx";
 
 const queryClient = new QueryClient();
 
