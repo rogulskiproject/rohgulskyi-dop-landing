@@ -84,14 +84,6 @@ export default {
             height: "0",
           },
         },
-        bounceLeft: {
-          "0%, 100%": { transform: "translateX(0) translateY(-50%)" },
-          "50%": { transform: "translateX(-6px) translateY(-50%)" },
-        },
-        bounceRight: {
-          "0%, 100%": { transform: "translateX(0) translateY(-50%)" },
-          "50%": { transform: "translateX(6px) translateY(-50%)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
