@@ -117,21 +117,23 @@ const WorkSection = () => {
       {/* Scroll arrows */}
       <button
         aria-label="Scroll left"
-        className="absolute left-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-foreground/20 bg-background/40 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/50 hover:bg-background/60 transition-all duration-300"
+        className="absolute left-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
+        style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
         onClick={() => {
           trackRef.current?.scrollBy({ left: -(isMobile ? window.innerWidth : window.innerWidth / 2), behavior: "smooth" });
         }}
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
       </button>
       <button
         aria-label="Scroll right"
-        className="absolute right-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-foreground/20 bg-background/40 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/50 hover:bg-background/60 transition-all duration-300"
+        className="absolute right-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
+        style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
         onClick={() => {
           trackRef.current?.scrollBy({ left: isMobile ? window.innerWidth : window.innerWidth / 2, behavior: "smooth" });
         }}
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
       </button>
 
       <div
