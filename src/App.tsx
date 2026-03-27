@@ -11,6 +11,7 @@ import Orserio from "./pages/Orserio.tsx";
 import ValentinDay from "./pages/ValentinDay.tsx";
 import AnotherMagazine from "./pages/AnotherMagazine.tsx";
 import HozierFrancesca from "./pages/HozierFrancesca.tsx";
+import SelectedWorks from "./pages/SelectedWorks.tsx";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/work" element={<SelectedWorks />} />
           <Route path="/work/dylan-bachelet" element={<ProjectDetail />} />
           <Route path="/work/yaroslava-mohushih" element={<YaroslavaMohushih />} />
           <Route path="/work/orserio" element={<Orserio />} />
