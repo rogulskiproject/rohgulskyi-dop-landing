@@ -117,21 +117,21 @@ const WorkSection = () => {
       {/* Scroll arrows */}
       <button
         aria-label="Scroll left"
-        className="absolute left-4 top-1/2 z-20 -translate-y-1/2 text-foreground/30 hover:text-foreground/60 transition-colors duration-300"
+        className="absolute left-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-foreground/20 bg-background/40 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/50 hover:bg-background/60 transition-all duration-300"
         onClick={() => {
           trackRef.current?.scrollBy({ left: -(isMobile ? window.innerWidth : window.innerWidth / 2), behavior: "smooth" });
         }}
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
       </button>
       <button
         aria-label="Scroll right"
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 text-foreground/30 hover:text-foreground/60 transition-colors duration-300"
+        className="absolute right-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-foreground/20 bg-background/40 backdrop-blur-sm text-foreground/60 hover:text-foreground hover:border-foreground/50 hover:bg-background/60 transition-all duration-300"
         onClick={() => {
           trackRef.current?.scrollBy({ left: isMobile ? window.innerWidth : window.innerWidth / 2, behavior: "smooth" });
         }}
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
       </button>
 
       <div
