@@ -126,7 +126,7 @@ const WorkSection = () => {
       </button>
       <button
         aria-label="Scroll right"
-        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 text-foreground/30 hover:text-foreground/60 transition-colors duration-300"
+        className="absolute right-4 top-1/2 z-20 -translate-y-1/2 text-foreground/30 hover:text-foreground/60 transition-colors duration-300 animate-[bounceRight_2s_ease-in-out_infinite]"
         onClick={() => {
           trackRef.current?.scrollBy({ left: isMobile ? window.innerWidth : window.innerWidth / 2, behavior: "smooth" });
         }}
