@@ -61,7 +61,7 @@ const HeroSection = () => {
 
             {/* Group 3 — proof block */}
             <div className="flex flex-col gap-[2px]">
-              <p>
+              <p className="text-left">
                 A strong visual partner for directors. A reliable, production-aware DoP for producers.
               </p>
               <p>
