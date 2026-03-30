@@ -42,12 +42,16 @@ const HeroSection = () => {
 
         {/* Short positioning paragraph — body style */}
         <motion.p
-          className="mt-3 max-w-2xl font-body text-sm md:text-[15px] font-normal leading-[1.55] text-foreground/75"
+          className="mt-3 max-w-2xl font-body text-sm md:text-[15px] leading-[1.55] text-foreground/75 px-0 py-0 font-medium text-justify my-0 mx-0 whitespace-pre-line"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55 }}
         >
-          Bohdan Rohulskyi is a Director of Photography working across documentary films, fashion stories and branded campaigns. Creating cinematic imagery rooted in natural light, tactile realism and precise emotion. Thinking visually. Delivering strong images without overcomplicating the process. Lean setups. Own kit. Production-aware. For producers who need a DoP they can trust. For directors looking for a strong visual partner. For brands that need content that works.
+          Bohdan Rohulskyi is a Director of Photography working across documentary films, fashion stories and branded campaigns. Creating cinematic imagery rooted in natural light, tactile realism and precise emotion. Thinking visually. Delivering strong images without overcomplicating the process.{"\n"}
+          Lean setups. Own kit. Production-aware.{"\n\n"}
+          For producers who need a DoP they can trust.{"\n"}
+          For directors looking for a strong visual partner.{"\n"}
+          For brands that need content that works.
         </motion.p>
 
         {/* CTA buttons — nav/label weight */}
