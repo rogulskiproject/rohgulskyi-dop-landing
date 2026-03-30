@@ -4,7 +4,7 @@ import logoWhite from "@/assets/logo-white.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 pt-16 md:pt-20 pb-8">
+    <section className="relative h-screen flex items-center px-6 md:px-10 lg:px-16 pt-14 pb-6">
       {/* Background video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -19,63 +19,86 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-12 w-full max-w-7xl">
-        {/* Left column — text + CTA */}
-        <div className="flex flex-col gap-3 lg:w-[60%] text-center lg:text-left">
-          {/* Field line — label/meta style */}
-          <motion.p
-            className="font-body text-[11px] md:text-xs tracking-[0.2em] uppercase text-foreground/50 font-normal"
+      <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-10 w-full max-w-7xl mx-auto">
+        {/* Left column — text + CTA (60-65%) */}
+        <div className="flex flex-col gap-0 lg:w-[62%] text-center lg:text-left">
+          {/* Headline — scaled up, main entry point */}
+          <motion.h1
+            className="font-body text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-[0.15em] uppercase text-foreground font-semibold leading-tight mb-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             Documentary, fashion and commercial campaigns
-          </motion.p>
+          </motion.h1>
 
-          {/* Short positioning paragraph — body style */}
-          <motion.p
-            className="max-w-2xl font-body text-sm md:text-[15px] leading-[1.45] text-foreground/75 font-medium text-justify whitespace-pre-line"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
-          >
-            A Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.{"\n\n"}
-            His work centres on real moments — with lighting designed and controlled to feel unforced and true to life. The result is imagery that feels immediate, but carefully constructed.{"\n\n"}
-            Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.{"\n\n"}
-            He works on interviews, documentary storytelling and brand films built around real people — and extends this approach into fashion and sport-driven stories.{"\n\n"}
-            A strong visual partner for directors. A reliable, production-aware DoP for producers.{"\n\n"}
-            Own kit. Lean setups. Easy to work with.
-          </motion.p>
-
-          {/* CTA buttons — nav/label weight */}
+          {/* Text groups with spacing between, tight within */}
           <motion.div
-            className="mt-3 flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="max-w-2xl font-body text-[12px] md:text-[13px] leading-[1.35] text-foreground/75 font-medium text-justify flex flex-col gap-4"
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            {/* Group 1 */}
+            <div className="flex flex-col gap-[2px]">
+              <p>
+                A Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.
+              </p>
+              <p>
+                His work centres on real moments — with lighting designed and controlled to feel unforced and true to life. The result is imagery that feels immediate, but carefully constructed.
+              </p>
+            </div>
+
+            {/* Group 2 */}
+            <div className="flex flex-col gap-[2px]">
+              <p>
+                Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.
+              </p>
+              <p>
+                He works on interviews, documentary storytelling and brand films built around real people — and extends this approach into fashion and sport-driven stories.
+              </p>
+            </div>
+
+            {/* Group 3 — proof block */}
+            <div className="flex flex-col gap-[2px]">
+              <p>
+                A strong visual partner for directors. A reliable, production-aware DoP for producers.
+              </p>
+              <p>
+                Own kit. Lean setups. Easy to work with.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* CTA buttons — 10-15% larger */}
+          <motion.div
+            className="mt-4 flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.65 }}
           >
             <a
               href="/book"
-              className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
+              className="inline-flex items-center justify-center px-9 py-[18px] bg-foreground text-background font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
             >
               Book a Call
             </a>
             <a
               href="/work"
-              className="inline-flex items-center justify-center px-8 py-4 border border-foreground/30 text-foreground font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
+              className="inline-flex items-center justify-center px-9 py-[18px] border border-foreground/30 text-foreground font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
             >
               See My Work
             </a>
           </motion.div>
         </div>
 
-        {/* Right column — logo/image */}
-        <div className="lg:w-[40%] flex items-center justify-center">
+        {/* Right column — name/logo (35-40%), reduced scale */}
+        <div className="lg:w-[38%] flex items-center justify-center">
           <motion.img
             src={logoWhite}
             alt="Bohdan Rohulskyi"
-            className="w-[300px] md:w-[400px] lg:w-full lg:max-w-[540px] max-h-[55vh] object-contain h-auto"
-            initial={{ opacity: 0, y: 30 }}
+            className="w-[220px] md:w-[280px] lg:w-full lg:max-w-[380px] max-h-[40vh] object-contain h-auto"
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           />
