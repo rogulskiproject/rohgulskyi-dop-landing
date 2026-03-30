@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import logoWhite from "@/assets/logo-white.png";
+import logoWhite from "@/assets/logo-v2.png";
 
 const HeroSection = () => {
   return (
