@@ -54,7 +54,7 @@ const HeroSection = () => {
               <p className="text-left">
                 Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.
               </p>
-              <p>
+              <p className="text-left">
                 He works on interviews, documentary storytelling and brand films built around real people — and extends this approach into fashion and sport-driven stories.
               </p>
             </div>
