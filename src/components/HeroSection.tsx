@@ -41,7 +41,7 @@ const HeroSection = () => {
           >
             {/* Group 1 */}
             <div className="flex flex-col gap-[2px]">
-              <p>
+              <p className="text-left">
                 Bohdan Rohulskyi is Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.
               </p>
               <p>
