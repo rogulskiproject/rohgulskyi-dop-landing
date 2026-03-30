@@ -44,7 +44,7 @@ const HeroSection = () => {
               <p className="text-left">
                 Bohdan Rohulskyi is Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.
               </p>
-              <p>
+              <p className="text-left">
                 His work centres on real moments — with lighting designed and controlled to feel unforced and true to life. The result is imagery that feels immediate, but carefully constructed.
               </p>
             </div>
