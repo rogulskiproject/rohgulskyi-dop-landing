@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 
-import logoWhite from "@/assets/logo-white.png";
-
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center pb-[14vh] pt-16 md:pt-20">
+    <section className="relative h-screen flex items-center overflow-hidden">
       {/* Background video */}
       <div className="absolute inset-0 z-0">
         <video
@@ -19,63 +17,83 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center gap-5 px-4">
-        {/* Logo wordmark */}
-        <motion.img
-          src={logoWhite}
-          alt="Bohdan Rohulskyi"
-          className="w-[280px] md:w-[420px] lg:w-[540px] h-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        />
+      {/* Two-column layout */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 items-center">
+        {/* Left column — text content */}
+        <div className="flex flex-col gap-5">
+          {/* Block 1 — Headline */}
+          <motion.h1
+            className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold leading-[1.15] tracking-tight text-foreground"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            Director of Photography
+          </motion.h1>
 
-        {/* Field line — label/meta style */}
-        <motion.p
-          className="font-body text-[11px] md:text-xs tracking-[0.2em] uppercase text-foreground/50 font-normal"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-        >
-          Documentary, fashion and commercial campaigns
-        </motion.p>
+          {/* Block 2 — Supporting statement */}
+          <motion.p
+            className="max-w-lg font-body text-sm md:text-[15px] leading-[1.5] text-foreground/70 font-normal"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Naturalistic cinematography across commercial, branded content and documentary. Lighting designed to feel unforced — imagery that's immediate, but carefully constructed.
+          </motion.p>
 
-        {/* Short positioning paragraph — body style */}
-        <motion.p
-          className="mt-3 max-w-2xl font-body text-sm md:text-[15px] leading-[1.55] text-foreground/75 px-0 py-0 font-medium text-justify my-0 mx-0 whitespace-pre-line"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55 }}
-        >
-          A Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.{"\n\n"}
-          His work centres on real moments — with lighting designed and controlled to feel unforced and true to life. The result is imagery that feels immediate, but carefully constructed.{"\n\n"}
-          Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.{"\n\n"}
-          He works on interviews, documentary storytelling and brand films built around real people — and extends this approach into fashion and sport-driven stories.{"\n\n"}
-          A strong visual partner for directors. A reliable, production-aware DoP for producers.{"\n\n"}
-          Own kit. Lean setups. Easy to work with.
-        </motion.p>
+          {/* Block 3 — Functional proof */}
+          <motion.p
+            className="font-body text-[11px] md:text-xs tracking-[0.18em] uppercase text-muted-foreground font-medium"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+          >
+            Lean setups · Own kit · Production-aware
+          </motion.p>
 
-        {/* CTA buttons — nav/label weight */}
+          {/* CTAs */}
+          <motion.div
+            className="mt-2 flex flex-row gap-4"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
+          >
+            <a
+              href="/book"
+              className="inline-flex items-center justify-center px-7 py-3.5 bg-foreground text-background font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
+            >
+              Book a Call
+            </a>
+            <a
+              href="/work"
+              className="inline-flex items-center justify-center px-7 py-3.5 border border-foreground/30 text-foreground font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
+            >
+              See My Work
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Right column — typographic name block */}
         <motion.div
-          className="mt-6 flex flex-col sm:flex-row gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          className="hidden md:flex flex-col items-end text-right gap-1"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
         >
-          <a
-            href="/book"
-            className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
-          >
-            Book a Call
-          </a>
-          <a
-            href="/work"
-            className="inline-flex items-center justify-center px-8 py-4 border border-foreground/30 text-foreground font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
-          >
-            See My Work
-          </a>
+          <span className="font-display text-5xl lg:text-7xl font-bold leading-[1] tracking-tight text-foreground/10">
+            Bohdan
+          </span>
+          <span className="font-display text-5xl lg:text-7xl font-bold leading-[1] tracking-tight text-foreground/10">
+            Rohulskyi
+          </span>
+          <span className="mt-2 font-body text-[10px] tracking-[0.25em] uppercase text-foreground/25 font-medium">
+            DoP
+          </span>
         </motion.div>
       </div>
+
+      {/* Bottom fade hint */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
     </section>
   );
 };
