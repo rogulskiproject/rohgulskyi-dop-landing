@@ -74,7 +74,7 @@ const HeroSection = () => {
           <motion.img
             src={logoWhite}
             alt="Bohdan Rohulskyi"
-            className="w-[240px] md:w-[320px] lg:w-full lg:max-w-[400px] max-h-[40vh] object-contain h-auto"
+            className="w-[300px] md:w-[400px] lg:w-full lg:max-w-[540px] max-h-[55vh] object-contain h-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
