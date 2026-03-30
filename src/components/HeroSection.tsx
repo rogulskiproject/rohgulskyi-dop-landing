@@ -64,7 +64,7 @@ const HeroSection = () => {
               <p className="text-left">
                 A strong visual partner for directors. A reliable, production-aware DoP for producers.
               </p>
-              <p>
+              <p className="text-left">
                 Own kit. Lean setups. Easy to work with.
               </p>
             </div>
