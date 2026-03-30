@@ -51,7 +51,7 @@ const HeroSection = () => {
 
             {/* Group 2 */}
             <div className="flex flex-col gap-[2px]">
-              <p>
+              <p className="text-left">
                 Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.
               </p>
               <p>
