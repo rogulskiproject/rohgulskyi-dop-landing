@@ -41,30 +41,30 @@ const HeroSection = () => {
           >
             {/* Group 1 */}
             <div className="flex flex-col gap-[2px]">
-              <p>
+              <p className="text-left">
                 Bohdan Rohulskyi is Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.
               </p>
-              <p>
+              <p className="text-left">
                 His work centres on real moments — with lighting designed and controlled to feel unforced and true to life. The result is imagery that feels immediate, but carefully constructed.
               </p>
             </div>
 
             {/* Group 2 */}
             <div className="flex flex-col gap-[2px]">
-              <p>
+              <p className="text-left">
                 Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.
               </p>
-              <p>
+              <p className="text-left">
                 He works on interviews, documentary storytelling and brand films built around real people — and extends this approach into fashion and sport-driven stories.
               </p>
             </div>
 
             {/* Group 3 — proof block */}
             <div className="flex flex-col gap-[2px]">
-              <p>
+              <p className="text-left">
                 A strong visual partner for directors. A reliable, production-aware DoP for producers.
               </p>
-              <p>
+              <p className="text-left">
                 Own kit. Lean setups. Easy to work with.
               </p>
             </div>
