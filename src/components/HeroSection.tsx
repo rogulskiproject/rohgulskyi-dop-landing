@@ -47,11 +47,12 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55 }}
         >
-          Bohdan Rohulskyi is a Director of Photography working across documentary films, fashion stories and branded campaigns. Creating cinematic imagery rooted in natural light, tactile realism and precise emotion. Thinking visually. Delivering strong images without overcomplicating the process.{"\n"}
-          Lean setups. Own kit. Production-aware.{"\n\n"}
-          For producers who need a DoP they can trust.{"\n"}
-          For directors looking for a strong visual partner.{"\n"}
-          For brands that need content that works.
+          A Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.{"\n\n"}
+          His work centres on real moments — with lighting designed and controlled to feel unforced and true to life. The result is imagery that feels immediate, but carefully constructed.{"\n\n"}
+          Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.{"\n\n"}
+          He works on interviews, documentary storytelling and brand films built around real people — and extends this approach into fashion and sport-driven stories.{"\n\n"}
+          A strong visual partner for directors. A reliable, production-aware DoP for producers.{"\n\n"}
+          Own kit. Lean setups. Easy to work with.
         </motion.p>
 
         {/* CTA buttons — nav/label weight */}
