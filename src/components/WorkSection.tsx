@@ -101,13 +101,17 @@ const WorkSection = () => {
   const totalWidth = isMobile
     ? `${loopedProjects.length * 100}vw`
     : `${loopedProjects.length * 50}vw`;
+  const mobileHeight = isMobile ? viewport.width * (2 / 3) : 0;
   const frameWidth = Math.max(isMobile ? viewport.width : viewport.width / 2, 1);
-  const frameHeight = Math.max(viewport.height, 1);
+  const frameHeight = Math.max(isMobile ? mobileHeight : viewport.height, 1);
   const coverWidth = Math.max(frameWidth, frameHeight * VIDEO_ASPECT_RATIO);
   const coverHeight = Math.max(frameHeight, frameWidth / VIDEO_ASPECT_RATIO);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden border-t border-border">
+    <section
+      className="relative w-full overflow-hidden border-t border-border h-screen md:h-screen"
+      style={isMobile ? { height: `${mobileHeight}px` } : undefined}
+    >
       <div className="absolute top-6 left-6 z-20 md:top-8 md:left-10">
         <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
           Selected Work
