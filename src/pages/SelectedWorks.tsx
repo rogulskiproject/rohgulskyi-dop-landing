@@ -19,12 +19,6 @@ const projects: Project[] = [
   { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Documentary", link: "/work/valentin-day", vimeoId: "1166656782" },
   { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion Film", link: "/work/another-magazine", vimeoId: "1010017917" },
   { title: "Hozier - Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM" },
-  { title: "PUMA FIT 23", subtitle: "DOP / Director", category: "Commercial / Sport", filterGroup: "Commercial", link: "https://vimeo.com/948342341", vimeoId: "948342341" },
-  { title: "Puma CR", subtitle: "DOP / Director", category: "Commercial / Sport", filterGroup: "Commercial", link: "https://vimeo.com/user135704204/puma", vimeoId: "user135704204" },
-  { title: "Chernaya - Rami Kallas", subtitle: "Director", category: "Music Video", filterGroup: "Music Video", link: "https://vimeo.com/1010028819", vimeoId: "1010028819" },
-  { title: "The Best of BoF 500 2023", subtitle: "DOP — The Business of Fashion", category: "Fashion Recap", filterGroup: "Fashion Film", link: "https://www.youtube.com/watch?v=zNdnPu8L9_Y", youtubeId: "zNdnPu8L9_Y" },
-  { title: "Alessandro Michele", subtitle: "DOP — The BoF Podcast", category: "Interview / Fashion", filterGroup: "Documentary", link: "https://www.youtube.com/watch?v=qtJqYEtbrBA", youtubeId: "qtJqYEtbrBA" },
-  { title: "TVORCHI - Віч-на-Віч", subtitle: "DOP", category: "Music Video", filterGroup: "Music Video", link: "https://www.youtube.com/watch?v=Y5QMUv7H0ic", youtubeId: "Y5QMUv7H0ic" },
 ];
 
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];
@@ -77,13 +71,7 @@ const SelectedWorks = () => {
             return (
               <div
                 key={project.title}
-                onClick={() => {
-                  if (project.link.startsWith("http")) {
-                    window.open(project.link, "_blank", "noopener,noreferrer");
-                  } else {
-                    navigate(project.link);
-                  }
-                }}
+                onClick={() => navigate(project.link)}
                 className={`relative cursor-pointer group overflow-hidden rounded-sm border border-foreground/10 transition-all duration-500 ease-out ${
                   visible
                     ? "opacity-100 scale-100"
