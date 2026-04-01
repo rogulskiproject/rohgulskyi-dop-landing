@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader";
+import pumaCrCover from "@/assets/puma-cr-cover.png";
 
 interface Project {
   title: string;
@@ -10,6 +11,7 @@ interface Project {
   link: string;
   vimeoId?: string;
   youtubeId?: string;
+  coverImage?: string;
 }
 
 const projects: Project[] = [
