@@ -18,6 +18,7 @@ import ChernayaRamiKallas from "./pages/ChernayaRamiKallas.tsx";
 import BoF500 from "./pages/BoF500.tsx";
 import AlessandroMicheleBof from "./pages/AlessandroMicheleBof.tsx";
 import TvorchiVichNaVich from "./pages/TvorchiVichNaVich.tsx";
+import UnchartedSailGP from "./pages/UnchartedSailGP.tsx";
 
 const queryClient = new QueryClient();
 
