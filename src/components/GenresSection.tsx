@@ -1,13 +1,37 @@
 import { motion } from "framer-motion";
 
-const genres = [
-  "Documentary films",
-  "Fashion campaigns",
-  "Commercial campaigns",
-  "Branded storytelling",
-  "Product and launch films",
-  "Portrait-led stories",
-  "Agile productions that need both story and cinematography",
+const categories = [
+  {
+    title: "Documentary & real stories",
+    items: [
+      "Documentary films",
+      "Interview-led and portrait stories",
+      "YouTube and branded documentary content",
+    ],
+  },
+  {
+    title: "Brand storytelling",
+    items: [
+      "Branded films",
+      "Case studies & testimonials",
+      "Campaign content built around real people",
+    ],
+  },
+  {
+    title: "Fashion & culture",
+    items: [
+      "Fashion campaigns",
+      "Show coverage",
+      "Editorial and social content for fashion brands",
+    ],
+  },
+  {
+    title: "Sports & performance",
+    items: [
+      "Athletes, performance-led stories",
+      "Branded collaborations in sport",
+    ],
+  },
 ];
 
 const GenresSection = () => {
@@ -25,32 +49,44 @@ const GenresSection = () => {
           </h2>
         </motion.div>
 
-        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-0">
-          {genres.map((genre, i) => (
+        <div className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-10 lg:gap-8">
+          {categories.map((category, i) => (
             <motion.div
-              key={genre}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              key={category.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="border-t border-border py-5 md:py-6 pr-8"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group cursor-default"
             >
-              <span className="font-body text-sm md:text-[15px] font-normal text-foreground/75 leading-[1.5]">
-                {genre}
-              </span>
+              <h3 className="font-display text-base md:text-lg font-semibold text-foreground tracking-tight mb-5 transition-opacity duration-300 group-hover:opacity-80">
+                {category.title}
+              </h3>
+              <ul className="space-y-3">
+                {category.items.map((item) => (
+                  <li
+                    key={item}
+                    className="font-body text-sm font-normal text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/70"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 font-body text-sm font-normal text-foreground/55 max-w-2xl leading-[1.55]"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-16 md:mt-20 pt-10 border-t border-border"
         >
-          Bohdan is particularly well suited to projects that need visual sophistication, emotional realism and a strong sense of narrative without overcomplicating the production.
-        </motion.p>
+          <p className="font-body text-sm md:text-[15px] font-normal text-muted-foreground max-w-3xl leading-relaxed">
+            Bohdan is best suited to projects that combine real people, natural environments and a cinematic approach — delivering emotionally grounded work without overcomplicating production.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
