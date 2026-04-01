@@ -11,6 +11,7 @@ interface Project {
   link: string;
   vimeoId?: string;
   youtubeId?: string;
+  coverImage?: string;
 }
 
 const projects: Project[] = [
