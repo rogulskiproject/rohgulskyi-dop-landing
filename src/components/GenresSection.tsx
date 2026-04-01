@@ -83,8 +83,8 @@ const GenresSection = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 md:mt-20 pt-10 border-t border-border"
         >
-          <p className="font-body text-sm md:text-[15px] font-normal text-muted-foreground max-w-3xl leading-relaxed">
-            Bohdan is best suited to projects that combine real people, natural environments and a cinematic approach — delivering emotionally grounded work without overcomplicating production.
+          <p className="font-body text-sm md:text-[15px] font-normal text-muted-foreground max-w-3xl leading-relaxed px-0 py-0 mx-0 my-0 pr-[43px] pb-[23px]">
+            Bohdan is best suited to projects that combine real people, natural environments and a cinematic approach - delivering emotionally grounded work while keeping the production efficient, focused and well-paced
           </p>
         </motion.div>
       </div>
