@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader";
-import pumaCrCover from "@/assets/puma-cr-cover.png";
 
 interface Project {
   title: string;
@@ -11,7 +10,6 @@ interface Project {
   link: string;
   vimeoId?: string;
   youtubeId?: string;
-  coverImage?: string;
 }
 
 const projects: Project[] = [
@@ -22,7 +20,7 @@ const projects: Project[] = [
   { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion Film", link: "/work/another-magazine", vimeoId: "1010017917" },
   { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM" },
   { title: "PUMA FIT 23", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-fit-23", vimeoId: "948342341" },
-  { title: "Puma CR", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-cr", vimeoId: "1010036272", coverImage: pumaCrCover },
+  { title: "Puma CR", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-cr", vimeoId: "948342341" },
   { title: "Chernaya — Rami Kallas", subtitle: "Rami Kallas", category: "Music Video", filterGroup: "Music Video", link: "/work/chernaya-rami-kallas", vimeoId: "1010028819" },
   { title: "The Best of BoF 500 2023", subtitle: "The Business of Fashion", category: "Fashion Recap", filterGroup: "Fashion Film", link: "/work/bof-500-2023", youtubeId: "zNdnPu8L9_Y" },
   { title: "Alessandro Michele — The BoF Podcast", subtitle: "The Business of Fashion", category: "Interview / Fashion", filterGroup: "Fashion Film", link: "/work/alessandro-michele-bof", youtubeId: "qtJqYEtbrBA" },
@@ -32,9 +30,6 @@ const projects: Project[] = [
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];
 
 const getThumbnail = (project: Project) => {
-  if (project.coverImage) {
-    return project.coverImage;
-  }
   if (project.vimeoId) {
     return `https://vumbnail.com/${project.vimeoId}.jpg`;
   }
