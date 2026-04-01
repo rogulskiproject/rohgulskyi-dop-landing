@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
