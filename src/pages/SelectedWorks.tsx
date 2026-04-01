@@ -32,6 +32,9 @@ const projects: Project[] = [
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];
 
 const getThumbnail = (project: Project) => {
+  if (project.coverImage) {
+    return project.coverImage;
+  }
   if (project.vimeoId) {
     return `https://vumbnail.com/${project.vimeoId}.jpg`;
   }
