@@ -6,27 +6,19 @@ interface Project {
   title: string;
   subtitle: string;
   category: string;
-  role: string;
   filterGroup: string;
   link: string;
-  external?: boolean;
   vimeoId?: string;
   youtubeId?: string;
 }
 
 const projects: Project[] = [
-  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", role: "DOP", filterGroup: "Fashion Film", link: "/work/dylan-bachelet", vimeoId: "1107691277" },
-  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", role: "DOP", filterGroup: "Documentary", link: "/work/yaroslava-mohushih", vimeoId: "1010047613" },
-  { title: "Orserio", subtitle: "Orserio", category: "Brand Film", role: "DOP / Director", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771" },
-  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign", role: "DOP", filterGroup: "Documentary", link: "/work/valentin-day", vimeoId: "1166656782" },
-  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", role: "DOP", filterGroup: "Fashion Film", link: "/work/another-magazine", vimeoId: "1010017917" },
-  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", role: "DOP", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM" },
-  { title: "PUMA FIT 23", subtitle: "PUMA", category: "Commercial", role: "DOP / Director", filterGroup: "Commercial", link: "https://vimeo.com/948342341", external: true, vimeoId: "948342341" },
-  { title: "Puma CR", subtitle: "PUMA", category: "Commercial", role: "DOP / Director", filterGroup: "Commercial", link: "https://vimeo.com/user135704204/puma", external: true },
-  { title: "Chernaya — Rami Kallas", subtitle: "Rami Kallas", category: "Music Video", role: "Director", filterGroup: "Music Video", link: "https://vimeo.com/1010028819", external: true, vimeoId: "1010028819" },
-  { title: "The Best of BoF 500 2023", subtitle: "The Business of Fashion", category: "Fashion Recap", role: "DOP", filterGroup: "Fashion Film", link: "https://www.youtube.com/watch?v=zNdnPu8L9_Y", external: true, youtubeId: "zNdnPu8L9_Y" },
-  { title: "Alessandro Michele", subtitle: "The BoF Podcast", category: "Interview", role: "DOP", filterGroup: "Documentary", link: "https://www.youtube.com/watch?v=qtJqYEtbrBA", external: true, youtubeId: "qtJqYEtbrBA" },
-  { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", role: "DOP", filterGroup: "Music Video", link: "https://www.youtube.com/watch?v=Y5QMUv7H0ic", external: true, youtubeId: "Y5QMUv7H0ic" },
+  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion Film", link: "/work/dylan-bachelet", vimeoId: "1107691277" },
+  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Documentary", link: "/work/yaroslava-mohushih", vimeoId: "1010047613" },
+  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771" },
+  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Documentary", link: "/work/valentin-day", vimeoId: "1166656782" },
+  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion Film", link: "/work/another-magazine", vimeoId: "1010017917" },
+  { title: "Hozier - Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM" },
 ];
 
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];
@@ -44,14 +36,6 @@ const getThumbnail = (project: Project) => {
 const SelectedWorks = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const navigate = useNavigate();
-
-  const handleCardClick = (project: Project) => {
-    if (project.external) {
-      window.open(project.link, "_blank", "noopener,noreferrer");
-    } else {
-      navigate(project.link);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -87,7 +71,7 @@ const SelectedWorks = () => {
             return (
               <div
                 key={project.title}
-                onClick={() => handleCardClick(project)}
+                onClick={() => navigate(project.link)}
                 className={`relative cursor-pointer group overflow-hidden rounded-sm border border-foreground/10 transition-all duration-500 ease-out ${
                   visible
                     ? "opacity-100 scale-100"
@@ -110,11 +94,8 @@ const SelectedWorks = () => {
                     <h3 className="font-display text-sm md:text-base font-semibold tracking-tight text-foreground drop-shadow-lg">
                       {project.title}
                     </h3>
-                    <span className="font-body text-[10px] uppercase tracking-[0.12em] text-foreground/50 block">
+                    <span className="font-body text-[10px] uppercase tracking-[0.12em] text-foreground/50">
                       {project.category}
-                    </span>
-                    <span className="font-body text-[10px] uppercase tracking-[0.12em] text-foreground/35">
-                      {project.role}
                     </span>
                   </div>
                 </div>
