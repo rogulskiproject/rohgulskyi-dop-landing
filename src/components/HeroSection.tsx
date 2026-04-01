@@ -19,7 +19,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-10 w-full max-w-7xl mx-auto">
+      <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center lg:items-center gap-6 lg:gap-10 w-full max-w-7xl mx-auto">
         {/* Left column — text + CTA (60-65%) */}
         <div className="flex flex-col gap-0 lg:w-[62%] text-center lg:text-left">
           {/* Headline — scaled up, main entry point */}
