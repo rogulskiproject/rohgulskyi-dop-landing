@@ -108,7 +108,10 @@ const WorkSection = () => {
   const coverHeight = Math.max(frameHeight, frameWidth / VIDEO_ASPECT_RATIO);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden border-t border-border">
+    <section
+      className="relative w-full overflow-hidden border-t border-border h-screen md:h-screen"
+      style={isMobile ? { height: `${mobileHeight}px` } : undefined}
+    >
       <div className="absolute top-6 left-6 z-20 md:top-8 md:left-10">
         <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
           Selected Work
