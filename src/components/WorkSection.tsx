@@ -32,6 +32,7 @@ const WorkSection = () => {
   const animFrame = useRef<number>(0);
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const check = () => {
@@ -60,6 +61,15 @@ const WorkSection = () => {
     }
   }, [getOneSetWidth]);
 
+  // Track active slide index on mobile
+  const updateActiveIndex = useCallback(() => {
+    if (!isMobile || !trackRef.current) return;
+    const scrollLeft = trackRef.current.scrollLeft;
+    const cardWidth = window.innerWidth;
+    const rawIndex = Math.round(scrollLeft / cardWidth);
+    setActiveIndex(rawIndex % projects.length);
+  }, [isMobile]);
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -67,12 +77,15 @@ const WorkSection = () => {
 
     const onScroll = () => {
       cancelAnimationFrame(animFrame.current);
-      animFrame.current = requestAnimationFrame(resetToMiddle);
+      animFrame.current = requestAnimationFrame(() => {
+        resetToMiddle();
+        updateActiveIndex();
+      });
     };
 
     track.addEventListener("scroll", onScroll);
     return () => track.removeEventListener("scroll", onScroll);
-  }, [resetToMiddle, getOneSetWidth, isMobile]);
+  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex]);
 
   const onMouseDown = (e: React.MouseEvent) => {
     const track = trackRef.current;
@@ -108,42 +121,53 @@ const WorkSection = () => {
   const coverHeight = Math.max(frameHeight, frameWidth / VIDEO_ASPECT_RATIO);
 
   return (
-    <section
-      className="relative w-full overflow-hidden border-t border-border h-screen md:h-screen"
-      style={isMobile ? { height: `${mobileHeight}px` } : undefined}
-    >
-      <div className="absolute top-6 left-6 z-20 md:top-8 md:left-10">
-        <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
-          Selected Work
-        </span>
-      </div>
+    <section className={isMobile ? "relative w-full overflow-hidden mt-10" : "relative w-full overflow-hidden border-t border-border h-screen"}>
+      {/* "Selected Work" label — above carousel on mobile, overlaid on desktop */}
+      {isMobile ? (
+        <div className="px-6 pb-4">
+          <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
+            Selected Work
+          </span>
+        </div>
+      ) : (
+        <div className="absolute top-8 left-10 z-20">
+          <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
+            Selected Work
+          </span>
+        </div>
+      )}
 
-      {/* Scroll arrows */}
-      <button
-        aria-label="Scroll left"
-        className="absolute left-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
-        style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
-        onClick={() => {
-          trackRef.current?.scrollBy({ left: -(isMobile ? window.innerWidth : window.innerWidth / 2), behavior: "smooth" });
-        }}
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
-      </button>
-      <button
-        aria-label="Scroll right"
-        className="absolute right-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
-        style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
-        onClick={() => {
-          trackRef.current?.scrollBy({ left: isMobile ? window.innerWidth : window.innerWidth / 2, behavior: "smooth" });
-        }}
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
-      </button>
+      {/* Scroll arrows — desktop only */}
+      {!isMobile && (
+        <>
+          <button
+            aria-label="Scroll left"
+            className="absolute left-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
+            style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
+            onClick={() => {
+              trackRef.current?.scrollBy({ left: -(window.innerWidth / 2), behavior: "smooth" });
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <button
+            aria-label="Scroll right"
+            className="absolute right-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
+            style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
+            onClick={() => {
+              trackRef.current?.scrollBy({ left: window.innerWidth / 2, behavior: "smooth" });
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
+          </button>
+        </>
+      )}
 
       <div
         ref={trackRef}
-        className="h-full w-full select-none overflow-x-auto overflow-y-hidden"
+        className="w-full select-none overflow-x-auto overflow-y-hidden"
         style={{
+          height: isMobile ? `${mobileHeight}px` : '100%',
           scrollSnapType: "x mandatory",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -226,6 +250,22 @@ const WorkSection = () => {
           })}
         </div>
       </div>
+
+      {/* Mobile dot indicators */}
+      {isMobile && (
+        <div className="flex items-center justify-center gap-1.5 py-4">
+          {projects.map((_, idx) => (
+            <div
+              key={idx}
+              className={`rounded-full transition-all duration-300 ${
+                idx === activeIndex
+                  ? "w-5 h-1.5 bg-foreground/60"
+                  : "w-1.5 h-1.5 bg-foreground/20"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
