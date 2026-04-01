@@ -101,8 +101,9 @@ const WorkSection = () => {
   const totalWidth = isMobile
     ? `${loopedProjects.length * 100}vw`
     : `${loopedProjects.length * 50}vw`;
+  const mobileHeight = isMobile ? viewport.width * (2 / 3) : 0;
   const frameWidth = Math.max(isMobile ? viewport.width : viewport.width / 2, 1);
-  const frameHeight = Math.max(viewport.height, 1);
+  const frameHeight = Math.max(isMobile ? mobileHeight : viewport.height, 1);
   const coverWidth = Math.max(frameWidth, frameHeight * VIDEO_ASPECT_RATIO);
   const coverHeight = Math.max(frameHeight, frameWidth / VIDEO_ASPECT_RATIO);
 
