@@ -77,7 +77,13 @@ const SelectedWorks = () => {
             return (
               <div
                 key={project.title}
-                onClick={() => navigate(project.link)}
+                onClick={() => {
+                  if (project.link.startsWith("http")) {
+                    window.open(project.link, "_blank", "noopener,noreferrer");
+                  } else {
+                    navigate(project.link);
+                  }
+                }}
                 className={`relative cursor-pointer group overflow-hidden rounded-sm border border-foreground/10 transition-all duration-500 ease-out ${
                   visible
                     ? "opacity-100 scale-100"
