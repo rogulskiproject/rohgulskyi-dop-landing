@@ -12,6 +12,12 @@ import ValentinDay from "./pages/ValentinDay.tsx";
 import AnotherMagazine from "./pages/AnotherMagazine.tsx";
 import HozierFrancesca from "./pages/HozierFrancesca.tsx";
 import SelectedWorks from "./pages/SelectedWorks.tsx";
+import PumaFit23 from "./pages/PumaFit23.tsx";
+import PumaCR from "./pages/PumaCR.tsx";
+import ChernayaRamiKallas from "./pages/ChernayaRamiKallas.tsx";
+import BoF500 from "./pages/BoF500.tsx";
+import AlessandroMicheleBof from "./pages/AlessandroMicheleBof.tsx";
+import TvorchiVichNaVich from "./pages/TvorchiVichNaVich.tsx";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +36,12 @@ const App = () => (
           <Route path="/work/valentin-day" element={<ValentinDay />} />
           <Route path="/work/another-magazine" element={<AnotherMagazine />} />
           <Route path="/work/hozier-francesca" element={<HozierFrancesca />} />
+          <Route path="/work/puma-fit-23" element={<PumaFit23 />} />
+          <Route path="/work/puma-cr" element={<PumaCR />} />
+          <Route path="/work/chernaya-rami-kallas" element={<ChernayaRamiKallas />} />
+          <Route path="/work/bof-500-2023" element={<BoF500 />} />
+          <Route path="/work/alessandro-michele-bof" element={<AlessandroMicheleBof />} />
+          <Route path="/work/tvorchi-vich-na-vich" element={<TvorchiVichNaVich />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
