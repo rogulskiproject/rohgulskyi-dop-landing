@@ -25,6 +25,7 @@ const projects: Project[] = [
   { title: "The Best of BoF 500 2023", subtitle: "The Business of Fashion", category: "Fashion Recap", filterGroup: "Fashion Film", link: "/work/bof-500-2023", youtubeId: "zNdnPu8L9_Y" },
   { title: "Alessandro Michele — The BoF Podcast", subtitle: "The Business of Fashion", category: "Interview / Fashion", filterGroup: "Fashion Film", link: "/work/alessandro-michele-bof", youtubeId: "qtJqYEtbrBA" },
   { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", filterGroup: "Music Video", link: "/work/tvorchi-vich-na-vich", youtubeId: "Y5QMUv7H0ic" },
+  { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8" },
 ];
 
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];

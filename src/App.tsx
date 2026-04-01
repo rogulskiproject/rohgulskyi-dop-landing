@@ -18,6 +18,7 @@ import ChernayaRamiKallas from "./pages/ChernayaRamiKallas.tsx";
 import BoF500 from "./pages/BoF500.tsx";
 import AlessandroMicheleBof from "./pages/AlessandroMicheleBof.tsx";
 import TvorchiVichNaVich from "./pages/TvorchiVichNaVich.tsx";
+import UnchartedSailGP from "./pages/UnchartedSailGP.tsx";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/work/bof-500-2023" element={<BoF500 />} />
           <Route path="/work/alessandro-michele-bof" element={<AlessandroMicheleBof />} />
           <Route path="/work/tvorchi-vich-na-vich" element={<TvorchiVichNaVich />} />
+          <Route path="/work/uncharted-sail-gp" element={<UnchartedSailGP />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
