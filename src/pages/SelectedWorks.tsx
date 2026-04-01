@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
@@ -10,6 +11,7 @@ interface Project {
   link: string;
   vimeoId?: string;
   youtubeId?: string;
+  coverImage?: string;
 }
 
 const projects: Project[] = [
@@ -25,12 +27,15 @@ const projects: Project[] = [
   { title: "The Best of BoF 500 2023", subtitle: "The Business of Fashion", category: "Fashion Recap", filterGroup: "Fashion Film", link: "/work/bof-500-2023", youtubeId: "zNdnPu8L9_Y" },
   { title: "Alessandro Michele — The BoF Podcast", subtitle: "The Business of Fashion", category: "Interview / Fashion", filterGroup: "Fashion Film", link: "/work/alessandro-michele-bof", youtubeId: "qtJqYEtbrBA" },
   { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", filterGroup: "Music Video", link: "/work/tvorchi-vich-na-vich", youtubeId: "Y5QMUv7H0ic" },
-  { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8" },
+  { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8", coverImage: unchartedCover },
 ];
 
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];
 
 const getThumbnail = (project: Project) => {
+  if (project.coverImage) {
+    return project.coverImage;
+  }
   if (project.vimeoId) {
     return `https://vumbnail.com/${project.vimeoId}.jpg`;
   }
