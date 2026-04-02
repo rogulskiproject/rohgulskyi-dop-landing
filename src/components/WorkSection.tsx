@@ -25,6 +25,12 @@ const projects: Project[] = [
 const loopedProjects = [...projects, ...projects, ...projects];
 const VIDEO_ASPECT_RATIO = 16 / 9;
 
+function getThumbnail(project: Project): string {
+  if (project.youtubeId) return `https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`;
+  if (project.vimeoId) return `https://vumbnail.com/${project.vimeoId}.jpg`;
+  return "";
+}
+
 const WorkSection = () => {
   const navigate = useNavigate();
   const trackRef = useRef<HTMLDivElement>(null);
@@ -35,17 +41,58 @@ const WorkSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
     const check = () => {
       setIsMobile(window.innerWidth < 768);
       setViewport({ width: window.innerWidth, height: window.innerHeight });
     };
-
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  // IntersectionObserver for visibility tracking
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisibleCards((prev) => {
+          const next = new Set(prev);
+          entries.forEach((entry) => {
+            const idx = Number((entry.target as HTMLElement).dataset.cardIndex);
+            if (entry.isIntersecting) {
+              next.add(idx);
+            } else {
+              next.delete(idx);
+            }
+          });
+          return next;
+        });
+      },
+      { root: trackRef.current, rootMargin: "100px", threshold: 0.1 }
+    );
+
+    cardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [isMobile, viewport]);
+
+  // Play/pause MP4 videos based on visibility
+  useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (visibleCards.has(i)) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, [visibleCards]);
 
   const getOneSetWidth = useCallback(() => {
     if (isMobile) return projects.length * window.innerWidth;
@@ -63,7 +110,6 @@ const WorkSection = () => {
     }
   }, [getOneSetWidth]);
 
-  // Track active slide index on mobile
   const updateActiveIndex = useCallback(() => {
     if (!isMobile || !trackRef.current) return;
     const scrollLeft = trackRef.current.scrollLeft;
@@ -124,7 +170,6 @@ const WorkSection = () => {
 
   return (
     <section className={isMobile ? "relative w-full overflow-hidden mt-10" : "relative w-full overflow-hidden border-t border-border h-screen"}>
-      {/* "Selected Work" label — above carousel on mobile, overlaid on desktop */}
       {isMobile ? (
         <div className="px-6 pb-4">
           <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
@@ -139,7 +184,6 @@ const WorkSection = () => {
         </div>
       )}
 
-      {/* Scroll arrows — desktop only */}
       {!isMobile && (
         <>
           <button
@@ -186,10 +230,13 @@ const WorkSection = () => {
             const displayIndex = (i % projects.length) + 1;
             const indexStr = String(displayIndex).padStart(2, "0");
             const shouldSnap = isMobile ? true : i % 2 === 0;
+            const isVisible = visibleCards.has(i);
 
             return (
               <div
                 key={`${project.title}-${i}`}
+                ref={(el) => { cardRefs.current[i] = el; }}
+                data-card-index={i}
                 className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
                 onClick={() => {
@@ -197,17 +244,22 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                    {project.coverVideo ? (
-                      <video
-                        src={project.coverVideo}
-                        autoPlay loop muted playsInline
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
-                        style={{ width: `${coverWidth}px`, height: `${coverHeight}px` }}
-                      />
-                    ) : project.hasVideo && project.vimeoId ? (
+                  {project.coverVideo ? (
+                    <video
+                      ref={(el) => { videoRefs.current[i] = el; }}
+                      src={project.coverVideo}
+                      autoPlay={isVisible}
+                      loop
+                      muted
+                      playsInline
+                      className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+                      style={{ width: `${coverWidth}px`, height: `${coverHeight}px` }}
+                    />
+                  ) : isVisible ? (
+                    project.hasVideo && project.vimeoId ? (
                       <iframe
                         src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0`}
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
+                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 opacity-100"
                         style={{
                           border: "none",
                           width: `${coverWidth}px`,
@@ -219,7 +271,7 @@ const WorkSection = () => {
                     ) : project.hasVideo && project.youtubeId ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1`}
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
+                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 opacity-100"
                         style={{
                           border: "none",
                           width: `${coverWidth}px`,
@@ -228,8 +280,17 @@ const WorkSection = () => {
                         allow="autoplay; fullscreen"
                         title={project.title}
                       />
+                    ) : (
+                      <div className="absolute inset-0 bg-muted/20" />
+                    )
                   ) : (
-                    <div className="absolute inset-0 bg-muted/20" />
+                    <img
+                      src={getThumbnail(project)}
+                      alt={project.title}
+                      className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+                      style={{ width: `${coverWidth}px`, height: `${coverHeight}px` }}
+                      loading="lazy"
+                    />
                   )}
 
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500" />
@@ -260,7 +321,6 @@ const WorkSection = () => {
         </div>
       </div>
 
-      {/* Mobile dot indicators */}
       {isMobile && (
         <div className="flex items-center justify-center gap-1.5 py-4">
           {projects.map((_, idx) => (
