@@ -183,6 +183,12 @@ const WorkSection = () => {
                 key={cardKey}
                 className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
+                onMouseEnter={() => {
+                  if (!isMobile) setActiveVideoKey(cardKey);
+                }}
+                onMouseLeave={() => {
+                  if (!isMobile) setActiveVideoKey((prev) => prev === cardKey ? null : prev);
+                }}
                 onClick={() => {
                   if (!didDrag.current && project.link) navigate(project.link);
                 }}
@@ -194,26 +200,22 @@ const WorkSection = () => {
                       title={project.title}
                       coverWidth={coverWidth}
                       coverHeight={coverHeight}
-                      isActiveCard={activeVideoKey === cardKey}
-                      onActivate={() => setActiveVideoKey(cardKey)}
-                      onDeactivate={() => setActiveVideoKey((prev) => prev === cardKey ? null : prev)}
+                      isHovered={activeVideoKey === cardKey}
                       isMobile={isMobile}
                     />
                   ) : project.youtubeId ? (
-                    <>
-                      <img
-                        src={`https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`}
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </>
+                    <img
+                      src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   ) : (
                     <div className="absolute inset-0 bg-muted/20" />
                   )}
 
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500" />
-                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500 pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none" />
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-0.5 p-5 md:p-8 lg:p-10">
