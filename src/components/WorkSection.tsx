@@ -23,7 +23,6 @@ const projects: Project[] = [
 
 const loopedProjects = [...projects, ...projects, ...projects];
 const VIDEO_ASPECT_RATIO = 16 / 9;
-const SCROLL_SETTLE_MS = 250;
 
 const WorkSection = () => {
   const navigate = useNavigate();
@@ -31,16 +30,11 @@ const WorkSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const didDrag = useRef(false);
   const dragStart = useRef({ x: 0, scrollLeft: 0 });
+  const animFrame = useRef<number>(0);
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeVideoKey, setActiveVideoKey] = useState<string | null>(null);
-
-  // Scroll-awareness refs
-  const isScrollingRef = useRef(false);
-  const scrollSettleTimer = useRef<ReturnType<typeof setTimeout>>();
-  const resetTimer = useRef<ReturnType<typeof setTimeout>>();
-  const [settledVisibleStart, setSettledVisibleStart] = useState(0);
 
   useEffect(() => {
     const check = () => {
@@ -68,12 +62,6 @@ const WorkSection = () => {
     }
   }, [getOneSetWidth]);
 
-  const computeVisibleStart = useCallback(() => {
-    if (!trackRef.current) return 0;
-    const cardWidth = isMobile ? window.innerWidth : window.innerWidth / 2;
-    return Math.round(trackRef.current.scrollLeft / cardWidth);
-  }, [isMobile]);
-
   const updateActiveIndex = useCallback(() => {
     if (!isMobile || !trackRef.current) return;
     const scrollLeft = trackRef.current.scrollLeft;
@@ -82,54 +70,20 @@ const WorkSection = () => {
     setActiveIndex(rawIndex % projects.length);
   }, [isMobile]);
 
-  // Scroll handler: debounced settle + deferred resetToMiddle
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    // Initialize scroll position
     track.scrollLeft = getOneSetWidth();
-    setSettledVisibleStart(computeVisibleStart());
-
     const onScroll = () => {
-      isScrollingRef.current = true;
-
-      // Clear previous timers
-      clearTimeout(scrollSettleTimer.current);
-      clearTimeout(resetTimer.current);
-
-      // After scroll settles, update state
-      scrollSettleTimer.current = setTimeout(() => {
-        isScrollingRef.current = false;
+      cancelAnimationFrame(animFrame.current);
+      animFrame.current = requestAnimationFrame(() => {
         resetToMiddle();
         updateActiveIndex();
-        setSettledVisibleStart(computeVisibleStart());
-      }, SCROLL_SETTLE_MS);
+      });
     };
-
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      track.removeEventListener("scroll", onScroll);
-      clearTimeout(scrollSettleTimer.current);
-      clearTimeout(resetTimer.current);
-    };
-  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex, computeVisibleStart]);
-
-  // Suppress hover video during scroll
-  const handleMouseEnter = useCallback(
-    (cardKey: string) => {
-      if (isMobile || isScrollingRef.current || isDragging) return;
-      setActiveVideoKey(cardKey);
-    },
-    [isMobile, isDragging]
-  );
-
-  const handleMouseLeave = useCallback(
-    (cardKey: string) => {
-      if (isMobile) return;
-      setActiveVideoKey((prev) => (prev === cardKey ? null : prev));
-    },
-    [isMobile]
-  );
+    track.addEventListener("scroll", onScroll);
+    return () => track.removeEventListener("scroll", onScroll);
+  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex]);
 
   const onMouseDown = (e: React.MouseEvent) => {
     const track = trackRef.current;
@@ -138,8 +92,6 @@ const WorkSection = () => {
     didDrag.current = false;
     dragStart.current = { x: e.clientX, scrollLeft: track.scrollLeft };
     track.style.scrollSnapType = "none";
-    // Suppress any active video during drag
-    setActiveVideoKey(null);
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
@@ -155,19 +107,6 @@ const WorkSection = () => {
       trackRef.current.style.scrollSnapType = "x mandatory";
     }
   };
-
-  // Compute which looped indices should be prewarmed (visible + neighbors)
-  const getPrewarmIndices = useCallback((): Set<number> => {
-    if (isMobile) return new Set();
-    const cardsVisible = 2; // desktop shows 2 cards
-    const indices = new Set<number>();
-    for (let offset = -1; offset <= cardsVisible; offset++) {
-      indices.add(settledVisibleStart + offset);
-    }
-    return indices;
-  }, [isMobile, settledVisibleStart]);
-
-  const prewarmIndices = getPrewarmIndices();
 
   const itemClass = isMobile ? "w-screen" : "w-[50vw]";
   const totalWidth = isMobile
@@ -238,15 +177,18 @@ const WorkSection = () => {
             const indexStr = String(displayIndex).padStart(2, "0");
             const shouldSnap = isMobile ? true : i % 2 === 0;
             const cardKey = `${project.title}-${i}`;
-            const shouldPrewarm = prewarmIndices.has(i);
 
             return (
               <div
                 key={cardKey}
                 className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
-                onMouseEnter={() => handleMouseEnter(cardKey)}
-                onMouseLeave={() => handleMouseLeave(cardKey)}
+                onMouseEnter={() => {
+                  if (!isMobile) setActiveVideoKey(cardKey);
+                }}
+                onMouseLeave={() => {
+                  if (!isMobile) setActiveVideoKey((prev) => prev === cardKey ? null : prev);
+                }}
                 onClick={() => {
                   if (!didDrag.current && project.link) navigate(project.link);
                 }}
@@ -260,7 +202,6 @@ const WorkSection = () => {
                       coverHeight={coverHeight}
                       isHovered={activeVideoKey === cardKey}
                       isMobile={isMobile}
-                      shouldPrewarm={shouldPrewarm}
                     />
                   ) : project.youtubeId ? (
                     <img
@@ -277,7 +218,7 @@ const WorkSection = () => {
                   <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none" />
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-0.5 p-5 md:p-8 lg:p-10 pointer-events-none">
+                <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-0.5 p-5 md:p-8 lg:p-10">
                   <span className="font-display text-5xl font-bold text-foreground/15 leading-none md:text-7xl">
                     {indexStr}
                   </span>
@@ -293,7 +234,7 @@ const WorkSection = () => {
                 </div>
 
                 {!isMobile && i % 2 === 0 && (
-                  <div className="absolute top-0 right-0 z-10 h-full w-px bg-foreground/10 pointer-events-none" />
+                  <div className="absolute top-0 right-0 z-10 h-full w-px bg-foreground/10" />
                 )}
               </div>
             );
