@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import dilanVideo from "@/assets/dilan-web-video-cover.mp4";
 
 interface Project {
   title: string;
@@ -10,11 +9,10 @@ interface Project {
   hasVideo?: boolean;
   vimeoId?: string;
   youtubeId?: string;
-  mp4Src?: string;
 }
 
 const projects: Project[] = [
-  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", link: "/work/dylan-bachelet", hasVideo: true, mp4Src: dilanVideo },
+  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", link: "/work/dylan-bachelet", hasVideo: true, vimeoId: "1107691277" },
   { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", link: "/work/yaroslava-mohushih", hasVideo: true, vimeoId: "1010047613" },
   { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", link: "/work/orserio", hasVideo: true, vimeoId: "1172857771" },
   { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", link: "/work/valentin-day", hasVideo: true, vimeoId: "1166656782" },
@@ -197,20 +195,7 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                    {project.hasVideo && project.mp4Src ? (
-                      <video
-                        src={project.mp4Src}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
-                        style={{
-                          width: `${coverWidth}px`,
-                          height: `${coverHeight}px`,
-                        }}
-                      />
-                    ) : project.hasVideo && project.vimeoId ? (
+                    {project.hasVideo && project.vimeoId ? (
                       <iframe
                         src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0`}
                         className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
@@ -234,7 +219,7 @@ const WorkSection = () => {
                         allow="autoplay; fullscreen"
                         title={project.title}
                       />
-                    ) : (
+                  ) : (
                     <div className="absolute inset-0 bg-muted/20" />
                   )}
 
