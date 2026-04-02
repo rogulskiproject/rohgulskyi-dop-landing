@@ -44,14 +44,14 @@ const projects: Project[] = [
     subtitle: "Simone Rocha",
     category: "Editorial",
     link: "/work/another-magazine",
-    posterSrc: "https://vumbnail.com/1010017917_large.jpg",
+    videoSrc: "/videos/another-magazine-preview.mp4",
   },
   {
     title: "Hozier - Francesca",
     subtitle: "Hozier",
     category: "Music Video",
     link: "/work/hozier-francesca",
-    posterSrc: "https://img.youtube.com/vi/K1u_hL11auM/maxresdefault.jpg",
+    videoSrc: "/videos/hozier-francesca-preview.mp4",
   },
 ];
 
