@@ -197,7 +197,14 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                    {project.hasVideo && project.vimeoId ? (
+                    {project.coverVideo ? (
+                      <video
+                        src={project.coverVideo}
+                        autoPlay loop muted playsInline
+                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+                        style={{ width: `${coverWidth}px`, height: `${coverHeight}px` }}
+                      />
+                    ) : project.hasVideo && project.vimeoId ? (
                       <iframe
                         src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0`}
                         className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
