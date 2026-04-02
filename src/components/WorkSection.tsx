@@ -1,6 +1,12 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
+function getThumbnailUrl(project: Project): string {
+  if (project.vimeoId) return `https://vumbnail.com/${project.vimeoId}.jpg`;
+  if (project.youtubeId) return `https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`;
+  return "";
+}
+
 interface Project {
   title: string;
   subtitle: string;
