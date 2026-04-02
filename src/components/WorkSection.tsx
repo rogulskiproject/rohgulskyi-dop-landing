@@ -39,6 +39,8 @@ const WorkSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
   useEffect(() => {
     const check = () => {
