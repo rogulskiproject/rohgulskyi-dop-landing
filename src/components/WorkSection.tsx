@@ -23,7 +23,7 @@ const projects: Project[] = [
 
 const loopedProjects = [...projects, ...projects, ...projects];
 const VIDEO_ASPECT_RATIO = 16 / 9;
-const SCROLL_SETTLE_MS = 200;
+const SCROLL_SETTLE_MS = 250;
 
 const WorkSection = () => {
   const navigate = useNavigate();
@@ -34,16 +34,13 @@ const WorkSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeVideoKey, setActiveVideoKey] = useState<string | null>(null);
 
-  // Scroll state: disable hover during scroll/drag
-  const [isScrolling, setIsScrolling] = useState(false);
-  const scrollTimer = useRef<ReturnType<typeof setTimeout>>();
-
-  // Hover state (only applied when not scrolling)
-  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
-
-  // Which logical indices (0-5) should be prewarmed
-  const [prewarmIndices, setPrewarmIndices] = useState<Set<number>>(new Set([0, 1]));
+  // Scroll-awareness refs
+  const isScrollingRef = useRef(false);
+  const scrollSettleTimer = useRef<ReturnType<typeof setTimeout>>();
+  const resetTimer = useRef<ReturnType<typeof setTimeout>>();
+  const [settledVisibleStart, setSettledVisibleStart] = useState(0);
 
   useEffect(() => {
     const check = () => {
@@ -60,24 +57,6 @@ const WorkSection = () => {
     return projects.length * (window.innerWidth / 2);
   }, [isMobile]);
 
-  /* ── Compute visible card index from scroll position ── */
-  const getVisibleIndex = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return 0;
-    const cardWidth = isMobile ? window.innerWidth : window.innerWidth / 2;
-    const rawIndex = Math.round(track.scrollLeft / cardWidth);
-    return rawIndex % projects.length;
-  }, [isMobile]);
-
-  const updatePrewarm = useCallback(() => {
-    const idx = getVisibleIndex();
-    const prev = (idx - 1 + projects.length) % projects.length;
-    const next = (idx + 1) % projects.length;
-    setPrewarmIndices(new Set([prev, idx, next]));
-    setActiveIndex(idx);
-  }, [getVisibleIndex]);
-
-  /* ── Infinite loop reset ── */
   const resetToMiddle = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -89,38 +68,69 @@ const WorkSection = () => {
     }
   }, [getOneSetWidth]);
 
-  /* ── Scroll listener with settle detection ── */
+  const computeVisibleStart = useCallback(() => {
+    if (!trackRef.current) return 0;
+    const cardWidth = isMobile ? window.innerWidth : window.innerWidth / 2;
+    return Math.round(trackRef.current.scrollLeft / cardWidth);
+  }, [isMobile]);
+
+  const updateActiveIndex = useCallback(() => {
+    if (!isMobile || !trackRef.current) return;
+    const scrollLeft = trackRef.current.scrollLeft;
+    const cardWidth = window.innerWidth;
+    const rawIndex = Math.round(scrollLeft / cardWidth);
+    setActiveIndex(rawIndex % projects.length);
+  }, [isMobile]);
+
+  // Scroll handler: debounced settle + deferred resetToMiddle
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+    // Initialize scroll position
     track.scrollLeft = getOneSetWidth();
-    updatePrewarm();
+    setSettledVisibleStart(computeVisibleStart());
 
     const onScroll = () => {
-      // Mark scrolling — disables hover playback
-      if (!isScrolling) setIsScrolling(true);
-      clearTimeout(scrollTimer.current);
+      isScrollingRef.current = true;
 
-      // Use rAF for position reset to avoid visual glitches
-      requestAnimationFrame(() => {
+      // Clear previous timers
+      clearTimeout(scrollSettleTimer.current);
+      clearTimeout(resetTimer.current);
+
+      // After scroll settles, update state
+      scrollSettleTimer.current = setTimeout(() => {
+        isScrollingRef.current = false;
         resetToMiddle();
-      });
-
-      // Settle detection
-      scrollTimer.current = setTimeout(() => {
-        setIsScrolling(false);
-        updatePrewarm();
+        updateActiveIndex();
+        setSettledVisibleStart(computeVisibleStart());
       }, SCROLL_SETTLE_MS);
     };
 
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       track.removeEventListener("scroll", onScroll);
-      clearTimeout(scrollTimer.current);
+      clearTimeout(scrollSettleTimer.current);
+      clearTimeout(resetTimer.current);
     };
-  }, [resetToMiddle, getOneSetWidth, updatePrewarm, isScrolling]);
+  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex, computeVisibleStart]);
 
-  /* ── Mouse drag ── */
+  // Suppress hover video during scroll
+  const handleMouseEnter = useCallback(
+    (cardKey: string) => {
+      if (isMobile || isScrollingRef.current || isDragging) return;
+      setActiveVideoKey(cardKey);
+    },
+    [isMobile, isDragging]
+  );
+
+  const handleMouseLeave = useCallback(
+    (cardKey: string) => {
+      if (isMobile) return;
+      setActiveVideoKey((prev) => (prev === cardKey ? null : prev));
+    },
+    [isMobile]
+  );
+
   const onMouseDown = (e: React.MouseEvent) => {
     const track = trackRef.current;
     if (!track) return;
@@ -128,6 +138,8 @@ const WorkSection = () => {
     didDrag.current = false;
     dragStart.current = { x: e.clientX, scrollLeft: track.scrollLeft };
     track.style.scrollSnapType = "none";
+    // Suppress any active video during drag
+    setActiveVideoKey(null);
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
@@ -144,23 +156,18 @@ const WorkSection = () => {
     }
   };
 
-  /* ── Hover handlers (disabled during scroll/drag) ── */
-  const handleMouseEnter = useCallback((key: string) => {
-    if (isMobile || isScrolling || isDragging) return;
-    setHoveredKey(key);
-  }, [isMobile, isScrolling, isDragging]);
-
-  const handleMouseLeave = useCallback((key: string) => {
-    if (isMobile) return;
-    setHoveredKey((prev) => (prev === key ? null : prev));
-  }, [isMobile]);
-
-  // Clear hover when scrolling starts
-  useEffect(() => {
-    if (isScrolling || isDragging) {
-      setHoveredKey(null);
+  // Compute which looped indices should be prewarmed (visible + neighbors)
+  const getPrewarmIndices = useCallback((): Set<number> => {
+    if (isMobile) return new Set();
+    const cardsVisible = 2; // desktop shows 2 cards
+    const indices = new Set<number>();
+    for (let offset = -1; offset <= cardsVisible; offset++) {
+      indices.add(settledVisibleStart + offset);
     }
-  }, [isScrolling, isDragging]);
+    return indices;
+  }, [isMobile, settledVisibleStart]);
+
+  const prewarmIndices = getPrewarmIndices();
 
   const itemClass = isMobile ? "w-screen" : "w-[50vw]";
   const totalWidth = isMobile
@@ -227,12 +234,11 @@ const WorkSection = () => {
       >
         <div className="flex h-full" style={{ width: totalWidth }}>
           {loopedProjects.map((project, i) => {
-            const logicalIndex = i % projects.length;
-            const displayIndex = logicalIndex + 1;
+            const displayIndex = (i % projects.length) + 1;
             const indexStr = String(displayIndex).padStart(2, "0");
             const shouldSnap = isMobile ? true : i % 2 === 0;
             const cardKey = `${project.title}-${i}`;
-            const shouldPrewarm = prewarmIndices.has(logicalIndex);
+            const shouldPrewarm = prewarmIndices.has(i);
 
             return (
               <div
@@ -252,9 +258,9 @@ const WorkSection = () => {
                       title={project.title}
                       coverWidth={coverWidth}
                       coverHeight={coverHeight}
-                      isHovered={hoveredKey === cardKey && !isScrolling && !isDragging}
-                      shouldPrewarm={shouldPrewarm && !isMobile}
+                      isHovered={activeVideoKey === cardKey}
                       isMobile={isMobile}
+                      shouldPrewarm={shouldPrewarm}
                     />
                   ) : project.youtubeId ? (
                     <img
