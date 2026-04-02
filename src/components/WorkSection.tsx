@@ -122,6 +122,7 @@ const WorkSection = () => {
     return () => observer.disconnect();
   }, [isMobile, viewport]);
 
+  const onMouseDown = (e: React.MouseEvent) => {
     const track = trackRef.current;
     if (!track) return;
     setIsDragging(true);
