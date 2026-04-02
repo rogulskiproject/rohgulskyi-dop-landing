@@ -23,6 +23,7 @@ const projects: Project[] = [
 
 const loopedProjects = [...projects, ...projects, ...projects];
 const VIDEO_ASPECT_RATIO = 16 / 9;
+const SCROLL_SETTLE_MS = 200;
 
 const WorkSection = () => {
   const navigate = useNavigate();
@@ -30,11 +31,19 @@ const WorkSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const didDrag = useRef(false);
   const dragStart = useRef({ x: 0, scrollLeft: 0 });
-  const animFrame = useRef<number>(0);
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
-  const [activeVideoKey, setActiveVideoKey] = useState<string | null>(null);
+
+  // Scroll state: disable hover during scroll/drag
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  // Hover state (only applied when not scrolling)
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+
+  // Which logical indices (0-5) should be prewarmed
+  const [prewarmIndices, setPrewarmIndices] = useState<Set<number>>(new Set([0, 1]));
 
   useEffect(() => {
     const check = () => {
@@ -51,6 +60,24 @@ const WorkSection = () => {
     return projects.length * (window.innerWidth / 2);
   }, [isMobile]);
 
+  /* ── Compute visible card index from scroll position ── */
+  const getVisibleIndex = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return 0;
+    const cardWidth = isMobile ? window.innerWidth : window.innerWidth / 2;
+    const rawIndex = Math.round(track.scrollLeft / cardWidth);
+    return rawIndex % projects.length;
+  }, [isMobile]);
+
+  const updatePrewarm = useCallback(() => {
+    const idx = getVisibleIndex();
+    const prev = (idx - 1 + projects.length) % projects.length;
+    const next = (idx + 1) % projects.length;
+    setPrewarmIndices(new Set([prev, idx, next]));
+    setActiveIndex(idx);
+  }, [getVisibleIndex]);
+
+  /* ── Infinite loop reset ── */
   const resetToMiddle = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -62,29 +89,38 @@ const WorkSection = () => {
     }
   }, [getOneSetWidth]);
 
-  const updateActiveIndex = useCallback(() => {
-    if (!isMobile || !trackRef.current) return;
-    const scrollLeft = trackRef.current.scrollLeft;
-    const cardWidth = window.innerWidth;
-    const rawIndex = Math.round(scrollLeft / cardWidth);
-    setActiveIndex(rawIndex % projects.length);
-  }, [isMobile]);
-
+  /* ── Scroll listener with settle detection ── */
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     track.scrollLeft = getOneSetWidth();
-    const onScroll = () => {
-      cancelAnimationFrame(animFrame.current);
-      animFrame.current = requestAnimationFrame(() => {
-        resetToMiddle();
-        updateActiveIndex();
-      });
-    };
-    track.addEventListener("scroll", onScroll);
-    return () => track.removeEventListener("scroll", onScroll);
-  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex]);
+    updatePrewarm();
 
+    const onScroll = () => {
+      // Mark scrolling — disables hover playback
+      if (!isScrolling) setIsScrolling(true);
+      clearTimeout(scrollTimer.current);
+
+      // Use rAF for position reset to avoid visual glitches
+      requestAnimationFrame(() => {
+        resetToMiddle();
+      });
+
+      // Settle detection
+      scrollTimer.current = setTimeout(() => {
+        setIsScrolling(false);
+        updatePrewarm();
+      }, SCROLL_SETTLE_MS);
+    };
+
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      track.removeEventListener("scroll", onScroll);
+      clearTimeout(scrollTimer.current);
+    };
+  }, [resetToMiddle, getOneSetWidth, updatePrewarm, isScrolling]);
+
+  /* ── Mouse drag ── */
   const onMouseDown = (e: React.MouseEvent) => {
     const track = trackRef.current;
     if (!track) return;
@@ -107,6 +143,24 @@ const WorkSection = () => {
       trackRef.current.style.scrollSnapType = "x mandatory";
     }
   };
+
+  /* ── Hover handlers (disabled during scroll/drag) ── */
+  const handleMouseEnter = useCallback((key: string) => {
+    if (isMobile || isScrolling || isDragging) return;
+    setHoveredKey(key);
+  }, [isMobile, isScrolling, isDragging]);
+
+  const handleMouseLeave = useCallback((key: string) => {
+    if (isMobile) return;
+    setHoveredKey((prev) => (prev === key ? null : prev));
+  }, [isMobile]);
+
+  // Clear hover when scrolling starts
+  useEffect(() => {
+    if (isScrolling || isDragging) {
+      setHoveredKey(null);
+    }
+  }, [isScrolling, isDragging]);
 
   const itemClass = isMobile ? "w-screen" : "w-[50vw]";
   const totalWidth = isMobile
@@ -173,22 +227,20 @@ const WorkSection = () => {
       >
         <div className="flex h-full" style={{ width: totalWidth }}>
           {loopedProjects.map((project, i) => {
-            const displayIndex = (i % projects.length) + 1;
+            const logicalIndex = i % projects.length;
+            const displayIndex = logicalIndex + 1;
             const indexStr = String(displayIndex).padStart(2, "0");
             const shouldSnap = isMobile ? true : i % 2 === 0;
             const cardKey = `${project.title}-${i}`;
+            const shouldPrewarm = prewarmIndices.has(logicalIndex);
 
             return (
               <div
                 key={cardKey}
                 className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
-                onMouseEnter={() => {
-                  if (!isMobile) setActiveVideoKey(cardKey);
-                }}
-                onMouseLeave={() => {
-                  if (!isMobile) setActiveVideoKey((prev) => prev === cardKey ? null : prev);
-                }}
+                onMouseEnter={() => handleMouseEnter(cardKey)}
+                onMouseLeave={() => handleMouseLeave(cardKey)}
                 onClick={() => {
                   if (!didDrag.current && project.link) navigate(project.link);
                 }}
@@ -200,7 +252,8 @@ const WorkSection = () => {
                       title={project.title}
                       coverWidth={coverWidth}
                       coverHeight={coverHeight}
-                      isHovered={activeVideoKey === cardKey}
+                      isHovered={hoveredKey === cardKey && !isScrolling && !isDragging}
+                      shouldPrewarm={shouldPrewarm && !isMobile}
                       isMobile={isMobile}
                     />
                   ) : project.youtubeId ? (
@@ -218,7 +271,7 @@ const WorkSection = () => {
                   <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none" />
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-0.5 p-5 md:p-8 lg:p-10">
+                <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-0.5 p-5 md:p-8 lg:p-10 pointer-events-none">
                   <span className="font-display text-5xl font-bold text-foreground/15 leading-none md:text-7xl">
                     {indexStr}
                   </span>
@@ -234,7 +287,7 @@ const WorkSection = () => {
                 </div>
 
                 {!isMobile && i % 2 === 0 && (
-                  <div className="absolute top-0 right-0 z-10 h-full w-px bg-foreground/10" />
+                  <div className="absolute top-0 right-0 z-10 h-full w-px bg-foreground/10 pointer-events-none" />
                 )}
               </div>
             );
