@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import LazyVimeoCard from "./LazyVimeoCard";
 
 interface Project {
   title: string;
@@ -33,13 +34,13 @@ const WorkSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeVideoKey, setActiveVideoKey] = useState<string | null>(null);
 
   useEffect(() => {
     const check = () => {
       setIsMobile(window.innerWidth < 768);
       setViewport({ width: window.innerWidth, height: window.innerHeight });
     };
-
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -61,7 +62,6 @@ const WorkSection = () => {
     }
   }, [getOneSetWidth]);
 
-  // Track active slide index on mobile
   const updateActiveIndex = useCallback(() => {
     if (!isMobile || !trackRef.current) return;
     const scrollLeft = trackRef.current.scrollLeft;
@@ -74,7 +74,6 @@ const WorkSection = () => {
     const track = trackRef.current;
     if (!track) return;
     track.scrollLeft = getOneSetWidth();
-
     const onScroll = () => {
       cancelAnimationFrame(animFrame.current);
       animFrame.current = requestAnimationFrame(() => {
@@ -82,7 +81,6 @@ const WorkSection = () => {
         updateActiveIndex();
       });
     };
-
     track.addEventListener("scroll", onScroll);
     return () => track.removeEventListener("scroll", onScroll);
   }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex]);
@@ -122,7 +120,6 @@ const WorkSection = () => {
 
   return (
     <section className={isMobile ? "relative w-full overflow-hidden mt-10" : "relative w-full overflow-hidden border-t border-border h-screen"}>
-      {/* "Selected Work" label — above carousel on mobile, overlaid on desktop */}
       {isMobile ? (
         <div className="px-6 pb-4">
           <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
@@ -137,16 +134,13 @@ const WorkSection = () => {
         </div>
       )}
 
-      {/* Scroll arrows — desktop only */}
       {!isMobile && (
         <>
           <button
             aria-label="Scroll left"
             className="absolute left-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
             style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
-            onClick={() => {
-              trackRef.current?.scrollBy({ left: -(window.innerWidth / 2), behavior: "smooth" });
-            }}
+            onClick={() => trackRef.current?.scrollBy({ left: -(window.innerWidth / 2), behavior: "smooth" })}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
           </button>
@@ -154,9 +148,7 @@ const WorkSection = () => {
             aria-label="Scroll right"
             className="absolute right-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
             style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
-            onClick={() => {
-              trackRef.current?.scrollBy({ left: window.innerWidth / 2, behavior: "smooth" });
-            }}
+            onClick={() => trackRef.current?.scrollBy({ left: window.innerWidth / 2, behavior: "smooth" })}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
           </button>
@@ -184,10 +176,11 @@ const WorkSection = () => {
             const displayIndex = (i % projects.length) + 1;
             const indexStr = String(displayIndex).padStart(2, "0");
             const shouldSnap = isMobile ? true : i % 2 === 0;
+            const cardKey = `${project.title}-${i}`;
 
             return (
               <div
-                key={`${project.title}-${i}`}
+                key={cardKey}
                 className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
                 onClick={() => {
@@ -195,30 +188,26 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                    {project.hasVideo && project.vimeoId ? (
-                      <iframe
-                        src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0`}
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
-                        style={{
-                          border: "none",
-                          width: `${coverWidth}px`,
-                          height: `${coverHeight}px`,
-                        }}
-                        allow="autoplay; fullscreen"
-                        title={project.title}
+                  {project.vimeoId ? (
+                    <LazyVimeoCard
+                      vimeoId={project.vimeoId}
+                      title={project.title}
+                      coverWidth={coverWidth}
+                      coverHeight={coverHeight}
+                      isActiveCard={activeVideoKey === cardKey}
+                      onActivate={() => setActiveVideoKey(cardKey)}
+                      onDeactivate={() => setActiveVideoKey((prev) => prev === cardKey ? null : prev)}
+                      isMobile={isMobile}
+                    />
+                  ) : project.youtubeId ? (
+                    <>
+                      <img
+                        src={`https://img.youtube.com/vi/${project.youtubeId}/hqdefault.jpg`}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
                       />
-                    ) : project.hasVideo && project.youtubeId ? (
-                      <iframe
-                        src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1`}
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
-                        style={{
-                          border: "none",
-                          width: `${coverWidth}px`,
-                          height: `${coverHeight}px`,
-                        }}
-                        allow="autoplay; fullscreen"
-                        title={project.title}
-                      />
+                    </>
                   ) : (
                     <div className="absolute inset-0 bg-muted/20" />
                   )}
@@ -251,7 +240,6 @@ const WorkSection = () => {
         </div>
       </div>
 
-      {/* Mobile dot indicators */}
       {isMobile && (
         <div className="flex items-center justify-center gap-1.5 py-4">
           {projects.map((_, idx) => (
