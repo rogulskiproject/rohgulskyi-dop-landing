@@ -223,6 +223,11 @@ const WorkSection = () => {
             return (
               <div
                 key={`${project.title}-${i}`}
+                data-card-index={i}
+                ref={(el) => {
+                  if (el) cardRefs.current.set(i, el);
+                  else cardRefs.current.delete(i);
+                }}
                 className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
                 onClick={() => {
@@ -230,32 +235,40 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                    {project.hasVideo && project.vimeoId ? (
-                      <iframe
-                        src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0`}
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
-                        style={{
-                          border: "none",
-                          width: `${coverWidth}px`,
-                          height: `${coverHeight}px`,
-                        }}
-                        allow="autoplay; fullscreen"
-                        title={project.title}
-                      />
-                    ) : project.hasVideo && project.youtubeId ? (
-                      <iframe
-                        src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1`}
-                        className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2"
-                        style={{
-                          border: "none",
-                          width: `${coverWidth}px`,
-                          height: `${coverHeight}px`,
-                        }}
-                        allow="autoplay; fullscreen"
-                        title={project.title}
-                      />
-                  ) : (
-                    <div className="absolute inset-0 bg-muted/20" />
+                  {visibleCards.has(i) && project.hasVideo && project.vimeoId ? (
+                    <iframe
+                      src={`https://player.vimeo.com/video/${project.vimeoId}?background=1&autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0`}
+                      className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700"
+                      style={{
+                        border: "none",
+                        width: `${coverWidth}px`,
+                        height: `${coverHeight}px`,
+                      }}
+                      allow="autoplay; fullscreen"
+                      title={project.title}
+                    />
+                  ) : visibleCards.has(i) && project.hasVideo && project.youtubeId ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${project.youtubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1`}
+                      className="absolute left-1/2 top-1/2 pointer-events-none max-w-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700"
+                      style={{
+                        border: "none",
+                        width: `${coverWidth}px`,
+                        height: `${coverHeight}px`,
+                      }}
+                      allow="autoplay; fullscreen"
+                      title={project.title}
+                    />
+                  ) : null}
+
+                  {/* Thumbnail fallback — always rendered, hidden behind iframe when loaded */}
+                  {project.hasVideo && (
+                    <img
+                      src={getThumbnailUrl(project)}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   )}
 
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500" />
