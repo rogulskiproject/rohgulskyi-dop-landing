@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import dilanCoverVideo from "@/assets/dilan_web_video_cover.mp4";
 
 interface Project {
   title: string;
@@ -9,6 +10,7 @@ interface Project {
   hasVideo?: boolean;
   vimeoId?: string;
   youtubeId?: string;
+  coverVideo?: string;
 }
 
 const projects: Project[] = [
