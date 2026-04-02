@@ -30,14 +30,14 @@ const projects: Project[] = [
     subtitle: "Orserio",
     category: "E-Commerce Brand Film",
     link: "/work/orserio",
-    posterSrc: "https://vumbnail.com/1172857771_large.jpg",
+    videoSrc: "/videos/orserio-preview.mp4",
   },
   {
     title: "Valentin Day",
     subtitle: "Zielinski & Rozen",
     category: "Documentary Campaign Film",
     link: "/work/valentin-day",
-    posterSrc: "https://vumbnail.com/1166656782_large.jpg",
+    videoSrc: "/videos/valentin-day-preview.mp4",
   },
   {
     title: "AnOther Magazine",
