@@ -95,7 +95,33 @@ const WorkSection = () => {
     return () => track.removeEventListener("scroll", onScroll);
   }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex]);
 
-  const onMouseDown = (e: React.MouseEvent) => {
+  // IntersectionObserver: lazy-load iframes only for visible cards
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisibleCards((prev) => {
+          const next = new Set(prev);
+          entries.forEach((entry) => {
+            const idx = Number((entry.target as HTMLElement).dataset.cardIndex);
+            if (entry.isIntersecting) {
+              next.add(idx);
+            } else {
+              next.delete(idx);
+            }
+          });
+          return next;
+        });
+      },
+      { root: track, rootMargin: "200px", threshold: 0 }
+    );
+
+    cardRefs.current.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [isMobile, viewport]);
+
     const track = trackRef.current;
     if (!track) return;
     setIsDragging(true);
