@@ -1,46 +1,78 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import LazyVimeoCard from "./LazyVimeoCard";
 
 interface Project {
   title: string;
   subtitle: string;
   category: string;
   link: string;
-  hasVideo?: boolean;
-  vimeoId?: string;
-  youtubeId?: string;
+  videoSrc?: string;
+  posterSrc?: string;
 }
 
 const projects: Project[] = [
-  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", link: "/work/dylan-bachelet", hasVideo: true, vimeoId: "1107691277" },
-  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", link: "/work/yaroslava-mohushih", hasVideo: true, vimeoId: "1010047613" },
-  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", link: "/work/orserio", hasVideo: true, vimeoId: "1172857771" },
-  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", link: "/work/valentin-day", hasVideo: true, vimeoId: "1166656782" },
-  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", link: "/work/another-magazine", hasVideo: true, vimeoId: "1010017917" },
-  { title: "Hozier - Francesca", subtitle: "Hozier", category: "Music Video", link: "/work/hozier-francesca", hasVideo: true, youtubeId: "K1u_hL11auM" },
+  {
+    title: "Dylan Bachelet",
+    subtitle: "Imagine Magazine",
+    category: "Editorial",
+    link: "/work/dylan-bachelet",
+    videoSrc: "/videos/dylan-bachelet-preview.mp4",
+  },
+  {
+    title: "Yaroslava Mohushih",
+    subtitle: "PUMA",
+    category: "Documentary Film",
+    link: "/work/yaroslava-mohushih",
+    videoSrc: "/videos/yaroslava-mohushih-preview.mp4",
+  },
+  {
+    title: "Orserio",
+    subtitle: "Orserio",
+    category: "E-Commerce Brand Film",
+    link: "/work/orserio",
+    posterSrc: "https://vumbnail.com/1172857771_large.jpg",
+  },
+  {
+    title: "Valentin Day",
+    subtitle: "Zielinski & Rozen",
+    category: "Documentary Campaign Film",
+    link: "/work/valentin-day",
+    posterSrc: "https://vumbnail.com/1166656782_large.jpg",
+  },
+  {
+    title: "AnOther Magazine",
+    subtitle: "Simone Rocha",
+    category: "Editorial",
+    link: "/work/another-magazine",
+    posterSrc: "https://vumbnail.com/1010017917_large.jpg",
+  },
+  {
+    title: "Hozier - Francesca",
+    subtitle: "Hozier",
+    category: "Music Video",
+    link: "/work/hozier-francesca",
+    posterSrc: "https://img.youtube.com/vi/K1u_hL11auM/maxresdefault.jpg",
+  },
 ];
 
 const loopedProjects = [...projects, ...projects, ...projects];
-const VIDEO_ASPECT_RATIO = 16 / 9;
 const SCROLL_SETTLE_MS = 250;
 
 const WorkSection = () => {
   const navigate = useNavigate();
   const trackRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const [isDragging, setIsDragging] = useState(false);
   const didDrag = useRef(false);
   const dragStart = useRef({ x: 0, scrollLeft: 0 });
   const [isMobile, setIsMobile] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
-  const [activeVideoKey, setActiveVideoKey] = useState<string | null>(null);
 
-  // Scroll-awareness refs
+  // Scroll-awareness
   const isScrollingRef = useRef(false);
   const scrollSettleTimer = useRef<ReturnType<typeof setTimeout>>();
-  const resetTimer = useRef<ReturnType<typeof setTimeout>>();
-  const [settledVisibleStart, setSettledVisibleStart] = useState(0);
+  const [settledStart, setSettledStart] = useState(0);
 
   useEffect(() => {
     const check = () => {
@@ -82,27 +114,52 @@ const WorkSection = () => {
     setActiveIndex(rawIndex % projects.length);
   }, [isMobile]);
 
-  // Scroll handler: debounced settle + deferred resetToMiddle
+  // Manage video playback based on settled position
+  const updatePlayback = useCallback(
+    (visibleStart: number) => {
+      const cardsOnScreen = isMobile ? 1 : 2;
+      videoRefs.current.forEach((video, idx) => {
+        const isActive = idx >= visibleStart && idx < visibleStart + cardsOnScreen;
+        const isNear =
+          idx >= visibleStart - cardsOnScreen &&
+          idx < visibleStart + cardsOnScreen * 2;
+
+        if (isActive) {
+          video.preload = "auto";
+          if (video.paused && video.readyState >= 2) {
+            video.play().catch(() => {});
+          }
+        } else {
+          if (!video.paused) {
+            video.pause();
+          }
+          video.preload = isNear ? "auto" : "metadata";
+        }
+      });
+    },
+    [isMobile]
+  );
+
+  // Scroll handler
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    // Initialize scroll position
     track.scrollLeft = getOneSetWidth();
-    setSettledVisibleStart(computeVisibleStart());
+    const initial = computeVisibleStart();
+    setSettledStart(initial);
+    updatePlayback(initial);
 
     const onScroll = () => {
       isScrollingRef.current = true;
-
-      // Clear previous timers
       clearTimeout(scrollSettleTimer.current);
-      clearTimeout(resetTimer.current);
 
-      // After scroll settles, update state
       scrollSettleTimer.current = setTimeout(() => {
         isScrollingRef.current = false;
         resetToMiddle();
         updateActiveIndex();
-        setSettledVisibleStart(computeVisibleStart());
+        const vis = computeVisibleStart();
+        setSettledStart(vis);
+        updatePlayback(vis);
       }, SCROLL_SETTLE_MS);
     };
 
@@ -110,25 +167,21 @@ const WorkSection = () => {
     return () => {
       track.removeEventListener("scroll", onScroll);
       clearTimeout(scrollSettleTimer.current);
-      clearTimeout(resetTimer.current);
     };
-  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex, computeVisibleStart]);
+  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex, computeVisibleStart, updatePlayback]);
 
-  // Suppress hover video during scroll
-  const handleMouseEnter = useCallback(
-    (cardKey: string) => {
-      if (isMobile || isScrollingRef.current || isDragging) return;
-      setActiveVideoKey(cardKey);
+  // Auto-play active videos once they can play
+  const handleCanPlay = useCallback(
+    (idx: number) => {
+      const cardsOnScreen = isMobile ? 1 : 2;
+      if (idx >= settledStart && idx < settledStart + cardsOnScreen) {
+        const video = videoRefs.current.get(idx);
+        if (video && video.paused) {
+          video.play().catch(() => {});
+        }
+      }
     },
-    [isMobile, isDragging]
-  );
-
-  const handleMouseLeave = useCallback(
-    (cardKey: string) => {
-      if (isMobile) return;
-      setActiveVideoKey((prev) => (prev === cardKey ? null : prev));
-    },
-    [isMobile]
+    [isMobile, settledStart]
   );
 
   const onMouseDown = (e: React.MouseEvent) => {
@@ -138,8 +191,6 @@ const WorkSection = () => {
     didDrag.current = false;
     dragStart.current = { x: e.clientX, scrollLeft: track.scrollLeft };
     track.style.scrollSnapType = "none";
-    // Suppress any active video during drag
-    setActiveVideoKey(null);
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
@@ -156,31 +207,20 @@ const WorkSection = () => {
     }
   };
 
-  // Compute which looped indices should be prewarmed (visible + neighbors)
-  const getPrewarmIndices = useCallback((): Set<number> => {
-    if (isMobile) return new Set();
-    const cardsVisible = 2; // desktop shows 2 cards
-    const indices = new Set<number>();
-    for (let offset = -1; offset <= cardsVisible; offset++) {
-      indices.add(settledVisibleStart + offset);
-    }
-    return indices;
-  }, [isMobile, settledVisibleStart]);
-
-  const prewarmIndices = getPrewarmIndices();
-
   const itemClass = isMobile ? "w-screen" : "w-[50vw]";
   const totalWidth = isMobile
     ? `${loopedProjects.length * 100}vw`
     : `${loopedProjects.length * 50}vw`;
   const mobileHeight = isMobile ? viewport.width * (2 / 3) : 0;
-  const frameWidth = Math.max(isMobile ? viewport.width : viewport.width / 2, 1);
-  const frameHeight = Math.max(isMobile ? mobileHeight : viewport.height, 1);
-  const coverWidth = Math.max(frameWidth, frameHeight * VIDEO_ASPECT_RATIO);
-  const coverHeight = Math.max(frameHeight, frameWidth / VIDEO_ASPECT_RATIO);
 
   return (
-    <section className={isMobile ? "relative w-full overflow-hidden mt-10" : "relative w-full overflow-hidden border-t border-border h-screen"}>
+    <section
+      className={
+        isMobile
+          ? "relative w-full overflow-hidden mt-10"
+          : "relative w-full overflow-hidden border-t border-border h-screen"
+      }
+    >
       {isMobile ? (
         <div className="px-6 pb-4">
           <span className="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-foreground/50">
@@ -200,18 +240,32 @@ const WorkSection = () => {
           <button
             aria-label="Scroll left"
             className="absolute left-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
-            style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
-            onClick={() => trackRef.current?.scrollBy({ left: -(window.innerWidth / 2), behavior: "smooth" })}
+            style={{ WebkitBackdropFilter: "blur(24px)", backdropFilter: "blur(24px)" }}
+            onClick={() =>
+              trackRef.current?.scrollBy({
+                left: -(window.innerWidth / 2),
+                behavior: "smooth",
+              })
+            }
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
           </button>
           <button
             aria-label="Scroll right"
             className="absolute right-6 top-1/2 z-20 -translate-y-1/2 flex items-center justify-center w-14 h-14 rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-xl text-foreground/50 hover:text-foreground/80 hover:border-foreground/20 hover:bg-foreground/10 transition-all duration-300"
-            style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)' }}
-            onClick={() => trackRef.current?.scrollBy({ left: window.innerWidth / 2, behavior: "smooth" })}
+            style={{ WebkitBackdropFilter: "blur(24px)", backdropFilter: "blur(24px)" }}
+            onClick={() =>
+              trackRef.current?.scrollBy({
+                left: window.innerWidth / 2,
+                behavior: "smooth",
+              })
+            }
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 6 15 12 9 18" />
+            </svg>
           </button>
         </>
       )}
@@ -220,7 +274,7 @@ const WorkSection = () => {
         ref={trackRef}
         className="w-full select-none overflow-x-auto overflow-y-hidden"
         style={{
-          height: isMobile ? `${mobileHeight}px` : '100%',
+          height: isMobile ? `${mobileHeight}px` : "100%",
           scrollSnapType: "x mandatory",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -237,34 +291,34 @@ const WorkSection = () => {
             const displayIndex = (i % projects.length) + 1;
             const indexStr = String(displayIndex).padStart(2, "0");
             const shouldSnap = isMobile ? true : i % 2 === 0;
-            const cardKey = `${project.title}-${i}`;
-            const shouldPrewarm = prewarmIndices.has(i);
 
             return (
               <div
-                key={cardKey}
+                key={`${project.title}-${i}`}
                 className={`relative h-full group flex-shrink-0 overflow-hidden ${itemClass}`}
                 style={{ scrollSnapAlign: shouldSnap ? "start" : "none" }}
-                onMouseEnter={() => handleMouseEnter(cardKey)}
-                onMouseLeave={() => handleMouseLeave(cardKey)}
                 onClick={() => {
                   if (!didDrag.current && project.link) navigate(project.link);
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                  {project.vimeoId ? (
-                    <LazyVimeoCard
-                      vimeoId={project.vimeoId}
-                      title={project.title}
-                      coverWidth={coverWidth}
-                      coverHeight={coverHeight}
-                      isHovered={activeVideoKey === cardKey}
-                      isMobile={isMobile}
-                      shouldPrewarm={shouldPrewarm}
+                  {project.videoSrc ? (
+                    <video
+                      ref={(el) => {
+                        if (el) videoRefs.current.set(i, el);
+                        else videoRefs.current.delete(i);
+                      }}
+                      src={project.videoSrc}
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      onCanPlay={() => handleCanPlay(i)}
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
-                  ) : project.youtubeId ? (
+                  ) : project.posterSrc ? (
                     <img
-                      src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`}
+                      src={project.posterSrc}
                       alt={project.title}
                       className="absolute inset-0 w-full h-full object-cover"
                       loading="lazy"
