@@ -76,7 +76,7 @@ const SelectedWorks = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {projects.map((project) => {
             const visible = activeFilter === "All" || project.filterGroup === activeFilter;
 
