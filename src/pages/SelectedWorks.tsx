@@ -40,6 +40,7 @@ const projects: Project[] = [
   { title: "Alessandro Michele — The BoF Podcast", subtitle: "The Business of Fashion", category: "Interview / Fashion", filterGroup: "Documentary", link: "/work/alessandro-michele-bof", youtubeId: "qtJqYEtbrBA", coverImage: alessandroCover },
   { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", filterGroup: "Music Video", link: "/work/tvorchi-vich-na-vich", youtubeId: "Y5QMUv7H0ic", coverImage: tvorchiCover },
   { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8", coverImage: unchartedCover },
+  { title: "Moove — Fire", subtitle: "Moove", category: "Music Video", filterGroup: "Music Video", link: "/work/moove-fire", vimeoId: "1179879918" },
 ];
 
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];
