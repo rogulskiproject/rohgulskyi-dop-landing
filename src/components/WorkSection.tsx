@@ -59,13 +59,6 @@ const projects: Project[] = [
     videoSrc: "/videos/hozier-francesca-preview.mp4",
     posterSrc: "/videos/posters/hozier-francesca.jpg",
   },
-  {
-    title: "Moove — Fire",
-    subtitle: "Moove",
-    category: "Music Video",
-    link: "/work/moove-fire",
-    posterSrc: "/videos/posters/moove-fire.jpg",
-  },
 ];
 
 const loopedProjects = [...projects, ...projects, ...projects];
