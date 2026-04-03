@@ -4,6 +4,7 @@ import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
 import tvorchiCover from "@/assets/tvorchi-cover.png";
 import hozierCover from "@/assets/hozier-cover.png";
+import orserioCover from "@/assets/orserio-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
@@ -20,7 +21,7 @@ interface Project {
 const projects: Project[] = [
   { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion Film", link: "/work/dylan-bachelet", vimeoId: "1107691277" },
   { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Documentary", link: "/work/yaroslava-mohushih", vimeoId: "1010047613" },
-  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771" },
+  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771", coverImage: orserioCover },
   { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Documentary", link: "/work/valentin-day", vimeoId: "1166656782" },
   { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion Film", link: "/work/another-magazine", vimeoId: "1010017917" },
   { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover },
