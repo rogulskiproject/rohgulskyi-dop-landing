@@ -43,7 +43,7 @@ const projects: Project[] = [
   { title: "Moove — Fire", subtitle: "Moove", category: "Music Video", filterGroup: "Music Video", link: "/work/moove-fire", vimeoId: "1179879918" },
 ];
 
-const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion Film"];
+const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion"];
 
 const getThumbnail = (project: Project) => {
   if (project.coverImage) {
