@@ -308,30 +308,43 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                  {project.videoSrc ? (
-                    <video
-                      ref={(el) => {
-                        if (el) videoRefs.current.set(i, el);
-                        else videoRefs.current.delete(i);
-                      }}
-                      src={project.videoSrc}
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      onCanPlay={() => handleCanPlay(i)}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  ) : project.posterSrc ? (
-                    <img
-                      src={project.posterSrc}
-                      alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-muted/20" />
-                  )}
+                  {(() => {
+                    const cardsOnScreen = isMobile ? 1 : 2;
+                    const shouldMountVideo =
+                      project.videoSrc &&
+                      i >= settledStart - cardsOnScreen &&
+                      i < settledStart + cardsOnScreen * 2;
+
+                    if (shouldMountVideo) {
+                      return (
+                        <video
+                          ref={(el) => {
+                            if (el) videoRefs.current.set(i, el);
+                            else videoRefs.current.delete(i);
+                          }}
+                          src={project.videoSrc}
+                          poster={project.posterSrc}
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          onCanPlay={() => handleCanPlay(i)}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      );
+                    }
+
+                    return project.posterSrc ? (
+                      <img
+                        src={project.posterSrc}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-muted/20" />
+                    );
+                  })()}
 
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500 pointer-events-none" />
                   <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none" />
