@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
 import tvorchiCover from "@/assets/tvorchi-cover.png";
+import hozierCover from "@/assets/hozier-cover.png";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
@@ -22,7 +23,7 @@ const projects: Project[] = [
   { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771" },
   { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Documentary", link: "/work/valentin-day", vimeoId: "1166656782" },
   { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion Film", link: "/work/another-magazine", vimeoId: "1010017917" },
-  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM" },
+  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover },
   { title: "PUMA FIT 23", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-fit-23", vimeoId: "948342341" },
   { title: "Puma CR", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-cr", vimeoId: "1010036272" },
   { title: "Chernaya — Rami Kallas", subtitle: "Rami Kallas", category: "Music Video", filterGroup: "Music Video", link: "/work/chernaya-rami-kallas", vimeoId: "1010028819" },
