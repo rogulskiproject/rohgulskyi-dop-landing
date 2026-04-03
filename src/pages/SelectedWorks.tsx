@@ -5,6 +5,13 @@ import bofCover from "@/assets/bof-500-cover.png";
 import tvorchiCover from "@/assets/tvorchi-cover.png";
 import hozierCover from "@/assets/hozier-cover.png";
 import orserioCover from "@/assets/orserio-cover.jpg";
+import dylanCover from "@/assets/dylan-bachelet-cover.jpg";
+import yaroslavaCover from "@/assets/yaroslava-mohushih-cover.jpg";
+import valentinCover from "@/assets/valentin-day-cover.jpg";
+import anotherMagCover from "@/assets/another-magazine-cover.jpg";
+import pumaFitCover from "@/assets/puma-fit-23-cover.jpg";
+import pumaCrCover from "@/assets/puma-cr-cover.jpg";
+import chernayaCover from "@/assets/chernaya-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
