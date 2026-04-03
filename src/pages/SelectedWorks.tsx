@@ -4,6 +4,7 @@ import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
 import tvorchiCover from "@/assets/tvorchi-cover.png";
 import hozierCover from "@/assets/hozier-cover.png";
+import orserioCover from "@/assets/orserio-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
