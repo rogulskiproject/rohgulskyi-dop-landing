@@ -17,6 +17,7 @@ const projects: Project[] = [
     category: "Editorial",
     link: "/work/dylan-bachelet",
     videoSrc: "/videos/dylan-bachelet-preview.mp4",
+    posterSrc: "/videos/posters/dylan-bachelet.jpg",
   },
   {
     title: "Yaroslava Mohushih",
@@ -24,6 +25,7 @@ const projects: Project[] = [
     category: "Documentary Film",
     link: "/work/yaroslava-mohushih",
     videoSrc: "/videos/yaroslava-mohushih-preview.mp4",
+    posterSrc: "/videos/posters/yaroslava-mohushih.jpg",
   },
   {
     title: "Orserio",
@@ -31,6 +33,7 @@ const projects: Project[] = [
     category: "E-Commerce Brand Film",
     link: "/work/orserio",
     videoSrc: "/videos/orserio-preview.mp4",
+    posterSrc: "/videos/posters/orserio.jpg",
   },
   {
     title: "Valentin Day",
@@ -38,6 +41,7 @@ const projects: Project[] = [
     category: "Documentary Campaign Film",
     link: "/work/valentin-day",
     videoSrc: "/videos/valentin-day-preview.mp4",
+    posterSrc: "/videos/posters/valentin-day.jpg",
   },
   {
     title: "AnOther Magazine",
@@ -45,6 +49,7 @@ const projects: Project[] = [
     category: "Editorial",
     link: "/work/another-magazine",
     videoSrc: "/videos/another-magazine-preview.mp4",
+    posterSrc: "/videos/posters/another-magazine.jpg",
   },
   {
     title: "Hozier - Francesca",
@@ -52,6 +57,7 @@ const projects: Project[] = [
     category: "Music Video",
     link: "/work/hozier-francesca",
     videoSrc: "/videos/hozier-francesca-preview.mp4",
+    posterSrc: "/videos/posters/hozier-francesca.jpg",
   },
 ];
 
