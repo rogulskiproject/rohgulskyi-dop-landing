@@ -17,6 +17,7 @@ const projects: Project[] = [
     category: "Editorial",
     link: "/work/dylan-bachelet",
     videoSrc: "/videos/dylan-bachelet-preview.mp4",
+    posterSrc: "/videos/posters/dylan-bachelet.jpg",
   },
   {
     title: "Yaroslava Mohushih",
@@ -24,6 +25,7 @@ const projects: Project[] = [
     category: "Documentary Film",
     link: "/work/yaroslava-mohushih",
     videoSrc: "/videos/yaroslava-mohushih-preview.mp4",
+    posterSrc: "/videos/posters/yaroslava-mohushih.jpg",
   },
   {
     title: "Orserio",
@@ -31,6 +33,7 @@ const projects: Project[] = [
     category: "E-Commerce Brand Film",
     link: "/work/orserio",
     videoSrc: "/videos/orserio-preview.mp4",
+    posterSrc: "/videos/posters/orserio.jpg",
   },
   {
     title: "Valentin Day",
@@ -38,6 +41,7 @@ const projects: Project[] = [
     category: "Documentary Campaign Film",
     link: "/work/valentin-day",
     videoSrc: "/videos/valentin-day-preview.mp4",
+    posterSrc: "/videos/posters/valentin-day.jpg",
   },
   {
     title: "AnOther Magazine",
@@ -45,6 +49,7 @@ const projects: Project[] = [
     category: "Editorial",
     link: "/work/another-magazine",
     videoSrc: "/videos/another-magazine-preview.mp4",
+    posterSrc: "/videos/posters/another-magazine.jpg",
   },
   {
     title: "Hozier - Francesca",
@@ -52,6 +57,7 @@ const projects: Project[] = [
     category: "Music Video",
     link: "/work/hozier-francesca",
     videoSrc: "/videos/hozier-francesca-preview.mp4",
+    posterSrc: "/videos/posters/hozier-francesca.jpg",
   },
 ];
 
@@ -302,30 +308,43 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                  {project.videoSrc ? (
-                    <video
-                      ref={(el) => {
-                        if (el) videoRefs.current.set(i, el);
-                        else videoRefs.current.delete(i);
-                      }}
-                      src={project.videoSrc}
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      onCanPlay={() => handleCanPlay(i)}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  ) : project.posterSrc ? (
-                    <img
-                      src={project.posterSrc}
-                      alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-muted/20" />
-                  )}
+                  {(() => {
+                    const cardsOnScreen = isMobile ? 1 : 2;
+                    const shouldMountVideo =
+                      project.videoSrc &&
+                      i >= settledStart - cardsOnScreen &&
+                      i < settledStart + cardsOnScreen * 2;
+
+                    if (shouldMountVideo) {
+                      return (
+                        <video
+                          ref={(el) => {
+                            if (el) videoRefs.current.set(i, el);
+                            else videoRefs.current.delete(i);
+                          }}
+                          src={project.videoSrc}
+                          poster={project.posterSrc}
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          onCanPlay={() => handleCanPlay(i)}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      );
+                    }
+
+                    return project.posterSrc ? (
+                      <img
+                        src={project.posterSrc}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-muted/20" />
+                    );
+                  })()}
 
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500 pointer-events-none" />
                   <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none" />
