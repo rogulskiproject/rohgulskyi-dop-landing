@@ -75,10 +75,8 @@ const WorkSection = () => {
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Scroll-awareness
-  const isScrollingRef = useRef(false);
   const scrollSettleTimer = useRef<ReturnType<typeof setTimeout>>();
-  const [settledStart, setSettledStart] = useState(0);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     const check = () => {
@@ -106,11 +104,32 @@ const WorkSection = () => {
     }
   }, [getOneSetWidth]);
 
-  const computeVisibleStart = useCallback(() => {
-    if (!trackRef.current) return 0;
+  const getVisibleIndices = useCallback(() => {
+    if (!trackRef.current) return { start: 0, count: 1 };
     const cardWidth = isMobile ? window.innerWidth : window.innerWidth / 2;
-    return Math.round(trackRef.current.scrollLeft / cardWidth);
+    const scrollLeft = trackRef.current.scrollLeft;
+    const start = Math.floor(scrollLeft / cardWidth);
+    const count = isMobile ? 1 : 2;
+    // Include partially visible cards
+    const partial = (scrollLeft % cardWidth) > 0 ? 1 : 0;
+    return { start, count: count + partial };
   }, [isMobile]);
+
+  const syncPlayback = useCallback(() => {
+    const { start, count } = getVisibleIndices();
+    videoRefs.current.forEach((video, idx) => {
+      const isVisible = idx >= start && idx < start + count;
+      if (isVisible) {
+        if (video.paused && video.readyState >= 2) {
+          video.play().catch(() => {});
+        }
+      } else {
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    });
+  }, [getVisibleIndices]);
 
   const updateActiveIndex = useCallback(() => {
     if (!isMobile || !trackRef.current) return;
@@ -120,52 +139,24 @@ const WorkSection = () => {
     setActiveIndex(rawIndex % projects.length);
   }, [isMobile]);
 
-  // Manage video playback based on settled position
-  const updatePlayback = useCallback(
-    (visibleStart: number) => {
-      const cardsOnScreen = isMobile ? 1 : 2;
-      videoRefs.current.forEach((video, idx) => {
-        const isActive = idx >= visibleStart && idx < visibleStart + cardsOnScreen;
-        const isNear =
-          idx >= visibleStart - cardsOnScreen &&
-          idx < visibleStart + cardsOnScreen * 2;
-
-        if (isActive) {
-          video.preload = "auto";
-          if (video.paused && video.readyState >= 2) {
-            video.play().catch(() => {});
-          }
-        } else {
-          if (!video.paused) {
-            video.pause();
-          }
-          video.preload = isNear ? "auto" : "metadata";
-        }
-      });
-    },
-    [isMobile]
-  );
-
-  // Scroll handler
+  // Scroll handler: real-time playback via rAF, settle for resetToMiddle only
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     track.scrollLeft = getOneSetWidth();
-    const initial = computeVisibleStart();
-    setSettledStart(initial);
-    updatePlayback(initial);
+    syncPlayback();
 
     const onScroll = () => {
-      isScrollingRef.current = true;
-      clearTimeout(scrollSettleTimer.current);
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        syncPlayback();
+      });
 
+      clearTimeout(scrollSettleTimer.current);
       scrollSettleTimer.current = setTimeout(() => {
-        isScrollingRef.current = false;
         resetToMiddle();
         updateActiveIndex();
-        const vis = computeVisibleStart();
-        setSettledStart(vis);
-        updatePlayback(vis);
+        syncPlayback();
       }, SCROLL_SETTLE_MS);
     };
 
@@ -173,21 +164,22 @@ const WorkSection = () => {
     return () => {
       track.removeEventListener("scroll", onScroll);
       clearTimeout(scrollSettleTimer.current);
+      cancelAnimationFrame(rafRef.current);
     };
-  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex, computeVisibleStart, updatePlayback]);
+  }, [resetToMiddle, getOneSetWidth, isMobile, updateActiveIndex, syncPlayback]);
 
-  // Auto-play active videos once they can play
+  // Auto-play visible videos once they can play
   const handleCanPlay = useCallback(
     (idx: number) => {
-      const cardsOnScreen = isMobile ? 1 : 2;
-      if (idx >= settledStart && idx < settledStart + cardsOnScreen) {
+      const { start, count } = getVisibleIndices();
+      if (idx >= start && idx < start + count) {
         const video = videoRefs.current.get(idx);
         if (video && video.paused) {
           video.play().catch(() => {});
         }
       }
     },
-    [isMobile, settledStart]
+    [getVisibleIndices]
   );
 
   const onMouseDown = (e: React.MouseEvent) => {
@@ -308,43 +300,31 @@ const WorkSection = () => {
                 }}
               >
                 <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                  {(() => {
-                    const cardsOnScreen = isMobile ? 1 : 2;
-                    const shouldMountVideo =
-                      project.videoSrc &&
-                      i >= settledStart - cardsOnScreen &&
-                      i < settledStart + cardsOnScreen * 2;
-
-                    if (shouldMountVideo) {
-                      return (
-                        <video
-                          ref={(el) => {
-                            if (el) videoRefs.current.set(i, el);
-                            else videoRefs.current.delete(i);
-                          }}
-                          src={project.videoSrc}
-                          poster={project.posterSrc}
-                          muted
-                          loop
-                          playsInline
-                          preload="metadata"
-                          onCanPlay={() => handleCanPlay(i)}
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
-                      );
-                    }
-
-                    return project.posterSrc ? (
-                      <img
-                        src={project.posterSrc}
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-muted/20" />
-                    );
-                  })()}
+                  {project.videoSrc ? (
+                    <video
+                      ref={(el) => {
+                        if (el) videoRefs.current.set(i, el);
+                        else videoRefs.current.delete(i);
+                      }}
+                      src={project.videoSrc}
+                      poster={project.posterSrc}
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                      onCanPlay={() => handleCanPlay(i)}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : project.posterSrc ? (
+                    <img
+                      src={project.posterSrc}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-muted/20" />
+                  )}
 
                   <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-all duration-500 pointer-events-none" />
                   <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none" />
