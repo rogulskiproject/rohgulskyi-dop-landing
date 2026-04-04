@@ -13,6 +13,7 @@ import pumaFitCover from "@/assets/puma-fit-23-cover.jpg";
 import pumaCrCover from "@/assets/puma-cr-cover.jpg";
 import chernayaCover from "@/assets/chernaya-cover.jpg";
 import alessandroCover from "@/assets/alessandro-michele-cover.png";
+import vogueMexicoCover from "@/assets/vogue-mexico-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
