@@ -20,6 +20,7 @@ import AlessandroMicheleBof from "./pages/AlessandroMicheleBof.tsx";
 import TvorchiVichNaVich from "./pages/TvorchiVichNaVich.tsx";
 import UnchartedSailGP from "./pages/UnchartedSailGP.tsx";
 import MooveFire from "./pages/MooveFire.tsx";
+import VogueMexico from "./pages/VogueMexico.tsx";
 
 const queryClient = new QueryClient();
 
