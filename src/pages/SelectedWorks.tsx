@@ -13,6 +13,7 @@ import pumaFitCover from "@/assets/puma-fit-23-cover.jpg";
 import pumaCrCover from "@/assets/puma-cr-cover.jpg";
 import chernayaCover from "@/assets/chernaya-cover.jpg";
 import alessandroCover from "@/assets/alessandro-michele-cover.png";
+import vogueMexicoCover from "@/assets/vogue-mexico-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
 
 interface Project {
@@ -41,6 +42,7 @@ const projects: Project[] = [
   { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", filterGroup: "Music Video", link: "/work/tvorchi-vich-na-vich", youtubeId: "Y5QMUv7H0ic", coverImage: tvorchiCover },
   { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8", coverImage: unchartedCover },
   { title: "Moove — Fire", subtitle: "Moove", category: "Music Video", filterGroup: "Music Video", link: "/work/moove-fire", vimeoId: "1179879918" },
+  { title: "Vogue Mexico", subtitle: "Vogue Mexico", category: "Documentary", filterGroup: "Documentary", link: "/work/vogue-mexico", youtubeId: "Nh1ZWDz44no", coverImage: vogueMexicoCover },
 ];
 
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion"];
