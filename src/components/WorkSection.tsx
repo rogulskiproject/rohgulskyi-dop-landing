@@ -150,6 +150,7 @@ const WorkSection = () => {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
         syncPlayback();
+        updateActiveIndex();
       });
 
       clearTimeout(scrollSettleTimer.current);
