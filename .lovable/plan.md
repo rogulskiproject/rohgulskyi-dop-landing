@@ -1,11 +1,25 @@
 
 
-## Plan: Move Yaroslava Mohushih and Valentin Day to Commercial
+## Fix: Mobile dot indicators not updating during swipe
 
-**What changes**: In `src/pages/SelectedWorks.tsx`, update the `filterGroup` property for two projects:
+**Problem**: The `updateActiveIndex` function is only called inside the `scrollSettleTimer` (fires 250ms after scrolling stops). During active swiping, the dots never move — the user only sees them update after the scroll fully settles.
 
-1. **Yaroslava Mohushih** — change `filterGroup` from `"Documentary"` to `"Commercial"`
-2. **Valentin Day** — change `filterGroup` from `"Documentary"` to `"Commercial"`
+**Fix**: Call `updateActiveIndex` inside the `requestAnimationFrame` callback alongside `syncPlayback`, so dots update in real-time as the user swipes.
 
-This is a two-line change in the projects array. No other files affected.
+### Change in `src/components/WorkSection.tsx`
+
+In the scroll handler (around line 149-153), add `updateActiveIndex()` to the rAF callback:
+
+```tsx
+const onScroll = () => {
+  cancelAnimationFrame(rafRef.current);
+  rafRef.current = requestAnimationFrame(() => {
+    syncPlayback();
+    updateActiveIndex();  // <-- add this
+  });
+  // ... rest unchanged
+};
+```
+
+Single-line addition. No other files affected.
 
