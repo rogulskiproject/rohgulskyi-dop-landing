@@ -1,116 +1,109 @@
 import { motion } from "framer-motion";
 
+import logoWhite from "@/assets/logo-v2.png";
+
 const HeroSection = () => {
   return (
-    <section className="relative h-screen flex flex-col overflow-hidden">
-      {/* Background video — positioned to favour the right side on desktop */}
+    <section className="relative h-screen flex items-center px-6 md:px-10 lg:px-16 pt-14 pb-6">
+      {/* Background video */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
-          style={{ objectPosition: "70% center" }}
+          className="w-full h-full object-cover grayscale opacity-40"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
-        {/* Gradient overlay: strong on left for text legibility, lighter on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30 lg:from-background lg:via-background/80 lg:to-transparent" />
-        {/* Subtle overall tint for cohesion */}
-        <div className="absolute inset-0 bg-background/20" />
+        <div className="absolute inset-0 bg-background/70" />
       </div>
 
-      {/* Content — vertically centred, padded below header */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-10 lg:px-16 pt-20 pb-24 max-w-7xl mx-auto w-full">
-        {/* Text block — constrained to left ~55% on desktop */}
-        <div className="lg:max-w-[55%]">
-          {/* Headline */}
+      <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center lg:items-center gap-6 lg:gap-10 w-full max-w-7xl mx-auto">
+        {/* Left column — text + CTA (60-65%) */}
+        <div className="flex flex-col gap-0 lg:w-[62%] text-center lg:text-left">
+          {/* Headline — scaled up, main entry point */}
           <motion.h1
-            className="font-heading text-[clamp(2.4rem,6vw,4.5rem)] font-light tracking-[-0.02em] leading-[1.05] text-foreground mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            CINEMATOGRAPHER
-          </motion.h1>
-
-          {/* Category line */}
-          <motion.p
-            className="font-body text-[11px] md:text-[12px] tracking-[0.3em] uppercase text-foreground/60 font-medium mb-8"
+            className="font-body text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-[0.15em] uppercase text-foreground font-semibold leading-tight mb-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Documentary, Fashion and Commercial
-          </motion.p>
+            Documentary, fashion and commercial campaigns
+          </motion.h1>
 
-          {/* Body copy */}
+          {/* Text groups with spacing between, tight within */}
           <motion.div
-            className="max-w-[520px] font-body text-[13px] md:text-[14px] leading-[1.65] text-foreground/70 font-normal flex flex-col gap-5"
-            initial={{ opacity: 0, y: 14 }}
+            className="max-w-2xl font-body text-[12px] md:text-[13px] leading-[1.35] text-foreground/75 font-medium text-justify flex flex-col gap-4"
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <p>
-              Bohdan Rohulskyi is a London-based Director of Photography
-              working across sport, fashion, culture and branded storytelling.
-            </p>
-            <p>
-              With a background in documentary and performance-led work, he
-              creates cinematic imagery rooted in real human presence, textured
-              realism and emotional precision.
-            </p>
-            <p>
-              The result is work that feels immediate and true, while remaining
-              carefully designed.
-            </p>
-            <p>
-              A strong visual partner for directors. A reliable,
-              production-aware DoP for producers.
-            </p>
-            <p>
-              Own kit. Lean setups. London-based, available across the UK and
-              Europe.
-            </p>
+            {/* Group 1 */}
+            <div className="flex flex-col gap-[2px]">
+              <p className="text-left">
+                Bohdan Rohulskyi is Director of Photography working across commercial, branded content and documentary, focused on naturalistic cinematography shaped with precision.
+              </p>
+              <p className="text-left">
+                His work centres on real moments — with lighting designed and controlled to feel unforced and true to life. The result is imagery that feels immediate, but carefully constructed.
+              </p>
+            </div>
+
+            {/* Group 2 */}
+            <div className="flex flex-col gap-[2px]">
+              <p className="text-left">
+                Equally comfortable with available light and fully built setups, he adapts to the demands of each project without compromising visual integrity.
+              </p>
+              <p className="text-left">
+                He works on interviews, documentary storytelling and brand films built around real people — and extends this approach into fashion and sport-driven stories.
+              </p>
+            </div>
+
+            {/* Group 3 — proof block */}
+            <div className="flex flex-col gap-[2px]">
+              <p className="text-left">
+                A strong visual partner for directors. A reliable, production-aware DoP for producers.
+              </p>
+              <p className="text-left">
+                Own kit. Lean setups. Easy to work with.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* CTA buttons — 10-15% larger */}
+          <motion.div
+            className="mt-4 flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.65 }}
+          >
+            <a
+              href="/book"
+              className="inline-flex items-center justify-center px-9 py-[18px] bg-foreground text-background font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
+            >
+              Book a Call
+            </a>
+            <a
+              href="/work"
+              className="inline-flex items-center justify-center px-9 py-[18px] border border-foreground/30 text-foreground font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
+            >
+              See My Work
+            </a>
           </motion.div>
         </div>
+
+        {/* Right column — name/logo (35-40%), reduced scale */}
+        <div className="lg:w-[38%] flex items-center justify-center">
+          <motion.img
+            src={logoWhite}
+            alt="Bohdan Rohulskyi"
+            className="w-[280px] md:w-[360px] lg:w-full lg:max-w-[500px] max-h-[55vh] object-contain h-auto"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          />
+        </div>
       </div>
-
-      {/* Bottom bar — location left, CTAs right */}
-      <motion.div
-        className="relative z-10 flex items-center justify-between px-6 md:px-10 lg:px-16 pb-8 md:pb-10 max-w-7xl mx-auto w-full"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.75 }}
-      >
-        {/* Location with pulsing dot */}
-        <div className="flex items-center gap-2.5">
-          <span className="font-body text-[12px] md:text-[13px] tracking-[0.04em] text-foreground/50 font-medium">
-            London, United Kingdom
-          </span>
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground/30 duration-[2000ms]" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground/60" />
-          </span>
-        </div>
-
-        {/* CTAs */}
-        <div className="flex items-center gap-5 md:gap-8">
-          <a
-            href="/work"
-            className="font-body text-[12px] md:text-[13px] font-medium tracking-[0.15em] uppercase text-foreground/80 hover:text-foreground transition-colors"
-          >
-            See My Work
-          </a>
-          <a
-            href="/book"
-            className="inline-flex items-center justify-center px-7 py-3 md:px-9 md:py-3.5 rounded-full bg-foreground/15 backdrop-blur-sm border border-foreground/20 text-foreground font-body text-[12px] md:text-[13px] font-medium tracking-[0.12em] uppercase hover:bg-foreground/25 transition-colors"
-          >
-            Book a Call
-          </a>
-        </div>
-      </motion.div>
     </section>
   );
 };
