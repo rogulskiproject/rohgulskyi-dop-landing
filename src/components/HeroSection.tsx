@@ -111,8 +111,8 @@ const HeroSection = () => {
         transition={{ duration: 0.6, delay: 0.8 }}
       >
         <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-sonar absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+          <span className="animate-sonar absolute inline-flex h-full w-full rounded-full bg-foreground opacity-75" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-foreground" />
         </span>
         London, United Kingdom
       </motion.div>
