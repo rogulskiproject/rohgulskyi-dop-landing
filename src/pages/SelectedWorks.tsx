@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
+import kotexCover from "@/assets/kotex-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
 import tvorchiCover from "@/assets/tvorchi-cover.png";
 import hozierCover from "@/assets/hozier-cover.png";
