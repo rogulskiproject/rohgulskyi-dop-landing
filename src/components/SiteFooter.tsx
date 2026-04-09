@@ -19,7 +19,7 @@ const SiteFooter = () => {
             </div>
             <div className="mt-6 space-y-1">
               <p className="font-body text-[11px] font-normal text-foreground/40 tracking-[0.12em] uppercase">Contact</p>
-              <p className="font-body text-sm font-normal text-foreground/55">email@placeholder.com</p>
+              <p className="font-body text-sm font-normal text-foreground/55">rogulskiproject@gmail.com</p>
             </div>
           </div>
 
