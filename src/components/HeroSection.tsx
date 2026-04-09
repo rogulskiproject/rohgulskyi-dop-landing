@@ -24,35 +24,45 @@ const HeroSection = () => {
         <div className="flex flex-col gap-0 lg:w-[62%] text-center lg:text-left">
           {/* Headline — scaled up, main entry point */}
           <motion.h1
-            className="font-body text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-[0.15em] uppercase text-foreground font-semibold leading-tight mb-5"
+            className="font-body text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-[0.15em] uppercase text-foreground font-semibold leading-tight mb-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             CINEMATOGRAPHER
           </motion.h1>
+          <motion.p
+            className="font-body text-xs tracking-[0.2em] uppercase text-foreground/60 font-medium mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            DOCUMENTARY, FASHION AND COMMERCIAL
+          </motion.p>
 
           {/* Text groups with spacing between, tight within */}
           <motion.div
-            className="max-w-2xl font-body text-[12px] md:text-[13px] leading-[1.35] text-foreground/75 font-medium text-justify flex flex-col gap-4"
+            className="max-w-2xl font-body text-sm md:text-base lg:text-lg leading-relaxed text-foreground/75 font-medium text-left flex flex-col gap-3"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <div className="flex flex-col gap-4">
-              <p className="text-left">
+            <div className="flex flex-col gap-3">
+              <p>
                 Bohdan Rohulskyi is a London-based Director of Photography working across sport, fashion, culture and branded storytelling.
               </p>
-              <p className="text-left">
+              <p>
                 With a background in documentary and performance-led work, he creates cinematic imagery rooted in real human presence, textured realism and emotional precision.
               </p>
-              <p className="text-left">
+              <p>
                 The result is work that feels immediate and true, while remaining carefully designed.
               </p>
-              <p className="text-left">
+            </div>
+            <div className="flex flex-col gap-3 mt-3">
+              <p>
                 A strong visual partner for directors. A reliable, production-aware DoP for producers.
               </p>
-              <p className="text-left">
+              <p>
                 Own kit. Lean setups. London-based, available across the UK and Europe.
               </p>
             </div>
@@ -92,6 +102,20 @@ const HeroSection = () => {
           />
         </div>
       </div>
+
+      {/* Location indicator */}
+      <motion.div
+        className="absolute bottom-8 left-6 md:left-10 lg:left-16 z-10 flex items-center gap-2 font-body text-xs tracking-[0.1em] text-foreground/60"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-sonar absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+        </span>
+        London, United Kingdom
+      </motion.div>
     </section>
   );
 };
