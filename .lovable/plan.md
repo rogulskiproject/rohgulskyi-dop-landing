@@ -1,20 +1,17 @@
 
 
-## Plan: Add "Kotex: Art's Missing Period" to Documentary Section
+## Plan: Make Hero Background Video More Visible
 
-### What changes
+Currently the video has two layers of dimming:
+1. Video element: `opacity-40` (40% opacity) + `grayscale`
+2. Overlay div: `bg-background/70` (70% opaque dark overlay)
 
-**1. Add project entry to `src/pages/SelectedWorks.tsx`**
-- Add a new project object for "Kotex: Art's Missing Period" with `filterGroup: "Documentary"`, `category: "Documentary Film"`, `youtubeId: "EmCZ8EqEVKE"`, `link: "/work/kotex-arts-missing-period"`.
-- Reorder the projects array so this new entry appears before "Uncharted: Sail GP" (currently line 43). Within the Documentary filter, it will show first, then Uncharted second.
+Combined, only ~12% of the video is visible. To make it noticeably more visible while keeping text readable:
 
-**2. Create detail page `src/pages/KotexArtsMissingPeriod.tsx`**
-- New page using the existing `ProjectCaseStudy` component (same pattern as `UnchartedSailGP.tsx`).
-- Title: "Kotex: Art's Missing Period", subtitle: "Kotex", category: "Documentary Film", role: "B-Roll Camera Operator", youtubeId: "EmCZ8EqEVKE", externalUrl pointing to the YouTube link.
-- Brief introduction/overview text based on the video description (a documentary uncovering the censored art of menstruation).
+### Changes in `src/components/HeroSection.tsx`
 
-**3. Add route in `src/App.tsx`**
-- Import the new page and add `<Route path="/work/kotex-arts-missing-period" element={<KotexArtsMissingPeriod />} />`.
+- **Line 15**: Change video class from `opacity-40` to `opacity-70` (increase video opacity)
+- **Line 19**: Change overlay from `bg-background/70` to `bg-background/50` (reduce dark overlay)
 
-No cover image asset needed — YouTube thumbnail will be used automatically via the existing `getThumbnail` helper.
+This will roughly triple the video visibility while maintaining sufficient contrast for white text.
 
