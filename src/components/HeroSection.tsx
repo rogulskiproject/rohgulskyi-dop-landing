@@ -12,11 +12,11 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover grayscale opacity-40"
+          className="w-full h-full object-cover grayscale opacity-70"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-background/70" />
+        <div className="absolute inset-0 bg-background/50" />
       </div>
 
       <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center lg:items-center gap-6 lg:gap-10 w-full max-w-7xl mx-auto">
