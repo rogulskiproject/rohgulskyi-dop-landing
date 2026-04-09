@@ -47,6 +47,7 @@ const App = () => (
           <Route path="/work/alessandro-michele-bof" element={<AlessandroMicheleBof />} />
           <Route path="/work/tvorchi-vich-na-vich" element={<TvorchiVichNaVich />} />
           <Route path="/work/uncharted-sail-gp" element={<UnchartedSailGP />} />
+          <Route path="/work/kotex-arts-missing-period" element={<KotexArtsMissingPeriod />} />
           <Route path="/work/moove-fire" element={<MooveFire />} />
           <Route path="/work/vogue-mexico" element={<VogueMexico />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
