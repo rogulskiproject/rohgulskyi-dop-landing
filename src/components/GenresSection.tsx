@@ -66,7 +66,7 @@ const GenresSection = () => {
                 {category.items.map((item) => (
                   <li
                     key={item}
-                    className="font-body text-sm font-normal text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/70 uppercase tracking-widest"
+                    className="font-body text-sm font-normal text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/70"
                   >
                     {item}
                   </li>
