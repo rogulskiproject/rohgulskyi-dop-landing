@@ -1,25 +1,20 @@
 
 
-## Fix: Mobile dot indicators not updating during swipe
+## Plan: Add "Kotex: Art's Missing Period" to Documentary Section
 
-**Problem**: The `updateActiveIndex` function is only called inside the `scrollSettleTimer` (fires 250ms after scrolling stops). During active swiping, the dots never move — the user only sees them update after the scroll fully settles.
+### What changes
 
-**Fix**: Call `updateActiveIndex` inside the `requestAnimationFrame` callback alongside `syncPlayback`, so dots update in real-time as the user swipes.
+**1. Add project entry to `src/pages/SelectedWorks.tsx`**
+- Add a new project object for "Kotex: Art's Missing Period" with `filterGroup: "Documentary"`, `category: "Documentary Film"`, `youtubeId: "EmCZ8EqEVKE"`, `link: "/work/kotex-arts-missing-period"`.
+- Reorder the projects array so this new entry appears before "Uncharted: Sail GP" (currently line 43). Within the Documentary filter, it will show first, then Uncharted second.
 
-### Change in `src/components/WorkSection.tsx`
+**2. Create detail page `src/pages/KotexArtsMissingPeriod.tsx`**
+- New page using the existing `ProjectCaseStudy` component (same pattern as `UnchartedSailGP.tsx`).
+- Title: "Kotex: Art's Missing Period", subtitle: "Kotex", category: "Documentary Film", role: "B-Roll Camera Operator", youtubeId: "EmCZ8EqEVKE", externalUrl pointing to the YouTube link.
+- Brief introduction/overview text based on the video description (a documentary uncovering the censored art of menstruation).
 
-In the scroll handler (around line 149-153), add `updateActiveIndex()` to the rAF callback:
+**3. Add route in `src/App.tsx`**
+- Import the new page and add `<Route path="/work/kotex-arts-missing-period" element={<KotexArtsMissingPeriod />} />`.
 
-```tsx
-const onScroll = () => {
-  cancelAnimationFrame(rafRef.current);
-  rafRef.current = requestAnimationFrame(() => {
-    syncPlayback();
-    updateActiveIndex();  // <-- add this
-  });
-  // ... rest unchanged
-};
-```
-
-Single-line addition. No other files affected.
+No cover image asset needed — YouTube thumbnail will be used automatically via the existing `getThumbnail` helper.
 
