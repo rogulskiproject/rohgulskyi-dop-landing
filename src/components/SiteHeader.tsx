@@ -2,24 +2,24 @@ import { Link } from "react-router-dom";
 import logoBR from "@/assets/logo-br-white.png";
 
 const navItems = [
-  { label: "About.", href: "/about" },
-  { label: "Work.", href: "/work" },
-  { label: "Blog.", href: "/blog" },
+  { label: "About", href: "/about" },
+  { label: "Work", href: "/work" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const SiteHeader = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/">
-          <img src={logoBR} alt="BR" className="h-10 md:h-14 w-auto" />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-md border-b border-foreground/[0.04]">
+      <div className="container flex items-center justify-between h-14 md:h-[72px]">
+        <Link to="/" className="flex items-center">
+          <img src={logoBR} alt="BR" className="h-9 md:h-12 w-auto" />
         </Link>
-        <nav className="flex items-center gap-6 md:gap-8">
+        <nav className="flex items-center gap-8 md:gap-10">
           {navItems.map((item) => (
             <Link
               key={item.label}
               to={item.href}
-              className="font-body text-[13px] font-medium tracking-[0.06em] text-foreground/60 hover:text-foreground transition-colors"
+              className="font-display text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-foreground/50 hover:text-foreground/90 transition-colors duration-300"
             >
               {item.label}
             </Link>
