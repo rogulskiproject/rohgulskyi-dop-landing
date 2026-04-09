@@ -1,27 +1,16 @@
 
 
-## Revised Plan: Update Hero Section
+## Move Location Indicator from Hero to Footer
 
-Three changes to `src/components/HeroSection.tsx` (and one to `tailwind.config.ts`):
+Move the "London, United Kingdom" pulsing dot indicator from the bottom of the hero section to the site footer.
 
-### 1. Add subtitle below "CINEMATOGRAPHER"
-Insert "DOCUMENTARY, FASHION AND COMMERCIAL" as a small uppercase line with wide letter-spacing (`tracking-[0.2em]`, `text-xs`, `font-medium`, `mb-6`).
+### Changes
 
-### 2. Increase body text size
-Change from `text-[12px] md:text-[13px]` to `text-sm md:text-base lg:text-lg` with `leading-relaxed`. Adjust paragraph spacing — first three paragraphs with `gap-3`, larger `gap-6` before the last two.
+**1. `src/components/HeroSection.tsx`**
+- Remove the entire location indicator block (the `motion.div` with the sonar dot and "London, United Kingdom" text) from the bottom of the hero section.
 
-### 3. Add pulsing "online" location indicator
-Absolutely positioned at the bottom-left of the hero section: a small green dot with a sonar/pulse animation (expanding ring that fades out, repeating) next to "London, United Kingdom".
+**2. `src/components/SiteFooter.tsx`**
+- Add the location indicator (white sonar dot + "London, United Kingdom" text) to the footer — placed above or near the existing "London-based" text area, styled consistently with the footer's typography and the dot style from the hero.
 
-- Add a custom `sonar` keyframe animation in `tailwind.config.ts`
-- The dot conveys an "available/online" feeling
-
-### What stays the same
-- Headline size and weight unchanged
-- CTA buttons ("Book a Call" / "See My Work") kept as-is
-- Right column logo/image kept as-is
-
-### Files modified
-- `src/components/HeroSection.tsx` — subtitle, text sizing, location indicator
-- `tailwind.config.ts` — `sonar` keyframe animation
+The dot will keep the same white color (`bg-foreground`) and sonar pulse animation. The text styling will match the footer's muted tone (`text-foreground/55`).
 
