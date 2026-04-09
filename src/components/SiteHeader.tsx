@@ -23,7 +23,7 @@ const SiteHeader = () => {
       {/* Faint top-edge highlight for glass realism */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/[0.06] to-transparent" />
       {/* Soft bottom separation */}
-      <div className="absolute inset-x-0 bottom-0 h-px bg-foreground/[0.04]" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-foreground/[0.12]" />
       {/* Content layer — always crisp above glass */}
       <div className="relative z-10 flex items-center justify-between h-14 md:h-[72px] pl-4 md:pl-6 pr-6 md:pr-10 lg:pr-12">
         <Link to="/" className="flex items-center">
