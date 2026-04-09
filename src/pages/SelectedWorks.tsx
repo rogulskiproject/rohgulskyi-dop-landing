@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
+import kotexCover from "@/assets/kotex-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
 import tvorchiCover from "@/assets/tvorchi-cover.png";
 import hozierCover from "@/assets/hozier-cover.png";
@@ -40,7 +41,7 @@ const projects: Project[] = [
   { title: "The Best of BoF 500 2023", subtitle: "The Business of Fashion", category: "Fashion Recap", filterGroup: "Documentary", link: "/work/bof-500-2023", youtubeId: "zNdnPu8L9_Y", coverImage: bofCover },
   { title: "Alessandro Michele — The BoF Podcast", subtitle: "The Business of Fashion", category: "Interview / Fashion", filterGroup: "Documentary", link: "/work/alessandro-michele-bof", youtubeId: "qtJqYEtbrBA", coverImage: alessandroCover },
   { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", filterGroup: "Music Video", link: "/work/tvorchi-vich-na-vich", youtubeId: "Y5QMUv7H0ic", coverImage: tvorchiCover },
-  { title: "Kotex: Art's Missing Period", subtitle: "Kotex", category: "Documentary Film", filterGroup: "Documentary", link: "/work/kotex-arts-missing-period", youtubeId: "EmCZ8EqEVKE" },
+  { title: "Kotex: Art's Missing Period", subtitle: "Kotex", category: "Documentary Film", filterGroup: "Documentary", link: "/work/kotex-arts-missing-period", youtubeId: "EmCZ8EqEVKE", coverImage: kotexCover },
   { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8", coverImage: unchartedCover },
   { title: "Moove — Fire", subtitle: "Moove", category: "Music Video", filterGroup: "Music Video", link: "/work/moove-fire", vimeoId: "1179879918" },
   { title: "Vogue Mexico — Michelle Salas / Dolce & Gabbana", subtitle: "Vogue Mexico", category: "Documentary", filterGroup: "Documentary", link: "/work/vogue-mexico", youtubeId: "Nh1ZWDz44no", coverImage: vogueMexicoCover },
