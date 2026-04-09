@@ -9,8 +9,23 @@ const navItems = [
 
 const SiteHeader = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-md border-b border-foreground/[0.04]">
-      <div className="flex items-center justify-between h-14 md:h-[72px] pl-4 md:pl-6 pr-6 md:pr-10 lg:pr-12">
+    <header className="fixed top-0 left-0 right-0 z-50 overflow-hidden">
+      {/* Glass refraction layer — slightly scaled to create magnification/distortion */}
+      <div
+        className="absolute inset-0 backdrop-blur-[10px] backdrop-saturate-[1.15] backdrop-brightness-[0.85]"
+        style={{
+          transform: "scale(1.03)",
+          transformOrigin: "center center",
+        }}
+      />
+      {/* Subtle tinted overlay for depth */}
+      <div className="absolute inset-0 bg-background/35" />
+      {/* Faint top-edge highlight for glass realism */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/[0.06] to-transparent" />
+      {/* Soft bottom separation */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-foreground/[0.04]" />
+      {/* Content layer — always crisp above glass */}
+      <div className="relative z-10 flex items-center justify-between h-14 md:h-[72px] pl-4 md:pl-6 pr-6 md:pr-10 lg:pr-12">
         <Link to="/" className="flex items-center">
           <img src={logoBR} alt="BR" className="h-9 md:h-12 w-auto" />
         </Link>
