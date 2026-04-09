@@ -1,17 +1,27 @@
 
 
-## Plan: Make Hero Background Video More Visible
+## Revised Plan: Update Hero Section
 
-Currently the video has two layers of dimming:
-1. Video element: `opacity-40` (40% opacity) + `grayscale`
-2. Overlay div: `bg-background/70` (70% opaque dark overlay)
+Three changes to `src/components/HeroSection.tsx` (and one to `tailwind.config.ts`):
 
-Combined, only ~12% of the video is visible. To make it noticeably more visible while keeping text readable:
+### 1. Add subtitle below "CINEMATOGRAPHER"
+Insert "DOCUMENTARY, FASHION AND COMMERCIAL" as a small uppercase line with wide letter-spacing (`tracking-[0.2em]`, `text-xs`, `font-medium`, `mb-6`).
 
-### Changes in `src/components/HeroSection.tsx`
+### 2. Increase body text size
+Change from `text-[12px] md:text-[13px]` to `text-sm md:text-base lg:text-lg` with `leading-relaxed`. Adjust paragraph spacing — first three paragraphs with `gap-3`, larger `gap-6` before the last two.
 
-- **Line 15**: Change video class from `opacity-40` to `opacity-70` (increase video opacity)
-- **Line 19**: Change overlay from `bg-background/70` to `bg-background/50` (reduce dark overlay)
+### 3. Add pulsing "online" location indicator
+Absolutely positioned at the bottom-left of the hero section: a small green dot with a sonar/pulse animation (expanding ring that fades out, repeating) next to "London, United Kingdom".
 
-This will roughly triple the video visibility while maintaining sufficient contrast for white text.
+- Add a custom `sonar` keyframe animation in `tailwind.config.ts`
+- The dot conveys an "available/online" feeling
+
+### What stays the same
+- Headline size and weight unchanged
+- CTA buttons ("Book a Call" / "See My Work") kept as-is
+- Right column logo/image kept as-is
+
+### Files modified
+- `src/components/HeroSection.tsx` — subtitle, text sizing, location indicator
+- `tailwind.config.ts` — `sonar` keyframe animation
 
