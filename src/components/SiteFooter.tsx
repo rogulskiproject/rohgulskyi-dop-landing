@@ -7,8 +7,14 @@ const SiteFooter = () => {
             <span className="font-display text-lg font-semibold tracking-tight text-foreground">
               Bohdan Rohulskyi
             </span>
-            <div className="mt-4 space-y-1">
-              <p className="font-body text-sm font-normal text-foreground/55">London-based</p>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-sonar absolute inline-flex h-full w-full rounded-full bg-foreground opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground" />
+                </span>
+                <span className="font-body text-sm font-normal text-foreground/55">London, United Kingdom</span>
+              </div>
               <p className="font-body text-sm font-normal text-foreground/55">Working across the UK and Europe</p>
             </div>
             <div className="mt-6 space-y-1">
