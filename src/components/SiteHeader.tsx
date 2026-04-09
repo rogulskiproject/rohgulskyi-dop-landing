@@ -12,9 +12,9 @@ const SiteHeader = () => {
     <header className="fixed top-0 left-0 right-0 z-50 overflow-hidden">
       {/* Glass refraction layer — slightly scaled to create magnification/distortion */}
       <div
-        className="absolute inset-0 backdrop-blur-[14px] backdrop-saturate-[1.25] backdrop-brightness-[0.8]"
+        className="absolute inset-0 backdrop-blur-[10px] backdrop-saturate-[1.15] backdrop-brightness-[0.85]"
         style={{
-          transform: "scale(1.06)",
+          transform: "scale(1.03)",
           transformOrigin: "center center",
         }}
       />
