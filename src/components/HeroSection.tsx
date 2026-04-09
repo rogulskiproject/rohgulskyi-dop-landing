@@ -42,7 +42,7 @@ const HeroSection = () => {
 
           {/* Text groups with spacing between, tight within */}
           <motion.div
-            className="max-w-2xl font-body text-sm md:text-base lg:text-lg leading-relaxed text-foreground/75 font-medium text-left flex flex-col gap-3"
+            className="max-w-2xl font-body text-xs md:text-sm lg:text-base leading-relaxed text-foreground/75 font-medium text-left flex flex-col gap-3"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
