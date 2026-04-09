@@ -39,7 +39,16 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <div className="flex flex-col gap-[2px]">
+            <div className="flex flex-col gap-4">
+              <p className="text-left">
+                Bohdan Rohulskyi is a London-based Director of Photography working across sport, fashion, culture and branded storytelling.
+              </p>
+              <p className="text-left">
+                With a background in documentary and performance-led work, he creates cinematic imagery rooted in real human presence, textured realism and emotional precision.
+              </p>
+              <p className="text-left">
+                The result is work that feels immediate and true, while remaining carefully designed.
+              </p>
               <p className="text-left">
                 A strong visual partner for directors. A reliable, production-aware DoP for producers.
               </p>
