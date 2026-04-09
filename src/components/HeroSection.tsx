@@ -103,19 +103,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Location indicator */}
-      <motion.div
-        className="absolute bottom-8 left-6 md:left-10 lg:left-16 z-10 flex items-center gap-2 font-body text-xs tracking-[0.1em] text-foreground/60"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-      >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-sonar absolute inline-flex h-full w-full rounded-full bg-foreground opacity-75" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-foreground" />
-        </span>
-        London, United Kingdom
-      </motion.div>
     </section>
   );
 };
