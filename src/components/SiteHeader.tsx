@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import logoBR from "@/assets/logo-br-white.png";
 
 const navItems = [
@@ -7,9 +8,37 @@ const navItems = [
   { label: "Blog", href: "/blog" },
 ];
 
+const SCROLL_THRESHOLD = 8;
+
 const SiteHeader = () => {
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastScrollY.current;
+
+      if (y <= 10) {
+        setVisible(true);
+      } else if (delta > SCROLL_THRESHOLD) {
+        setVisible(false);
+      } else if (delta < -SCROLL_THRESHOLD) {
+        setVisible(true);
+      }
+
+      lastScrollY.current = y;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 overflow-hidden">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+      style={{ transform: visible ? "translateY(0)" : "translateY(-100%)" }}
+    >
       {/* Glass refraction layer — slightly scaled to create magnification/distortion */}
       <div
         className="absolute inset-0 backdrop-blur-[10px] backdrop-saturate-[1.15] backdrop-brightness-[0.85]"
