@@ -6,7 +6,7 @@ const categories = [
     items: [
       "Documentary films",
       "Interview-led and portrait stories",
-      "YouTube and branded documentary content",
+      "YouTube and documentary content",
     ],
   },
   {
