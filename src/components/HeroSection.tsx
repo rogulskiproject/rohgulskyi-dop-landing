@@ -22,23 +22,20 @@ const HeroSection = () => {
       <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center lg:items-center gap-6 lg:gap-10 w-full max-w-7xl mx-auto">
         {/* Left column — text + CTA (60-65%) */}
         <div className="flex flex-col gap-0 lg:w-[62%] text-center lg:text-left">
-          {/* Headline — scaled up, main entry point */}
+          {/* Headline — single H1 with semantic subtitle for SEO */}
           <motion.h1
-            className="font-body text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-[0.15em] uppercase text-foreground font-semibold leading-tight mb-2"
+            className="font-body uppercase text-foreground leading-tight mb-6 flex flex-col gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            CINEMATOGRAPHER
+            <span className="text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-[0.15em] font-semibold">
+              Cinematographer
+            </span>
+            <span className="text-xs tracking-[0.2em] text-foreground/60 font-medium">
+              Documentary, Fashion and Commercial
+            </span>
           </motion.h1>
-          <motion.p
-            className="font-body text-xs tracking-[0.2em] uppercase text-foreground/60 font-medium mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            DOCUMENTARY, FASHION AND COMMERCIAL
-          </motion.p>
 
           {/* Text groups with spacing between, tight within */}
           <motion.div
