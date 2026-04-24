@@ -6,7 +6,7 @@ const categories = [
     items: [
       "Documentary films",
       "Interview-led and portrait stories",
-      "YouTube and documentary content",
+      "Concert Film",
     ],
   },
   {
@@ -21,8 +21,8 @@ const categories = [
     title: "Fashion & culture",
     items: [
       "Fashion campaigns",
-      "Show coverage",
-      "Editorial and social content for fashion brands",
+      "Fashion show videography",
+      "Editorial and social content",
     ],
   },
   {
