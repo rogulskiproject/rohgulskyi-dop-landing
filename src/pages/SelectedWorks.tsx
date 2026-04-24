@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProjectCard from "@/components/ProjectCard";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import kotexCover from "@/assets/kotex-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
