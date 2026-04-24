@@ -30,6 +30,7 @@ const categories = [
     items: [
       "Athletes, performance-led stories",
       "Branded collaborations in sport",
+      "Fashion-Sport Fusion",
     ],
   },
 ];
