@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ProjectCard from "@/components/ProjectCard";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import kotexCover from "@/assets/kotex-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
@@ -27,16 +26,15 @@ interface Project {
   vimeoId?: string;
   youtubeId?: string;
   coverImage?: string;
-  previewVideo?: string;
 }
 
 const projects: Project[] = [
-  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion", link: "/work/dylan-bachelet", vimeoId: "1107691277", coverImage: dylanCover, previewVideo: "/videos/dylan-bachelet-preview.mp4" },
-  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Commercial", link: "/work/yaroslava-mohushih", vimeoId: "1010047613", coverImage: yaroslavaCover, previewVideo: "/videos/yaroslava-mohushih-preview.mp4" },
-  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771", coverImage: orserioCover, previewVideo: "/videos/orserio-preview.mp4" },
-  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Commercial", link: "/work/valentin-day", vimeoId: "1166656782", coverImage: valentinCover, previewVideo: "/videos/valentin-day-preview.mp4" },
-  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion", link: "/work/another-magazine", vimeoId: "1010017917", coverImage: anotherMagCover, previewVideo: "/videos/another-magazine-preview.mp4" },
-  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover, previewVideo: "/videos/hozier-francesca-preview.mp4" },
+  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion", link: "/work/dylan-bachelet", vimeoId: "1107691277", coverImage: dylanCover },
+  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Commercial", link: "/work/yaroslava-mohushih", vimeoId: "1010047613", coverImage: yaroslavaCover },
+  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771", coverImage: orserioCover },
+  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Commercial", link: "/work/valentin-day", vimeoId: "1166656782", coverImage: valentinCover },
+  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion", link: "/work/another-magazine", vimeoId: "1010017917", coverImage: anotherMagCover },
+  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover },
   { title: "PUMA FIT 23", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-fit-23", vimeoId: "948342341", coverImage: pumaFitCover },
   { title: "Puma CR", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-cr", vimeoId: "1010036272", coverImage: pumaCrCover },
   { title: "Chernaya — Rami Kallas", subtitle: "Rami Kallas", category: "Music Video", filterGroup: "Music Video", link: "/work/chernaya-rami-kallas", vimeoId: "1010028819", coverImage: chernayaCover },
@@ -66,7 +64,6 @@ const getThumbnail = (project: Project) => {
 
 const SelectedWorks = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
   const navigate = useNavigate();
 
   return (
@@ -101,20 +98,37 @@ const SelectedWorks = () => {
             const visible = activeFilter === "All" || project.filterGroup === activeFilter;
 
             return (
-              <ProjectCard
+              <div
                 key={project.title}
-                project={{
-                  title: project.title,
-                  category: project.category,
-                  thumbnail: getThumbnail(project),
-                  previewVideo: project.previewVideo,
-                  link: project.link,
-                }}
-                visible={visible}
-                onNavigate={(link) => navigate(link)}
-                activePreviewId={activePreviewId}
-                setActivePreviewId={setActivePreviewId}
-              />
+                onClick={() => navigate(project.link)}
+                className={`relative cursor-pointer group overflow-hidden rounded-sm border border-foreground/10 transition-all duration-500 ease-out ${
+                  visible
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-95 pointer-events-none absolute"
+                }`}
+                style={!visible ? { position: "absolute", width: 0, height: 0, overflow: "hidden" } : {}}
+              >
+                {/* 3:2 aspect ratio */}
+                <div className="relative w-full" style={{ paddingBottom: "66.67%" }}>
+                  <img
+                    src={getThumbnail(project)}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-500" />
+
+                  {/* Title overlay */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <h3 className="font-display text-sm md:text-base font-semibold tracking-tight text-foreground drop-shadow-lg">
+                      {project.title}
+                    </h3>
+                    <span className="font-body text-[10px] uppercase tracking-[0.12em] text-foreground/50">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
