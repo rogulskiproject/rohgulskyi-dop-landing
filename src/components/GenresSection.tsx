@@ -5,32 +5,40 @@ const categories = [
     title: "Fashion & culture",
     items: [
       "Fashion campaigns",
+      "Fashion films",
       "Fashion show videography",
-      "Editorial and social content",
+      "Editorial video content",
+      "Social media content for fashion brands",
     ],
   },
   {
     title: "Sports & performance",
     items: [
-      "Athletes, performance-led stories",
-      "Branded collaborations in sport",
-      "Fashion-Sport Fusion",
+      "Sports campaigns",
+      "Athlete stories",
+      "Performance-led brand films",
+      "Branded sports content",
+      "Fashion-sport collaborations",
     ],
   },
   {
     title: "Documentary & real stories",
     items: [
       "Documentary films",
-      "Interview-led and portrait stories",
-      "Concert Film",
+      "Documentary cinematography",
+      "Interview-led films",
+      "Portrait documentaries",
+      "Concert films and live performance",
     ],
   },
   {
     title: "Brand storytelling",
     items: [
       "Branded films",
-      "Case studies & testimonials",
-      "Commercial",
+      "Commercial campaigns",
+      "Case study videos",
+      "Customer testimonials",
+      "Founder stories",
     ],
   },
 ];
