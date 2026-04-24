@@ -72,11 +72,6 @@ const ProjectCard = ({
   };
 
   const handleClick = () => {
-    if (isMobile && hasPreview && !isPlaying) {
-      // First tap: start preview
-      startPreview();
-      return;
-    }
     onNavigate(project.link);
   };
 
