@@ -100,37 +100,20 @@ const SelectedWorks = () => {
             const visible = activeFilter === "All" || project.filterGroup === activeFilter;
 
             return (
-              <div
+              <ProjectCard
                 key={project.title}
-                onClick={() => navigate(project.link)}
-                className={`relative cursor-pointer group overflow-hidden rounded-sm border border-foreground/10 transition-all duration-500 ease-out ${
-                  visible
-                    ? "opacity-100 scale-100"
-                    : "opacity-0 scale-95 pointer-events-none absolute"
-                }`}
-                style={!visible ? { position: "absolute", width: 0, height: 0, overflow: "hidden" } : {}}
-              >
-                {/* 3:2 aspect ratio */}
-                <div className="relative w-full" style={{ paddingBottom: "66.67%" }}>
-                  <img
-                    src={getThumbnail(project)}
-                    alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-500" />
-
-                  {/* Title overlay */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <h3 className="font-display text-sm md:text-base font-semibold tracking-tight text-foreground drop-shadow-lg">
-                      {project.title}
-                    </h3>
-                    <span className="font-body text-[10px] uppercase tracking-[0.12em] text-foreground/50">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-              </div>
+                project={{
+                  title: project.title,
+                  category: project.category,
+                  thumbnail: getThumbnail(project),
+                  previewVideo: project.previewVideo,
+                  link: project.link,
+                }}
+                visible={visible}
+                onNavigate={(link) => navigate(link)}
+                activePreviewId={activePreviewId}
+                setActivePreviewId={setActivePreviewId}
+              />
             );
           })}
         </div>
