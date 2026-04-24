@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import JsonLd from "@/components/JsonLd";
-import { buildSingleVideoJsonLd } from "@/lib/videoSchema";
 
 interface ProjectData {
   title: string;
@@ -30,14 +28,9 @@ const sectionAnim = {
 };
 
 const ProjectCaseStudy = ({ project }: { project: ProjectData }) => {
-  const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Derive slug from current route (e.g. /work/dylan-bachelet -> dylan-bachelet)
-  const slug = location.pathname.split("/").filter(Boolean).pop() ?? "";
-  const videoJsonLd = buildSingleVideoJsonLd(slug);
 
   const renderVideo = () => {
     if (project.vimeoId) {
@@ -71,7 +64,6 @@ const ProjectCaseStudy = ({ project }: { project: ProjectData }) => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {videoJsonLd && <JsonLd id={`video-${slug}`} data={videoJsonLd} />}
       <SiteHeader />
 
       {/* Hero Video */}
