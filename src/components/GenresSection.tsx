@@ -14,7 +14,7 @@ const categories = [
     items: [
       "Branded films",
       "Case studies & testimonials",
-      "Campaign content built around real people",
+      "Commercial",
     ],
   },
   {
