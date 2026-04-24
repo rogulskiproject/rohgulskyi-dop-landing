@@ -66,6 +66,7 @@ const getThumbnail = (project: Project) => {
 
 const SelectedWorks = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [activePreviewId, setActivePreviewId] = useState<string | null>(null);
   const navigate = useNavigate();
 
   return (
