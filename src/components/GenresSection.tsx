@@ -2,22 +2,6 @@ import { motion } from "framer-motion";
 
 const categories = [
   {
-    title: "Documentary & real stories",
-    items: [
-      "Documentary films",
-      "Interview-led and portrait stories",
-      "Concert Film",
-    ],
-  },
-  {
-    title: "Brand storytelling",
-    items: [
-      "Branded films",
-      "Case studies & testimonials",
-      "Commercial",
-    ],
-  },
-  {
     title: "Fashion & culture",
     items: [
       "Fashion campaigns",
@@ -31,6 +15,22 @@ const categories = [
       "Athletes, performance-led stories",
       "Branded collaborations in sport",
       "Fashion-Sport Fusion",
+    ],
+  },
+  {
+    title: "Documentary & real stories",
+    items: [
+      "Documentary films",
+      "Interview-led and portrait stories",
+      "Concert Film",
+    ],
+  },
+  {
+    title: "Brand storytelling",
+    items: [
+      "Branded films",
+      "Case studies & testimonials",
+      "Commercial",
     ],
   },
 ];
