@@ -27,15 +27,16 @@ interface Project {
   vimeoId?: string;
   youtubeId?: string;
   coverImage?: string;
+  previewVideo?: string;
 }
 
 const projects: Project[] = [
-  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion", link: "/work/dylan-bachelet", vimeoId: "1107691277", coverImage: dylanCover },
-  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Commercial", link: "/work/yaroslava-mohushih", vimeoId: "1010047613", coverImage: yaroslavaCover },
-  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771", coverImage: orserioCover },
-  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Commercial", link: "/work/valentin-day", vimeoId: "1166656782", coverImage: valentinCover },
-  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion", link: "/work/another-magazine", vimeoId: "1010017917", coverImage: anotherMagCover },
-  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover },
+  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion", link: "/work/dylan-bachelet", vimeoId: "1107691277", coverImage: dylanCover, previewVideo: "/videos/dylan-bachelet-preview.mp4" },
+  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Commercial", link: "/work/yaroslava-mohushih", vimeoId: "1010047613", coverImage: yaroslavaCover, previewVideo: "/videos/yaroslava-mohushih-preview.mp4" },
+  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771", coverImage: orserioCover, previewVideo: "/videos/orserio-preview.mp4" },
+  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Commercial", link: "/work/valentin-day", vimeoId: "1166656782", coverImage: valentinCover, previewVideo: "/videos/valentin-day-preview.mp4" },
+  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion", link: "/work/another-magazine", vimeoId: "1010017917", coverImage: anotherMagCover, previewVideo: "/videos/another-magazine-preview.mp4" },
+  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover, previewVideo: "/videos/hozier-francesca-preview.mp4" },
   { title: "PUMA FIT 23", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-fit-23", vimeoId: "948342341", coverImage: pumaFitCover },
   { title: "Puma CR", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-cr", vimeoId: "1010036272", coverImage: pumaCrCover },
   { title: "Chernaya — Rami Kallas", subtitle: "Rami Kallas", category: "Music Video", filterGroup: "Music Video", link: "/work/chernaya-rami-kallas", vimeoId: "1010028819", coverImage: chernayaCover },
