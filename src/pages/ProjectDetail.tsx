@@ -18,7 +18,7 @@ const ProjectDetail = () => {
       <section className="pt-24 md:pt-32">
         <div className="container">
           <Link
-            to="/"
+            to="/work"
             className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/50 hover:text-foreground/80 transition-colors mb-8"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
