@@ -22,6 +22,7 @@ import UnchartedSailGP from "./pages/UnchartedSailGP.tsx";
 import KotexArtsMissingPeriod from "./pages/KotexArtsMissingPeriod.tsx";
 import MooveFire from "./pages/MooveFire.tsx";
 import VogueMexico from "./pages/VogueMexico.tsx";
+import About from "./pages/About.tsx";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
           <Route path="/work" element={<SelectedWorks />} />
           <Route path="/work/dylan-bachelet" element={<ProjectDetail />} />
           <Route path="/work/yaroslava-mohushih" element={<YaroslavaMohushih />} />
