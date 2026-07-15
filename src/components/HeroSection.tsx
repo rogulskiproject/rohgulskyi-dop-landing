@@ -46,7 +46,7 @@ const HeroSection = () => {
           >
             <div className="flex flex-col gap-3">
               <p>
-                Bohdan Rohulskyi is a London-based Director of Photography working across sport, fashion, culture and branded storytelling.
+                Bohdan Rohulskyi is a London-based cinematograher working across sport, fashion, culture and branded storytelling.
               </p>
               <p>
                 With a background in documentary and performance-led work, he creates cinematic imagery rooted in real human presence, textured realism and emotional precision.
