@@ -238,7 +238,19 @@ const ValentinDay = () => {
               <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">Creative Approach</h2>
             </div>
             <div className="space-y-10 font-body text-sm md:text-[15px] text-foreground/70 leading-[1.7]">
+              <div className="max-w-[280px] md:max-w-[320px] aspect-[9/16] overflow-hidden bg-card">
+                <video
+                  src="/videos/valentin-approach.mp4"
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+              </div>
               <div className="space-y-4">
+
                 <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">Killing the obvious idea</h3>
                 <p>The brief said "a date." My instinct said: a date is a <em>scene</em>, and scenes are finite. Love isn't finite.</p>
                 <p>I was deep in reference-hunting when I fell into a TikTok compilation — genuinely by accident — of elderly couples caught in tiny moments of tenderness. Swinging on a garden swing. One of them adjusting the other's collar. Holding hands while queuing for something boring. Millions of views. No production value whatsoever. And it wrecked me, in the good way.</p>
