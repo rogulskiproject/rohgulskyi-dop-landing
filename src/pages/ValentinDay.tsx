@@ -392,10 +392,6 @@ const ValentinDay = () => {
                 ["Producer", "Valentina Bobrova"],
                 ["Production Services", "Track of God"],
                 ["Location", "Madrid, Spain"],
-                ["Camera", "Blackmagic"],
-                ["Lenses", "Iron Glass cine primes"],
-                ["Lighting", "Nanlite PavoSlim (booklight), Aputure 600D"],
-                ["Deliverables", "Hero film for in-store retail screens, YouTube, Instagram, Facebook + social adaptations"],
               ].map(([label, value]) => (
                 <div key={label}>
                   <dt className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">{label}</dt>
