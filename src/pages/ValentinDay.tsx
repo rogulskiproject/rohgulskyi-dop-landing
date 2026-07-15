@@ -5,6 +5,17 @@ import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
+import btsVideo1 from "@/assets/valentin/valentin-bts-1.mp4.asset.json";
+import btsVideo2 from "@/assets/valentin/valentin-bts-2.mp4.asset.json";
+import btsVideo3 from "@/assets/valentin/valentin-bts-3.mp4.asset.json";
+import btsPhoto1 from "@/assets/valentin/valentin-bts-1.jpg.asset.json";
+
+const stillsGallery: { type: "video" | "image"; src: string; alt: string }[] = [
+  { type: "video", src: btsVideo1.url, alt: "Behind the scenes on the Zielinski & Rozen Valentine's shoot in Madrid" },
+  { type: "video", src: btsVideo2.url, alt: "On-set moment during the Zielinski & Rozen Valentine's campaign" },
+  { type: "image", src: btsPhoto1.url, alt: "Booklight rigged over the elderly cast on the Madrid apartment set" },
+  { type: "video", src: btsVideo3.url, alt: "Camera setup and blocking on the Zielinski & Rozen Valentine's shoot" },
+];
 
 const sectionAnim = {
   initial: { opacity: 0, y: 20 },
@@ -300,22 +311,31 @@ const ValentinDay = () => {
         <div className="container py-16 md:py-24">
           <motion.div {...sectionAnim}>
             <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-12">Stills</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              {[
-                "Elderly couple sharing a quiet moment, filmed on a long lens in a Madrid apartment",
-                "Close-up of two hands touching across a restaurant table, shallow depth of field",
-                "Zielinski & Rozen Madrid boutique interior with perfume gift boxes on display",
-                "Backlit portrait of an older woman, natural light cinematography",
-                "Behind the scenes: Blackmagic camera on tripod with Iron Glass cine lenses",
-                "Booklight setup filling a Madrid apartment through window diffusion",
-              ].map((alt, i) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              {stillsGallery.map((item, i) => (
                 <div
                   key={i}
-                  role="img"
-                  aria-label={alt}
-                  className="aspect-[3/4] bg-muted/40 border border-border/40 flex items-center justify-center"
+                  className="aspect-[3/4] bg-muted/40 border border-border/40 overflow-hidden"
                 >
-                  <span className="font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30">Still {i + 1}</span>
+                  {item.type === "video" ? (
+                    <video
+                      src={item.src}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-label={item.alt}
+                    />
+                  ) : (
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </div>
               ))}
             </div>
