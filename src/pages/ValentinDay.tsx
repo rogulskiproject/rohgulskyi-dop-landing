@@ -238,7 +238,7 @@ const ValentinDay = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-[42fr_58fr] lg:grid-cols-[45fr_55fr] gap-8 md:gap-8 lg:gap-14 md:items-stretch">
               {/* Left: sticky video */}
-              <div className="w-full md:self-start md:h-full">
+              <div className="w-full md:h-full">
                 <div className="md:sticky md:top-0 md:h-[100svh] flex items-center justify-center py-4 md:py-0">
                   <div className="w-full max-w-[340px] md:max-w-none aspect-[9/16] md:aspect-auto md:h-auto md:max-h-[74svh] overflow-hidden bg-card mx-auto" style={{ aspectRatio: "9 / 16" }}>
                     <video
