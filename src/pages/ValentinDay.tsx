@@ -16,7 +16,7 @@ const sectionAnim = {
 const faqs = [
   {
     q: "Who directed and shot this Zielinski & Rozen Valentine's campaign?",
-    a: "Bohdan Rohulskyi — a London-based videographer and hybrid director-operator. He directed, shot and edited the film, working with producer Valentina Bobrova and production services company Track of God in Madrid.",
+    a: "Bohdan Rohulskyi — a London-based cinematographer and hybrid director-operator. He directed, shot and edited the film, working with producer Valentina Bobrova and production services company Track of God in Madrid.",
   },
   {
     q: "What is a \u201Chybrid director-operator\u201D?",
@@ -63,7 +63,7 @@ const ValentinDay = () => {
         {
           name: "keywords",
           content:
-            "videographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production London, Zielinski & Rozen, Valentine's campaign, Madrid",
+            "cinematographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production London, Zielinski & Rozen, Valentine's campaign, Madrid",
         },
       ],
       jsonLdId: "valentin-day",
@@ -81,7 +81,7 @@ const ValentinDay = () => {
             name: "Bohdan Rohulskyi",
             jobTitle: "Director & Director of Photography",
             description:
-              "London-based videographer and hybrid director-operator specialising in documentary-style brand films and commercials.",
+              "London-based cinematographer and hybrid director-operator specialising in documentary-style brand films and commercials.",
             address: {
               "@type": "PostalAddress",
               addressLocality: "London",
@@ -104,7 +104,7 @@ const ValentinDay = () => {
             locationCreated: { "@type": "Place", name: "Madrid, Spain" },
           },
           keywords:
-            "videographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production, Zielinski & Rozen, Valentine's campaign, Madrid",
+            "cinematographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production, Zielinski & Rozen, Valentine's campaign, Madrid",
         },
         {
           "@context": "https://schema.org",
@@ -170,7 +170,7 @@ const ValentinDay = () => {
               Love Isn't One Day
             </h1>
             <p className="mt-3 font-body text-sm text-foreground/50 tracking-[0.06em]">
-              Documentary-style Valentine's campaign for Zielinski &amp; Rozen — directed, shot and edited by a London videographer and hybrid director-operator.
+              Documentary-style Valentine's campaign for Zielinski &amp; Rozen — directed, shot and edited by a London cinematographer and hybrid director-operator.
             </p>
           </div>
 
