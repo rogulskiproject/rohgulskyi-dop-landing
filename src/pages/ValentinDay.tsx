@@ -300,22 +300,31 @@ const ValentinDay = () => {
         <div className="container py-16 md:py-24">
           <motion.div {...sectionAnim}>
             <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-12">Stills</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              {[
-                "Elderly couple sharing a quiet moment, filmed on a long lens in a Madrid apartment",
-                "Close-up of two hands touching across a restaurant table, shallow depth of field",
-                "Zielinski & Rozen Madrid boutique interior with perfume gift boxes on display",
-                "Backlit portrait of an older woman, natural light cinematography",
-                "Behind the scenes: Blackmagic camera on tripod with Iron Glass cine lenses",
-                "Booklight setup filling a Madrid apartment through window diffusion",
-              ].map((alt, i) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              {stillsGallery.map((item, i) => (
                 <div
                   key={i}
-                  role="img"
-                  aria-label={alt}
-                  className="aspect-[3/4] bg-muted/40 border border-border/40 flex items-center justify-center"
+                  className="aspect-[3/4] bg-muted/40 border border-border/40 overflow-hidden"
                 >
-                  <span className="font-body text-[10px] tracking-[0.12em] uppercase text-foreground/30">Still {i + 1}</span>
+                  {item.type === "video" ? (
+                    <video
+                      src={item.src}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-label={item.alt}
+                    />
+                  ) : (
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </div>
               ))}
             </div>
