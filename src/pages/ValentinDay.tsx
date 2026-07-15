@@ -308,9 +308,8 @@ const ValentinDay = () => {
 
       {/* Stills */}
       <section className="border-t border-border">
-        <div className="container py-16 md:py-24">
+        <div className="container py-10 md:py-14">
           <motion.div {...sectionAnim}>
-            <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-12">Stills</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {stillsGallery.map((item, i) => (
                 <div
