@@ -231,63 +231,69 @@ const ValentinDay = () => {
       </section>
 
       {/* Creative Approach */}
-      <section className="border-t border-border">
+      <section className="relative border-t border-border">
         <div className="container py-16 md:py-24">
-          <motion.div {...sectionAnim} className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
-            <div>
-              <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">Creative Approach</h2>
-            </div>
-            <div className="space-y-10 font-body text-sm md:text-[15px] text-foreground/70 leading-[1.7]">
-              <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-                <div className="w-full max-w-[280px] md:max-w-none md:w-[280px] lg:w-[340px] flex-shrink-0 aspect-[9/16] overflow-hidden bg-card">
-                  <video
-                    src="/videos/valentin-approach.mp4"
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                  />
-                </div>
-                <div className="space-y-4 flex-1">
+          <motion.div {...sectionAnim}>
+            <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-10 md:mb-14">Creative Approach</h2>
 
+            <div className="grid grid-cols-1 md:grid-cols-[42fr_58fr] lg:grid-cols-[45fr_55fr] gap-8 md:gap-8 lg:gap-14 items-start">
+              {/* Left: sticky video */}
+              <div className="w-full">
+                <div className="md:sticky md:top-0 md:h-[100svh] flex items-center justify-center py-4 md:py-0">
+                  <div className="w-full max-w-[340px] md:max-w-none aspect-[9/16] md:aspect-auto md:h-auto md:max-h-[74svh] overflow-hidden bg-card mx-auto" style={{ aspectRatio: "9 / 16" }}>
+                    <video
+                      src="/videos/valentin-approach.mp4"
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: scrolling text */}
+              <div className="space-y-10 font-body text-sm md:text-[15px] text-foreground/70 leading-[1.7] min-w-0">
+                <div className="space-y-4">
                   <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">Killing the obvious idea</h3>
                   <p>The brief said "a date." My instinct said: a date is a <em>scene</em>, and scenes are finite. Love isn't finite.</p>
                   <p>I was deep in reference-hunting when I fell into a TikTok compilation — genuinely by accident — of elderly couples caught in tiny moments of tenderness. Swinging on a garden swing. One of them adjusting the other's collar. Holding hands while queuing for something boring. Millions of views. No production value whatsoever. And it wrecked me, in the good way.</p>
                   <p>That was the unlock. What if we don't show one date — what if we show a series of moments across a lifetime? A timeline of memory. Because Valentine's Day is the day the calendar tells you to celebrate love, but love actually happens on the 3rd of November at 7:40am when someone brings you a coffee you didn't ask for.</p>
                   <p>That became the spine of the treatment: <em>love is not one day.</em> The brand's gift boxes don't mark an occasion — they mark a moment, and there are thousands of them. The client fell for it immediately. We locked budget and scope within days.</p>
                 </div>
-              </div>
 
-              <div className="space-y-4">
-                <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">Why an older couple — and why this brand</h3>
-                <p>This wasn't just an emotional hunch. There's real research behind why the idea had legs, and it's worth saying out loud, because it's the sort of thing that separates a mood board from a strategy.</p>
-                <p><strong className="text-foreground/90">1. Older people are the right people to talk about what love actually is.</strong> Laura Carstensen's <em>socioemotional selectivity theory</em> (Carstensen, Isaacowitz &amp; Charles, <em>American Psychologist</em>, 1999) argues that as our sense of remaining time shortens, we increasingly prioritise emotionally meaningful goals and close relationships over novelty. Levenson, Carstensen and Gottman's work on long-term marriages (<em>Psychology and Aging</em>, 1993) found older couples showed less conflict-driven negative emotion and more affection than middle-aged couples. Put a lifetime behind a glance and the glance means more.</p>
-                <p><strong className="text-foreground/90">2. Scent is a memory medium, and this is a perfume house.</strong> Odour-evoked autobiographical memories are consistently found to be <em>more emotional</em> and to feel more vivid and immersive than memories cued by words or images (Herz &amp; Schooler, 2002; Herz, 2004). Willander &amp; Larsson (<em>Psychonomic Bulletin &amp; Review</em>, 2006) found odour-cued memories cluster in the first decade of life. So a film built as a chain of remembered moments isn't a nice idea for a fragrance brand. It's a structural translation of what fragrance does to a human being.</p>
-                <p><strong className="text-foreground/90">3. Touch is the language, so touch is the shot list.</strong> Löken et al. (<em>Nature Neuroscience</em>, 2009) identified C-tactile afferents in human skin — a nerve system tuned to slow, gentle stroking at roughly the speed of an affectionate caress. That's why so much of this film is hands. Wrists. A palm on a forearm. It's the most direct emotional channel available to me, and it doesn't need a single line of dialogue.</p>
-                <p><strong className="text-foreground/90">4. Emotion outperforms rational messaging.</strong> Binet &amp; Field's analysis of the IPA Databank (<em>The Long and the Short of It</em>, 2013) shows emotionally-led campaigns substantially outperform rationally-led ones on long-term business effects. When I pitch "no product close-up for the first forty seconds," this is the argument.</p>
-              </div>
+                <div className="space-y-4">
+                  <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">Why an older couple — and why this brand</h3>
+                  <p>This wasn't just an emotional hunch. There's real research behind why the idea had legs, and it's worth saying out loud, because it's the sort of thing that separates a mood board from a strategy.</p>
+                  <p><strong className="text-foreground/90">1. Older people are the right people to talk about what love actually is.</strong> Laura Carstensen's <em>socioemotional selectivity theory</em> (Carstensen, Isaacowitz &amp; Charles, <em>American Psychologist</em>, 1999) argues that as our sense of remaining time shortens, we increasingly prioritise emotionally meaningful goals and close relationships over novelty. Levenson, Carstensen and Gottman's work on long-term marriages (<em>Psychology and Aging</em>, 1993) found older couples showed less conflict-driven negative emotion and more affection than middle-aged couples. Put a lifetime behind a glance and the glance means more.</p>
+                  <p><strong className="text-foreground/90">2. Scent is a memory medium, and this is a perfume house.</strong> Odour-evoked autobiographical memories are consistently found to be <em>more emotional</em> and to feel more vivid and immersive than memories cued by words or images (Herz &amp; Schooler, 2002; Herz, 2004). Willander &amp; Larsson (<em>Psychonomic Bulletin &amp; Review</em>, 2006) found odour-cued memories cluster in the first decade of life. So a film built as a chain of remembered moments isn't a nice idea for a fragrance brand. It's a structural translation of what fragrance does to a human being.</p>
+                  <p><strong className="text-foreground/90">3. Touch is the language, so touch is the shot list.</strong> Löken et al. (<em>Nature Neuroscience</em>, 2009) identified C-tactile afferents in human skin — a nerve system tuned to slow, gentle stroking at roughly the speed of an affectionate caress. That's why so much of this film is hands. Wrists. A palm on a forearm. It's the most direct emotional channel available to me, and it doesn't need a single line of dialogue.</p>
+                  <p><strong className="text-foreground/90">4. Emotion outperforms rational messaging.</strong> Binet &amp; Field's analysis of the IPA Databank (<em>The Long and the Short of It</em>, 2013) shows emotionally-led campaigns substantially outperform rationally-led ones on long-term business effects. When I pitch "no product close-up for the first forty seconds," this is the argument.</p>
+                </div>
 
-              <div className="space-y-4">
-                <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">The cinematography: photographs that came alive</h3>
-                <blockquote className="border-l-2 border-foreground/30 pl-5 text-foreground/85 italic">
-                  If the film is made of moments, then the frames should behave like photographs that started moving.
-                </blockquote>
-                <p><strong className="text-foreground/90">Locked-off tripod. Almost everything.</strong> No drifting handheld, no slider gloss, no gimbal. A still frame is a captured moment — that's what a photograph <em>is</em>. The moment the camera starts wandering, you're no longer looking at a memory, you're looking at a camera. The stillness does the emotional work, and it does it for free.</p>
-                <p>The risk, obviously, is boredom. I countered it with variety in <em>content</em> rather than variety in <em>movement</em>: different rooms, different times of day, different eras, different textures. The cut carries the momentum, so the frames don't have to.</p>
-                <p><strong className="text-foreground/90">Long lens, wide open, tight.</strong> I shot on long focal lengths with a very shallow plane of focus, framing intimately — skin, hands, the corner of an eye, the edge of a smile. Everything that isn't the couple dissolves. It preserves the position of the observer: I'm not in the room with them. I'm watching from a respectful distance, the way you'd watch strangers in a café and feel oddly moved.</p>
-              </div>
+                <div className="space-y-4">
+                  <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">The cinematography: photographs that came alive</h3>
+                  <blockquote className="border-l-2 border-foreground/30 pl-5 text-foreground/85 italic">
+                    If the film is made of moments, then the frames should behave like photographs that started moving.
+                  </blockquote>
+                  <p><strong className="text-foreground/90">Locked-off tripod. Almost everything.</strong> No drifting handheld, no slider gloss, no gimbal. A still frame is a captured moment — that's what a photograph <em>is</em>. The moment the camera starts wandering, you're no longer looking at a memory, you're looking at a camera. The stillness does the emotional work, and it does it for free.</p>
+                  <p>The risk, obviously, is boredom. I countered it with variety in <em>content</em> rather than variety in <em>movement</em>: different rooms, different times of day, different eras, different textures. The cut carries the momentum, so the frames don't have to.</p>
+                  <p><strong className="text-foreground/90">Long lens, wide open, tight.</strong> I shot on long focal lengths with a very shallow plane of focus, framing intimately — skin, hands, the corner of an eye, the edge of a smile. Everything that isn't the couple dissolves. It preserves the position of the observer: I'm not in the room with them. I'm watching from a respectful distance, the way you'd watch strangers in a café and feel oddly moved.</p>
+                </div>
 
-              <div className="space-y-4">
-                <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">Lighting: natural first, booklight always</h3>
-                <p>I don't light rooms. I light <em>what the room is already doing.</em> We arrived in Madrid two days early to scout. I walked every location — the restaurant, the apartment, both boutiques — and I found where the light was already coming from. Windows. Doorways. Gaps. Whatever the sun was doing at 3pm.</p>
-                <p>Those became my key. Everything after that was just replacing the exposure that reality couldn't afford to give me. My main tool was a booklight — bounce into a large white surface, then push it back through diffusion. On faces with seventy years of life in them, that softness lets skin be skin, wrinkles be wrinkles, and tenderness be tenderness, without cosmeticising any of it.</p>
+                <div className="space-y-4">
+                  <h3 className="font-display text-base md:text-lg font-semibold text-foreground/90 tracking-tight">Lighting: natural first, booklight always</h3>
+                  <p>I don't light rooms. I light <em>what the room is already doing.</em> We arrived in Madrid two days early to scout. I walked every location — the restaurant, the apartment, both boutiques — and I found where the light was already coming from. Windows. Doorways. Gaps. Whatever the sun was doing at 3pm.</p>
+                  <p>Those became my key. Everything after that was just replacing the exposure that reality couldn't afford to give me. My main tool was a booklight — bounce into a large white surface, then push it back through diffusion. On faces with seventy years of life in them, that softness lets skin be skin, wrinkles be wrinkles, and tenderness be tenderness, without cosmeticising any of it.</p>
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
+
 
       {/* Stills */}
       <section className="border-t border-border">
