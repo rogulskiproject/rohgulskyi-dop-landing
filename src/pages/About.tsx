@@ -396,53 +396,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-20 md:py-28 border-t border-border px-6 md:px-10 lg:px-16">
-          <div className="container max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
-                Work with Bohdan
-              </h2>
-              <div className="mt-8 space-y-4 font-body text-base md:text-lg leading-relaxed text-foreground/75 max-w-2xl">
-                <p>
-                  Send the brief, treatment, reference film or production
-                  outline.
-                </p>
-                <p>
-                  Bohdan can help shape the visual approach, estimate camera
-                  and lighting needs, and advise on the most practical way to
-                  shoot the project.
-                </p>
-              </div>
-
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/book"
-                  className="inline-flex items-center justify-center px-9 py-[18px] bg-foreground text-background font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
-                >
-                  Book a Call
-                </Link>
-                <Link
-                  to="/work"
-                  className="inline-flex items-center justify-center px-9 py-[18px] border border-foreground/30 text-foreground font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
-                >
-                  View Selected Work
-                </Link>
-                <a
-                  href="mailto:rogulskiproject@gmail.com"
-                  className="inline-flex items-center justify-center px-9 py-[18px] border border-foreground/30 text-foreground font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
-                >
-                  Email Bohdan
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section>
       </main>
 
       <SiteFooter />
