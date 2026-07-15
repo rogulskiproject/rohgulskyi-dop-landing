@@ -406,32 +406,6 @@ const ValentinDay = () => {
         </div>
       </section>
 
-      {/* Work with me */}
-      <section className="border-t border-border">
-        <div className="container py-16 md:py-24">
-          <motion.div {...sectionAnim} className="max-w-2xl space-y-6">
-            <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">Work with Bohdan</h2>
-            <p className="font-body text-sm md:text-[15px] text-foreground/70 leading-[1.7]">
-              If you're a brand, agency or producer looking for a videographer and hybrid director-operator in London — for commercial video production, documentary-style brand films or cinematic campaign work — get in touch.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground border border-foreground/40 hover:border-foreground px-5 py-3 transition-colors"
-              >
-                Get in touch
-              </Link>
-              <Link
-                to="/work"
-                className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/60 hover:text-foreground transition-colors"
-              >
-                See more work
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <SiteFooter />
     </div>
   );
