@@ -16,7 +16,7 @@ const sectionAnim = {
 const faqs = [
   {
     q: "Who directed and shot this Zielinski & Rozen Valentine's campaign?",
-    a: "Bohdan Rohulskyi — a London-based videographer and hybrid director-operator. He directed, shot and edited the film, working with producer Valentina Bobrova and production services company Track of God in Madrid.",
+    a: "Bohdan Rohulskyi — a London-based cinematographer and hybrid director-operator. He directed, shot and edited the film, working with producer Valentina Bobrova and production services company Track of God in Madrid.",
   },
   {
     q: "What is a \u201Chybrid director-operator\u201D?",
@@ -63,7 +63,7 @@ const ValentinDay = () => {
         {
           name: "keywords",
           content:
-            "videographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production London, Zielinski & Rozen, Valentine's campaign, Madrid",
+            "cinematographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production London, Zielinski & Rozen, Valentine's campaign, Madrid",
         },
       ],
       jsonLdId: "valentin-day",
@@ -81,7 +81,7 @@ const ValentinDay = () => {
             name: "Bohdan Rohulskyi",
             jobTitle: "Director & Director of Photography",
             description:
-              "London-based videographer and hybrid director-operator specialising in documentary-style brand films and commercials.",
+              "London-based cinematographer and hybrid director-operator specialising in documentary-style brand films and commercials.",
             address: {
               "@type": "PostalAddress",
               addressLocality: "London",
@@ -104,7 +104,7 @@ const ValentinDay = () => {
             locationCreated: { "@type": "Place", name: "Madrid, Spain" },
           },
           keywords:
-            "videographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production, Zielinski & Rozen, Valentine's campaign, Madrid",
+            "cinematographer London, hybrid director-operator, director of photography, documentary brand film, commercial video production, Zielinski & Rozen, Valentine's campaign, Madrid",
         },
         {
           "@context": "https://schema.org",
@@ -170,7 +170,7 @@ const ValentinDay = () => {
               Love Isn't One Day
             </h1>
             <p className="mt-3 font-body text-sm text-foreground/50 tracking-[0.06em]">
-              Documentary-style Valentine's campaign for Zielinski &amp; Rozen — directed, shot and edited by a London videographer and hybrid director-operator.
+              Documentary-style Valentine's campaign for Zielinski &amp; Rozen — directed, shot and edited by a London cinematographer and hybrid director-operator.
             </p>
           </div>
 
@@ -401,32 +401,6 @@ const ValentinDay = () => {
                   <p className="font-body text-sm md:text-[15px] text-foreground/70 leading-[1.7]">{f.a}</p>
                 </div>
               ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Work with me */}
-      <section className="border-t border-border">
-        <div className="container py-16 md:py-24">
-          <motion.div {...sectionAnim} className="max-w-2xl space-y-6">
-            <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">Work with Bohdan</h2>
-            <p className="font-body text-sm md:text-[15px] text-foreground/70 leading-[1.7]">
-              If you're a brand, agency or producer looking for a videographer and hybrid director-operator in London — for commercial video production, documentary-style brand films or cinematic campaign work — get in touch.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground border border-foreground/40 hover:border-foreground px-5 py-3 transition-colors"
-              >
-                Get in touch
-              </Link>
-              <Link
-                to="/work"
-                className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/60 hover:text-foreground transition-colors"
-              >
-                See more work
-              </Link>
             </div>
           </motion.div>
         </div>
