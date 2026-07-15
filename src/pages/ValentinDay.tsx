@@ -5,6 +5,17 @@ import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
+import btsVideo1 from "@/assets/valentin/valentin-bts-1.mp4.asset.json";
+import btsVideo2 from "@/assets/valentin/valentin-bts-2.mp4.asset.json";
+import btsVideo3 from "@/assets/valentin/valentin-bts-3.mp4.asset.json";
+import btsPhoto1 from "@/assets/valentin/valentin-bts-1.jpg.asset.json";
+
+const stillsGallery: { type: "video" | "image"; src: string; alt: string }[] = [
+  { type: "video", src: btsVideo1.url, alt: "Behind the scenes on the Zielinski & Rozen Valentine's shoot in Madrid" },
+  { type: "video", src: btsVideo2.url, alt: "On-set moment during the Zielinski & Rozen Valentine's campaign" },
+  { type: "image", src: btsPhoto1.url, alt: "Booklight rigged over the elderly cast on the Madrid apartment set" },
+  { type: "video", src: btsVideo3.url, alt: "Camera setup and blocking on the Zielinski & Rozen Valentine's shoot" },
+];
 
 const sectionAnim = {
   initial: { opacity: 0, y: 20 },
