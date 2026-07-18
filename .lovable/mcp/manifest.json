@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "sdk_version": "0.23.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "bohdan-rohulskyi-mcp",
+      "version": "0.1.0",
+      "title": "Bohdan Rohulskyi — Portfolio MCP"
+    },
+    "tools": [
+      {
+        "name": "list_projects",
+        "title": "List portfolio projects",
+        "description": "List projects from Bohdan Rohulskyi's cinematography portfolio. Optionally filter by category (Fashion, Commercial, Documentary, Music Video).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "enum": [
+                "Fashion",
+                "Commercial",
+                "Documentary",
+                "Music Video"
+              ],
+              "description": "Optional category filter: Fashion, Commercial, Documentary, or Music Video."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_project",
+        "title": "Get project details",
+        "description": "Get details for one portfolio project by its slug (the last segment of its /work/ URL, e.g. 'valentin-day').",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Project slug, e.g. 'valentin-day' or 'kotex-arts-missing-period'."
+            }
+          },
+          "required": [
+            "slug"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_categories",
+        "title": "List portfolio categories",
+        "description": "List the categories used to group portfolio projects, with the number of projects in each.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_contact_info",
+        "title": "Get contact info",
+        "description": "Get Bohdan Rohulskyi's public contact information, role, location and short bio.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
