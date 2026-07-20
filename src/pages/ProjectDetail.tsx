@@ -608,41 +608,6 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Work With Bohdan */}
-      <section className="border-t border-border">
-        <div className="container py-16 md:py-24">
-          <motion.div {...sectionAnim} className={COL_GRID}>
-            <div>
-              <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
-                Work With Bohdan
-              </h2>
-            </div>
-            <div className="max-w-[800px] space-y-6">
-              <p className={PARA}>
-                Producing a fashion or culture editorial where motion has to work around a stills-led day?
-              </p>
-              <p className={PARA}>
-                Send the treatment, schedule and visual references. I can help build a motion approach that belongs to the editorial, works inside the real production plan and gives the film its own point of view.
-              </p>
-              <div className="flex flex-wrap gap-4 pt-2">
-                <a
-                  href={`mailto:${CONTACT_EMAIL}?subject=Editorial%20motion%20brief`}
-                  className="inline-flex items-center justify-center px-6 py-3 bg-foreground text-background font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
-                >
-                  Send a treatment or brief
-                </a>
-                <Link
-                  to="/work"
-                  className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/60 hover:text-foreground transition-colors"
-                >
-                  View fashion &amp; culture work
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <SiteFooter />
     </div>
   );
