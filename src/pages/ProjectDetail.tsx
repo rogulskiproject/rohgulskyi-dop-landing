@@ -195,14 +195,6 @@ const ProjectDetail = () => {
                 The Nook, Hackney Central, London
               </p>
             </div>
-            <div>
-              <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
-                Format
-              </span>
-              <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                30.88 seconds / 4:3 — 2025
-              </p>
-            </div>
             <a
               href={OFFICIAL_URL}
               target="_blank"
