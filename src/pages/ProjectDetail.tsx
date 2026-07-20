@@ -184,7 +184,7 @@ const ProjectDetail = () => {
                 Role
               </span>
               <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                Videographer/Cinematographer
+                Videographer / Cinematographer
               </p>
             </div>
             <div>
