@@ -13,11 +13,25 @@ const sectionAnim = {
   transition: { duration: 0.6 },
 };
 
-const CANONICAL = "https://bohdanrohulskyi.com/work/dylan-bachelet";
+const CANONICAL =
+  "https://bohdanrohulskyi.com/work/dylan-bachelet";
 const OFFICIAL_URL = "https://imaginemagazine.co/article/dylan-bachelet-2/";
-const ROSSO_STUDY_URL =
-  "https://journals.sagepub.com/doi/10.1177/0170840613517600";
+const BAKEOFF_URL =
+  "https://thegreatbritishbakeoff.co.uk/bakers/series-15-dylan/";
 const CONTACT_EMAIL = "rogulskiproject@gmail.com";
+const PUBLISHED_ISO = "2025-06-09";
+const PUBLISHED_LABEL = "9 June 2025";
+
+const meta: Array<[string, React.ReactNode]> = [
+  ["Publication", "IMAGINE Magazine — editorial feature on Dylan Bachelet"],
+  ["Category", "Fashion & Culture — editorial fashion film"],
+  [
+    "Role",
+    "Filmed and edited by Bohdan Rohulskyi (official page credit: Videographer)",
+  ],
+  ["Location", "The Nook, Hackney Central, London"],
+  ["Year", "2025"],
+];
 
 const credits: Array<[string, string]> = [
   ["Subject", "Dylan Bachelet"],
@@ -29,39 +43,27 @@ const credits: Array<[string, string]> = [
   ["Hair Stylist", "Lee Patrick Devlin"],
   ["Grooming", "Rosie McGinn"],
   ["Studio Manager", "Karolina Wielocha"],
-  ["Studio", "The Nook"],
+  ["Studio", "The Nook, Hackney Central, London"],
   ["Producer", "Emma Christopher"],
   ["Editor-in-Chief", "Olive Walton"],
+  ["Film edited by", "Bohdan Rohulskyi"],
 ];
 
 const faqs: Array<{ q: string; a: string }> = [
   {
-    q: "Can video be filmed alongside a fashion editorial photoshoot?",
-    a: "Yes. Establish which department has priority, agree a few protected motion windows and build a lighting plan both teams can use. On this project, that let photography lead without reducing the film to behind-the-scenes coverage.",
+    q: "What was Bohdan Rohulskyi's role on the IMAGINE Magazine film of Dylan Bachelet?",
+    a: "He filmed and edited the piece; the official IMAGINE feature page credits him as Videographer. Photography was led by Bartek Szmigulski, and styling direction by Justin Hamilton. The film was shot at The Nook studio in Hackney, London.",
   },
   {
-    q: "What is the difference between an editorial film and behind-the-scenes video?",
-    a: "Behind-the-scenes coverage records how a shoot happened. An editorial film has its own visual point of view and should stand beside the photographs as part of the finished story.",
+    q: "What does a videographer need from a stills-led editorial day?",
+    a: "Four things, agreed before the shoot: clarity that photography leads and film adapts; a sense of where the natural gaps between setups will fall; a position on set to observe without interfering; and a subject who isn't asked to switch into a separate \"video mode\". Given those, a lean setup can deliver a film with its own identity without costing the photographer time.",
   },
   {
-    q: "How can motion be lit without rebuilding a stills setup?",
-    a: "Start with the existing light. For the Dylan Bachelet portrait, a large frosted window provided broad fill and one fixture acted as the key. Moving that key closer gave me more exposure and shape without rebuilding the set.",
-  },
-  {
-    q: "Why use a tripod for a short fashion film?",
-    a: "A tripod made the limited shooting windows more deliberate. Choosing the frame first gave small movements more weight and helped the film sit naturally beside the editorial photography.",
-  },
-  {
-    q: "Why does the film combine black-and-white and colour?",
-    a: "Colour held the skin tone, clothes and atmosphere; black-and-white concentrated attention on expression, form and gesture. Moving between them gave the 31-second portrait rhythm without forcing a conventional plot.",
-  },
-  {
-    q: "What was Bohdan Rohulskyi's role on the IMAGINE Magazine editorial?",
-    a: "The official IMAGINE feature credits Bohdan Rohulskyi as Videographer. He developed the motion approach and filmed the editorial portrait of Dylan Bachelet.",
+    q: "When is it worth recording interview audio on a fashion shoot?",
+    a: "When the film needs to stand on its own rather than sit silently under other content. A few minutes of conversation, recorded in the day's natural pauses, can give a fragment-built edit a continuous spine — and it captures the subject speaking naturally, in the same room and mood as the pictures, which a separate session rarely does.",
   },
 ];
 
-// Shared column widths — keep readable measure on desktop
 const COL_GRID = "grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24";
 const BODY_COL = "max-w-[800px] space-y-6";
 const PARA =
@@ -72,20 +74,20 @@ const ProjectDetail = () => {
     window.scrollTo(0, 0);
     return applySeo({
       title:
-        "Filming Video Alongside a Fashion Editorial | Dylan Bachelet for IMAGINE",
+        "Filming Dylan Bachelet for IMAGINE Magazine — Editorial Fashion Film | Bohdan Rohulskyi",
       description:
-        "London cinematographer Bohdan Rohulskyi explains how he filmed Dylan Bachelet for IMAGINE Magazine inside a stills-led editorial using one light and a tripod.",
+        "How an editorial fashion film of Dylan Bachelet was shot and edited around a stills-led day at a Hackney studio — one light, window fill and interview audio, by London cinematographer Bohdan Rohulskyi.",
       canonical: CANONICAL,
       meta: [
         {
           property: "og:title",
           content:
-            "Filming Video Alongside a Fashion Editorial | Dylan Bachelet for IMAGINE",
+            "Filming Dylan Bachelet for IMAGINE Magazine — Editorial Fashion Film | Bohdan Rohulskyi",
         },
         {
           property: "og:description",
           content:
-            "London cinematographer Bohdan Rohulskyi explains how he filmed Dylan Bachelet for IMAGINE Magazine inside a stills-led editorial using one light and a tripod.",
+            "How an editorial fashion film of Dylan Bachelet was shot and edited around a stills-led day at a Hackney studio — one light, window fill and interview audio, by London cinematographer Bohdan Rohulskyi.",
         },
         { property: "og:type", content: "article" },
         { property: "og:url", content: CANONICAL },
@@ -96,30 +98,34 @@ const ProjectDetail = () => {
         {
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: "The Film Had to Fit Between the Stills",
+          headline:
+            "One Light and a Window: Filming Dylan Bachelet for IMAGINE Magazine",
           description:
-            "London cinematographer Bohdan Rohulskyi on filming Dylan Bachelet for IMAGINE Magazine inside a stills-led editorial using one light and a tripod.",
+            "How an editorial fashion film of Dylan Bachelet was shot and edited around a stills-led day at a Hackney studio — one light, window fill and interview audio, by London cinematographer Bohdan Rohulskyi.",
+          datePublished: PUBLISHED_ISO,
+          dateModified: PUBLISHED_ISO,
+          mainEntityOfPage: CANONICAL,
           author: {
             "@type": "Person",
             name: "Bohdan Rohulskyi",
             url: "https://bohdanrohulskyi.com/about",
-            jobTitle: "Cinematographer",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "London",
-              addressCountry: "GB",
-            },
+            jobTitle: "Cinematographer / Director of Photography",
           },
-          mainEntityOfPage: CANONICAL,
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "VideoObject",
-          name: "Dylan Bachelet x IMAGINE Magazine — Editorial Portrait Film",
-          description:
-            "A short 4:3 editorial portrait of Dylan Bachelet filmed by Bohdan Rohulskyi for an IMAGINE Magazine feature.",
-          duration: "PT30.88S",
-          uploadDate: "2025-06-09",
+          about: [
+            { "@type": "Person", name: "Dylan Bachelet" },
+            { "@type": "Organization", name: "IMAGINE Magazine" },
+          ],
+          video: {
+            "@type": "VideoObject",
+            name: "IMAGINE Magazine fashion film of Dylan Bachelet",
+            description:
+              "Editorial fashion film of Dylan Bachelet for IMAGINE Magazine, filmed and edited by Bohdan Rohulskyi.",
+            duration: "PT30.88S",
+            width: 1280,
+            height: 960,
+            uploadDate: PUBLISHED_ISO,
+            embedUrl: "https://player.vimeo.com/video/1107691277",
+          },
         },
         {
           "@context": "https://schema.org",
@@ -156,216 +162,303 @@ const ProjectDetail = () => {
             className="w-full h-full"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
-            title="Dylan Bachelet — IMAGINE Magazine editorial portrait film"
+            title="Dylan Bachelet — IMAGINE Magazine editorial fashion film"
           />
         </div>
       </section>
 
-      {/* Project Header */}
-      <section className="container py-16 md:py-24">
+      {/* Article Header — H1, deck, byline, metadata */}
+      <section className="container py-16 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid md:grid-cols-[1fr_1fr] gap-12 md:gap-24"
+          className="max-w-[800px]"
         >
-          <div>
-            <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight">
-              Dylan Bachelet
-            </h1>
-            <p className="mt-3 font-body text-sm text-foreground/50 tracking-[0.06em]">
-              Imagine Magazine
-            </p>
-          </div>
+          <h1 className="font-display text-3xl md:text-5xl font-semibold tracking-tight leading-[1.1]">
+            One Light and a Window: Filming Dylan Bachelet for IMAGINE Magazine
+          </h1>
+          <p className="mt-6 font-body text-base md:text-lg text-foreground/70 leading-[1.5]">
+            A stills-led editorial day, a fashion film built in the gaps —
+            shot and edited by Bohdan Rohulskyi for IMAGINE Magazine's feature
+            on Dylan Bachelet.
+          </p>
+          <p className="mt-6 font-body text-sm text-foreground/60">
+            By{" "}
+            <Link
+              to="/about"
+              className="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/80 text-foreground/90"
+            >
+              Bohdan Rohulskyi
+            </Link>{" "}
+            — London-based cinematographer and Director of Photography
+            <span className="text-foreground/40"> · Published {PUBLISHED_LABEL}</span>
+          </p>
 
-          <div className="flex flex-col gap-8">
-            <div>
-              <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
-                Publication
-              </span>
-              <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                IMAGINE Magazine
-              </p>
-            </div>
-            <div>
-              <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
-                Category
-              </span>
-              <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                Editorial portrait film / fashion and culture
-              </p>
-            </div>
-            <div>
-              <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
-                Role
-              </span>
-              <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                Videographer
-              </p>
-            </div>
-            <div>
-              <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
-                Location
-              </span>
-              <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                The Nook, Hackney Central, London
-              </p>
-            </div>
+          <dl className="mt-10 border-t border-border/60 divide-y divide-border/40">
+            {meta.map(([k, v]) => (
+              <div
+                key={k}
+                className="grid grid-cols-[120px_1fr] md:grid-cols-[160px_1fr] gap-4 py-3"
+              >
+                <dt className="font-body text-[11px] tracking-[0.14em] uppercase text-foreground/40">
+                  {k}
+                </dt>
+                <dd className="font-body text-sm text-foreground/80">{v}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <a
+            href={OFFICIAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/50 hover:text-foreground/80 transition-colors"
+          >
+            View the official IMAGINE Magazine feature page
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </motion.div>
+      </section>
+
+      {/* Lede paragraph */}
+      <section className="container pb-12 md:pb-20">
+        <motion.div {...sectionAnim} className={BODY_COL}>
+          <p className={PARA}>
+            In 2025, IMAGINE Magazine published a short editorial fashion film
+            of Dylan Bachelet as part of its feature on him — a portrait
+            piece of just over thirty seconds, in a 4:3 frame, filmed and
+            edited by London cinematographer Bohdan Rohulskyi and shot at The
+            Nook studio in Hackney alongside photography by Bartek Szmigulski.
+            The{" "}
             <a
               href={OFFICIAL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/50 hover:text-foreground/80 transition-colors"
+              className="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/80 text-foreground/90"
             >
-              View feature on IMAGINE
-              <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
+              official IMAGINE Magazine feature page
+            </a>{" "}
+            credits Bohdan as Videographer. This is how the film was made —
+            and what the day can tell anyone planning a shoot where stills
+            lead and film has to earn its place.
+          </p>
         </motion.div>
       </section>
 
       {/* Introduction */}
-      <section className="container pb-16 md:pb-24">
-        <motion.div {...sectionAnim} className={BODY_COL}>
-          <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-2">
-            Introduction
-          </h2>
-          <p className={PARA}>
-            The message came through Instagram. Producer Emma Christopher and IMAGINE Editor-in-Chief Olive Walton had seen my work and wanted a moving portrait to sit alongside an editorial with Dylan Bachelet.
-          </p>
-          <p className={PARA}>
-            On paper, straightforward. On set, photography had first call.
-          </p>
-          <p className={PARA}>
-            Bartek Szmigulski was shooting the stills, and the day quite rightly revolved around the photographs, styling and grooming. The film had no separate world to retreat into. I could observe while the stills were being made, then work quickly whenever Dylan and the set became available.
-          </p>
-          <p className={PARA}>
-            That was the real brief: make something authored without behaving like a second production. Push too hard and video slows the day down. Hang back too far and you return with behind-the-scenes coverage rather than a film.
-          </p>
-          <p className={PARA}>
-            The space between those two outcomes is where this portrait was made.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Overview: The Brief */}
       <section className="border-t border-border">
         <div className="container py-16 md:py-24">
           <motion.div {...sectionAnim} className={COL_GRID}>
             <div>
               <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
-                Overview: The Brief
+                Introduction
               </h2>
             </div>
-            <dl className={`${BODY_COL} !space-y-6 ${PARA}`}>
-              <div>
-                <dt className="text-foreground/90 font-medium">Publication</dt>
-                <dd>IMAGINE Magazine, a fashion, entertainment and culture title.</dd>
-              </div>
-              <div>
-                <dt className="text-foreground/90 font-medium">Collaboration</dt>
-                <dd>A creative editorial made with the IMAGINE team.</dd>
-              </div>
-              <div>
-                <dt className="text-foreground/90 font-medium">The motion brief</dt>
-                <dd>
-                  Develop a distinct idea and visual approach for a short portrait of Dylan Bachelet without turning the editorial into a separate film shoot.
-                </dd>
-              </div>
-              <div>
-                <dt className="text-foreground/90 font-medium">The working reality</dt>
-                <dd>
-                  Stills had priority. Motion shared the studio, lighting conditions and Dylan's time with the photography team.
-                </dd>
-              </div>
-              <div>
-                <dt className="text-foreground/90 font-medium">My contribution</dt>
-                <dd>
-                  I developed the motion approach around controlled 4:3 frames, small gestures, restrained colour and black-and-white imagery. I also recorded short interview responses between setups, which gave the portrait its voice without stopping the day for a formal interview.
-                </dd>
-              </div>
-              <div>
-                <dt className="text-foreground/90 font-medium">My role</dt>
-                <dd>
-                  I am publicly credited as Videographer on the{" "}
-                  <a
-                    href={OFFICIAL_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/80 text-foreground/90"
-                  >
-                    official IMAGINE feature
-                  </a>
-                  . I developed the motion approach and filmed the piece.
-                </dd>
-              </div>
-            </dl>
+            <div className={BODY_COL}>
+              <p className={PARA}>
+                On most fashion shoots, the camera department owns the floor.
+                On this one, it didn't. The day existed to make photographs.
+                The full editorial team — photographer, stylist, hair,
+                grooming, studio — was built around the stills set, and the
+                film had to come from whatever the day allowed: angles found
+                while the photographer worked, and short windows between
+                setups when the floor was briefly mine.
+              </p>
+              <p className={PARA}>
+                The obvious approach would have been to hang back and collect
+                b-roll — moving wallpaper to sit under the interview on the
+                page. That wasn't enough. IMAGINE runs its films as their own
+                editorial objects, alongside the photography and the written
+                piece, not underneath them. The film needed its own identity
+                while staying inside the same visual world the stills team was
+                building.
+              </p>
+              <p className={PARA}>
+                This case is for brand and editorial creative leads planning
+                a combined stills-and-motion day. The decision it should help
+                with: what you can realistically ask of film when photography
+                leads.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Creative Approach */}
+      {/* The Brief */}
       <section className="border-t border-border">
         <div className="container py-16 md:py-24">
           <motion.div {...sectionAnim} className={COL_GRID}>
             <div>
               <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
-                Creative Approach
+                The Brief
+              </h2>
+            </div>
+            <div className={BODY_COL}>
+              <p className={PARA}>
+                <span className="text-foreground/90 font-medium">
+                  Publication:
+                </span>{" "}
+                IMAGINE Magazine — a London title where fashion, entertainment
+                and culture converge.
+              </p>
+              <p className={PARA}>
+                <span className="text-foreground/90 font-medium">
+                  How it reached me:
+                </span>{" "}
+                producer Emma Christopher and IMAGINE Editor-in-Chief Olive
+                Walton contacted me through Instagram. They had seen my work,
+                liked the way I filmed people, and asked whether I could
+                create a moving-image piece for an editorial featuring Dylan
+                Bachelet.
+              </p>
+              <p className={PARA}>
+                <span className="text-foreground/90 font-medium">The ask:</span>{" "}
+                develop the idea and the approach for the film myself, within
+                the day's real conditions — photography was the primary
+                output, with a well-known subject on set, and the film had to
+                be conceived and captured around the stills schedule.
+              </p>
+              <p className={PARA}>
+                <span className="text-foreground/90 font-medium">
+                  What I gave back:
+                </span>{" "}
+                an approach built for exactly those conditions — a one-light
+                plan that used the studio's existing daylight, a tripod-based
+                visual language matching the editorial tone, and a shooting
+                method that treated the photographer's set as my location
+                rather than competing with it.
+              </p>
+              <p className={PARA}>
+                <span className="text-foreground/90 font-medium">My role:</span>{" "}
+                I filmed and edited the piece. The official IMAGINE feature
+                page credits me as Videographer.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* The subject */}
+      <section className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <motion.div {...sectionAnim} className={COL_GRID}>
+            <div>
+              <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
+                The subject: reframing a public identity
+              </h2>
+            </div>
+            <div className={BODY_COL}>
+              <p className={PARA}>
+                Dylan Bachelet became known through{" "}
+                <a
+                  href={BAKEOFF_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/80 text-foreground/90"
+                >
+                  The Great British Bake Off
+                </a>
+                , where he was a Series 15 finalist — and almost immediately,
+                the press paid as much attention to how he dressed and
+                carried himself as to what he baked. At the time of the
+                IMAGINE interview he was working as Chef de Partie at The
+                Five Fields in London and talking about building his own
+                image after television. IMAGINE's feature leaned into that
+                shift: no baking, no props, no television context — a fashion
+                and culture subject, full stop. For the film, that meant one
+                job: presence. Face, gesture, voice, texture, attitude.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Creative approach */}
+      <section className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <motion.div {...sectionAnim} className={COL_GRID}>
+            <div>
+              <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
+                Creative approach
               </h2>
             </div>
             <div className="max-w-[800px] space-y-10">
               <div className="space-y-5">
+                <p className={PARA}>
+                  The first assumption on a day like this is that video needs
+                  its own setups to have any identity — its own lighting
+                  states, its own blocking, its own time. On this shoot that
+                  assumption had to go. Every minute I claimed for video was
+                  a minute taken from photography, and photography was the
+                  point of the day.
+                </p>
+                <p className={PARA}>
+                  So the organising idea became: film the person between the
+                  photographs. The moments when a subject resets — looks
+                  away, adjusts a chain, turns into the light, drops the
+                  pose for half a second — are often more alive than the
+                  pose itself. My job was to be ready for them, in the right
+                  position, with an exposure I trusted, without asking
+                  anyone to wait for me.
+                </p>
+                <p className={PARA}>Three decisions carried that idea:</p>
+              </div>
+
+              <div className="space-y-5">
                 <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  The photo set was the set
+                  Stillness as a visual language
                 </h3>
                 <p className={PARA}>
-                  Once I accepted the hierarchy, the day became much easier to read.
-                </p>
-                <p className={PARA}>
-                  While Bartek was working, I used the time to watch how Dylan moved into and out of a pose, how the clothes behaved between still frames, where the light held and which angles were worth returning to. The moments around the photograph were often as useful as the photograph itself.
-                </p>
-                <p className={PARA}>
-                  When a short motion window opened, I already knew where the tripod needed to go and what the frame was there to catch. Observation gave me behaviour; those protected minutes gave me precision.
-                </p>
-                <p className={PARA}>
-                  There is a fair bit of restraint in that way of working. A good angle is only useful if stepping into it does not interrupt the photograph. On a shared set, timing is part of composition.
+                  I shot from a tripod and built composed, held frames —
+                  closer to moving portraiture than to reportage. On a
+                  hybrid day, handheld coverage is the easy default, and it
+                  usually reads as exactly what it is: a video camera
+                  chasing a photo shoot. Locked frames gave the film the
+                  same considered, graphic quality as the stills, so the
+                  two outputs feel like one editorial world rather than a
+                  main event and its making-of.
                 </p>
               </div>
 
               <div className="space-y-5">
                 <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  A portrait made in borrowed minutes
+                  Colour and black-and-white as punctuation
                 </h3>
                 <p className={PARA}>
-                  With limited access to the subject, a long shot list can become false reassurance. I planned the coverage by function instead:
-                </p>
-                <ul className={`${PARA} list-disc pl-5 space-y-1.5`}>
-                  <li>a few frames that held Dylan's presence;</li>
-                  <li>changes in scale from face and eyes to hands, clothes and posture;</li>
-                  <li>small movements that did not require a reset;</li>
-                  <li>enough contrast between looks to make the finished piece progress;</li>
-                  <li>brief spoken material when the room went quiet enough to record it.</li>
-                </ul>
-                <p className={PARA}>
-                  That structure meant I was never inventing a new film every time the set opened up. I was completing the same portrait in pieces.
-                </p>
-                <p className={PARA}>
-                  The published film is just over 30 seconds. At that length, coverage has to earn its place quickly. A turn of the head can do more than a complicated camera move when the frame around it is right.
+                  I shot with a mix of colour and monochrome in mind —
+                  monochrome for the sculpted, classic portrait register;
+                  colour for warmth and texture in skin against the darker
+                  styling. Cutting between them lets a short film feel like
+                  several distinct chapters of one person rather than a
+                  single continuous setup. It's a way of showing range —
+                  the character and the different sides of the subject —
+                  without needing locations, narrative or time we didn't
+                  have.
                 </p>
               </div>
 
               <div className="space-y-5">
                 <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  The person cannot become another item on the call sheet
+                  Voice as the spine
                 </h3>
                 <p className={PARA}>
-                  Dylan was used to being watched and photographed. Camera familiarity and trust are different things. In my experience, people who spend a lot of time in front of cameras notice very quickly whether a crew is interested in them or merely collecting material.
+                  Between looks, we recorded short interview passages with
+                  Dylan. Those recordings became the foundation of the
+                  film — his own voice carrying the piece, so the portrait
+                  speaks rather than simply poses. A film assembled from
+                  fragments needs something continuous running underneath,
+                  and a person's voice does that more honestly than a music
+                  track alone.
                 </p>
                 <p className={PARA}>
-                  I kept the direction short and conversational. I explained what I needed, left space between takes and avoided making every second feel like a test. Dylan could relax, enjoy the process and give me variations without the room becoming heavy.
-                </p>
-                <p className={PARA}>
-                  That ease is visible. It changes the shoulders, the glance after a pose and the willingness to try one more thing. Looking after the person is part of cinematography because it changes what there is to film.
+                  Editing the film myself closed the loop. Because I knew
+                  I'd be the one in the timeline, I shot punctuation rather
+                  than safety coverage — the changes of scale, pose and
+                  texture the cut would need. The finished piece alternates
+                  black-and-white and colour over Dylan's voice, with
+                  IMAGINE's hand-drawn mark carried inside extreme
+                  close-ups at the open and close.
                 </p>
               </div>
             </div>
@@ -379,129 +472,90 @@ const ProjectDetail = () => {
           <motion.div {...sectionAnim} className={COL_GRID}>
             <div>
               <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
-                Cinematography
+                Cinematography: one light, one window
               </h2>
             </div>
-            <div className="max-w-[800px] space-y-10">
-              <div className="space-y-5">
-                <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  One fixture, one window
-                </h3>
-                <p className={PARA}>
-                  I had one lighting fixture for the motion work. Rather than fighting the studio, I chose Dylan's position around a large nearby window that had been softened with frost.
-                </p>
-                <p className={PARA}>
-                  The window gave me broad fill. My fixture became the key; when I needed more exposure or shape, I moved it closer rather than building a larger setup. The adjustment took seconds and kept the motion work inside the editorial's existing visual world.
-                </p>
-                <p className={PARA}>
-                  The lamp count was incidental. What mattered was keeping the film in the same visual world, without making it look as though another crew had arrived.
-                </p>
-              </div>
-
-              <div className="space-y-5">
-                <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  The tripod kept the images intentional
-                </h3>
-                <p className={PARA}>
-                  Tight timing often pushes people towards handheld coverage. I went the other way and used a tripod for much of the work.
-                </p>
-                <p className={PARA}>
-                  The fixed camera made me choose the frame before asking Dylan to move. It also let small changes carry more weight: a glance, a hand entering the composition, the line of a vest, the pause before another pose. Those still-like holds connected naturally with the photography without turning the film into a slideshow.
-                </p>
-                <p className={PARA}>
-                  The 4:3 frame helped as well. Its proportions sit naturally beside editorial photography and give a face, garment or fragment of the body enough graphic weight without needing a wide studio view.
-                </p>
-              </div>
-
-              <div className="space-y-5">
-                <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  Colour and black-and-white as two sides of the same person
-                </h3>
-                <p className={PARA}>
-                  Colour described the editorial world: skin, clothes and the atmosphere of the room. Black-and-white cut closer to expression, shape and line.
-                </p>
-                <p className={PARA}>
-                  I treated the shift as a change of register, never as decoration. In a film this short, moving between the two gave the portrait rhythm and allowed different sides of Dylan to coexist without forcing a conventional plot.
-                </p>
-              </div>
-
-              <div className="space-y-5">
-                <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  Interviews without building an interview set
-                </h3>
-                <p className={PARA}>
-                  We recorded a couple of short responses during pauses in the main shoot. There was no formal talking-head reset; I kept the setup light and used the room as it was.
-                </p>
-                <p className={PARA}>
-                  Those answers became the spine of the portrait. A small amount of voice gave the images something to orbit without making them explain everything.
-                </p>
-              </div>
+            <div className={BODY_COL}>
+              <p className={PARA}>
+                The lighting package was one fixture. That was the reality of
+                the day, and rather than fight it, I built the plan around
+                the room.
+              </p>
+              <p className={PARA}>
+                I positioned Dylan so that a large window — softened with
+                frost — sat close to him. That window became my fill: broad,
+                soft, consistent ambience I didn't have to rig, power or
+                move. The single fixture worked as the key, shaping the face
+                and separating him from the darker backdrop. Where I needed
+                more exposure, I didn't reach for a second light that didn't
+                exist — I brought the key closer to the subject, using
+                distance as my dimmer.
+              </p>
+              <p className={PARA}>What this changed in practice:</p>
+              <ul className={`${PARA} list-disc pl-5 space-y-2`}>
+                <li>
+                  <span className="text-foreground/90 font-medium">
+                    For the schedule:
+                  </span>{" "}
+                  my entire lighting footprint could move in about a minute.
+                  When the photographer needed the floor, I was never the
+                  reason anyone waited.
+                </li>
+                <li>
+                  <span className="text-foreground/90 font-medium">
+                    For the image:
+                  </span>{" "}
+                  window fill plus a close key gives directional, sculpted
+                  light with soft falloff — contrast that suits monochrome
+                  portraiture and keeps colour frames feeling natural
+                  rather than lit.
+                </li>
+                <li>
+                  <span className="text-foreground/90 font-medium">
+                    For the subject:
+                  </span>{" "}
+                  no wall of equipment and no re-rigging around him — the
+                  set stayed calm.
+                </li>
+              </ul>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Behind the Scenes */}
+      {/* Working with Dylan */}
       <section className="border-t border-border">
         <div className="container py-16 md:py-24">
           <motion.div {...sectionAnim} className={COL_GRID}>
             <div>
               <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
-                Behind the Scenes
+                Working with Dylan
               </h2>
             </div>
-            <div className="max-w-[800px] space-y-10">
-              <div className="space-y-5">
-                <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  The practical setup
-                </h3>
-                <p className={PARA}>
-                  The kit stayed compact because the camera needed to be ready when the set opened up. Every choice had to support quick positioning, a consistent image and a small footprint around the stills team.
-                </p>
-              </div>
-
-              <dl className={`${PARA} space-y-4`}>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Camera</dt>
-                  <dd>Blackmagic Pocket Cinema Camera 6K — BMPCC 6K</dd>
-                </div>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Lenses</dt>
-                  <dd>Sigma 18–35mm and Tokina 11–16mm</dd>
-                </div>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Support</dt>
-                  <dd>Tripod</dd>
-                </div>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Frame</dt>
-                  <dd>4:3</dd>
-                </div>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Lighting</dt>
-                  <dd>
-                    One key fixture with a large frosted window providing broad fill
-                  </dd>
-                </div>
-              </dl>
-
-              <div className="space-y-5">
-                <h3 className="font-display text-base md:text-lg font-semibold tracking-tight text-foreground/90">
-                  The finished film
-                </h3>
-                <p className={PARA}>
-                  The{" "}
-                  <a
-                    href={OFFICIAL_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/80 text-foreground/90"
-                  >
-                    official IMAGINE page
-                  </a>{" "}
-                  hosts the 30.88-second 4:3 film. The collaboration was published on 9 June 2025.
-                </p>
-              </div>
+            <div className={BODY_COL}>
+              <p className={PARA}>
+                Filming a well-known subject in fragments — between someone
+                else's setups, with no long takes to warm up in — puts real
+                weight on communication. This is the part of the job I've
+                built deliberately over years of working with artists and
+                public people: reading where someone is, keeping the
+                direction light, and creating a state where the person in
+                front of the camera is genuinely comfortable rather than
+                performing comfort.
+              </p>
+              <p className={PARA}>
+                With Dylan that meant treating the video moments as a
+                continuation of the day's energy, not an interruption of it.
+                Small prompts, room to move, attention to when a gesture was
+                worth holding. The micro-performances in the finished film —
+                the glance away, the turn, the raised hand — come from that
+                space. You cannot light your way to them; you can only avoid
+                destroying them. The interview recordings worked the same
+                way: done in the natural pauses of the day, in the same room
+                and the same mood, they caught Dylan speaking rather than
+                presenting — exactly the register an editorial portrait
+                needs.
+              </p>
             </div>
           </motion.div>
         </div>
@@ -516,43 +570,41 @@ const ProjectDetail = () => {
                 Reflection
               </h2>
             </div>
-            <div className="max-w-[800px] space-y-6">
-              <p className={PARA}>Constraints have no magic of their own.</p>
-              <p className={PARA}>
-                <a
-                  href={ROSSO_STUDY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/80 text-foreground/90"
-                >
-                  Brent Rosso's field study of four creative teams
-                </a>{" "}
-                found that constraints could help or hinder creativity depending on the team environment and how those constraints were understood. Teams benefited when the environment helped them treat limits as useful parameters; the same limits became damaging when the team dynamics worked against them.
-              </p>
-              <p className={PARA}>
-                A fashion set is a different environment, though the distinction feels accurate. Photography having priority did not improve the film by itself. A clear hierarchy, a calm working relationship and short protected windows turned that restriction into a usable structure.
-              </p>
-              <p className={PARA}>
-                For a producer planning stills and motion on the same day, I would protect three things:
-              </p>
-              <ol className={`${PARA} list-decimal pl-5 space-y-2`}>
-                <li>
-                  <span className="text-foreground/90 font-medium">One clear hierarchy.</span>{" "}
-                  Decide who has priority, when it changes and who calls the handover.
-                </li>
-                <li>
-                  <span className="text-foreground/90 font-medium">One compatible visual world.</span>{" "}
-                  Give both departments a lighting plan they can work with rather than paying for repeated resets.
-                </li>
-                <li>
-                  <span className="text-foreground/90 font-medium">A few genuinely protected minutes.</span>{" "}
-                  Observation can find the film, but the subject still needs moments when motion has their full attention.
-                </li>
-              </ol>
-              <p className={PARA}>
-                This project worked inside the territory the day could give it: quick decisions, respect for the room and a clear idea of what the film was trying to notice. The real skill was knowing what not to ask for and still coming back with a film rather than coverage.
-              </p>
-            </div>
+            <ul className={`${PARA} max-w-[800px] list-disc pl-5 space-y-4`}>
+              <li>
+                <span className="text-foreground/90 font-medium">
+                  The constraint was the concept.
+                </span>{" "}
+                One light and borrowed time didn't limit the film — they
+                defined its language. A full lighting day would have
+                produced a heavier film, and probably a less alive one.
+              </li>
+              <li>
+                <span className="text-foreground/90 font-medium">
+                  Shooting for your own edit changes what you shoot.
+                </span>{" "}
+                Knowing I'd be the one in the timeline meant collecting
+                punctuation — details, turns, texture — instead of safety
+                coverage.
+              </li>
+              <li>
+                <span className="text-foreground/90 font-medium">
+                  On a hybrid day, the videographer's most valuable skill
+                  isn't coverage — it's positioning.
+                </span>{" "}
+                Knowing where to stand while someone else works is a craft
+                in itself.
+              </li>
+              <li>
+                <span className="text-foreground/90 font-medium">
+                  The trade-off I'd name honestly:
+                </span>{" "}
+                filming in the gaps means accepting you will miss things.
+                You cannot have both a zero-footprint presence and complete
+                coverage. Choose the frames that matter and let the rest
+                go.
+              </li>
+            </ul>
           </motion.div>
         </div>
       </section>
@@ -565,6 +617,18 @@ const ProjectDetail = () => {
               <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
                 Credits
               </h2>
+              <p className={`${PARA} mt-4`}>
+                Per the{" "}
+                <a
+                  href={OFFICIAL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 decoration-foreground/30 hover:decoration-foreground/80 text-foreground/90"
+                >
+                  official IMAGINE Magazine feature page
+                </a>
+                .
+              </p>
             </div>
             <dl className="max-w-[800px] divide-y divide-border/60">
               {credits.map(([role, name]) => (
@@ -603,6 +667,42 @@ const ProjectDetail = () => {
                   <p className={PARA}>{a}</p>
                 </div>
               ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Work with Bohdan — CTA */}
+      <section className="border-t border-border">
+        <div className="container py-16 md:py-24">
+          <motion.div {...sectionAnim} className={COL_GRID}>
+            <div>
+              <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
+                Work with Bohdan
+              </h2>
+            </div>
+            <div className={BODY_COL}>
+              <p className={PARA}>
+                Planning an editorial, campaign or talent story where stills
+                and film need to share one day — and one visual world? Send
+                the treatment, references or shoot outline to discuss the
+                right approach for the film. Or view related work in Fashion
+                &amp; Culture.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <a
+                  href={`mailto:${CONTACT_EMAIL}?subject=Editorial%20film%20enquiry`}
+                  className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.14em] uppercase px-5 py-3 border border-foreground/40 text-foreground/90 hover:bg-foreground hover:text-background transition-colors"
+                >
+                  Discuss a project
+                </a>
+                <Link
+                  to="/work"
+                  className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.14em] uppercase px-5 py-3 border border-foreground/20 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors"
+                >
+                  View related work — Fashion &amp; Culture
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
