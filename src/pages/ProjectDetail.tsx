@@ -62,12 +62,12 @@ const ProjectDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     return applySeo({
-      title: "Filming Video Alongside a Fashion Editorial | Dylan Bachelet for IMAGINE",
+      title: "Dylan Bachelet | Imagine Magazine",
       description:
         "How Bohdan Rohulskyi filmed a 31-second portrait of Dylan Bachelet for IMAGINE Magazine within a photo-first editorial schedule using one light and a tripod.",
       canonical: CANONICAL,
       meta: [
-        { property: "og:title", content: "Dylan Bachelet x IMAGINE Magazine — Editorial Portrait Film" },
+        { property: "og:title", content: "Dylan Bachelet | Imagine Magazine" },
         {
           property: "og:description",
           content:
@@ -155,10 +155,10 @@ const ProjectDetail = () => {
         >
           <div>
             <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight">
-              The Film Had to Fit Between the Stills
+              Dylan Bachelet
             </h1>
             <p className="mt-3 font-body text-sm text-foreground/50 tracking-[0.06em]">
-              Dylan Bachelet — IMAGINE Magazine
+              Imagine Magazine
             </p>
           </div>
 
@@ -184,7 +184,7 @@ const ProjectDetail = () => {
                 Role
               </span>
               <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                Videographer
+                Videographer/Cinematographer
               </p>
             </div>
             <div>
