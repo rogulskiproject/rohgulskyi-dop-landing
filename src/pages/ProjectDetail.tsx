@@ -195,14 +195,6 @@ const ProjectDetail = () => {
                 The Nook, Hackney Central, London
               </p>
             </div>
-            <div>
-              <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
-                Format
-              </span>
-              <p className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
-                30.88 seconds / 4:3 — 2025
-              </p>
-            </div>
             <a
               href={OFFICIAL_URL}
               target="_blank"
@@ -269,16 +261,6 @@ const ProjectDetail = () => {
               <div>
                 <dt className="text-foreground/90 font-medium">What I gave back</dt>
                 <dd>A compact 4:3 portrait built from controlled frames, small gestures, changes of scale, restrained colour and black-and-white imagery. We also recorded a couple of short interview responses in the gaps, giving the material a narrative spine without turning the day into a separate interview shoot.</dd>
-              </div>
-              <div>
-                <dt className="text-foreground/90 font-medium">My role</dt>
-                <dd>
-                  I am publicly credited as Videographer on the{" "}
-                  <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-foreground">
-                    official IMAGINE feature
-                  </a>
-                  . I developed the motion approach and filmed the piece.
-                </dd>
               </div>
             </dl>
           </motion.div>
@@ -460,32 +442,8 @@ const ProjectDetail = () => {
                   <dt className="text-foreground/90 font-medium">Support</dt>
                   <dd>Tripod</dd>
                 </div>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Frame</dt>
-                  <dd>Published master 1280 × 960 pixels, 4:3</dd>
-                </div>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Key light</dt>
-                  <dd>One lighting fixture</dd>
-                </div>
-                <div className="grid grid-cols-[140px_1fr] gap-4">
-                  <dt className="text-foreground/90 font-medium">Fill</dt>
-                  <dd>A large window softened with frost</dd>
-                </div>
               </dl>
 
-              <p className="font-body text-sm md:text-[15px] text-foreground/70 leading-[1.7]">
-                The official IMAGINE page hosts a 30.88-second 4:3 master. The collaboration was published on{" "}
-                <a
-                  href="https://www.instagram.com/dylanbachelet_/p/DKrXH7VoBXZ/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-4 hover:text-foreground"
-                >
-                  9 June 2025
-                </a>
-                . Its quick changes of scale, pose and colour let the film sit beside the written interview and Bartek's stills without trying to explain the same material again.
-              </p>
             </div>
           </motion.div>
         </div>
