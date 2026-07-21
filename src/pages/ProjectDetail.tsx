@@ -708,7 +708,7 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      <SiteFooter />
+      <SiteFooter hideCta />
     </div>
   );
 };
