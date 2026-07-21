@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import kotexCover from "@/assets/kotex-cover.png";
 import bofCover from "@/assets/bof-500-cover.png";
@@ -63,8 +63,20 @@ const getThumbnail = (project: Project) => {
 };
 
 const SelectedWorks = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filterParam = searchParams.get("filter");
+  const initialFilter = filters.find((f) => f.toLowerCase() === (filterParam ?? "").toLowerCase()) ?? "All";
+  const [activeFilter, setActiveFilter] = useState(initialFilter);
   const navigate = useNavigate();
+
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    if (filter === "All") {
+      setSearchParams({}, { replace: true });
+    } else {
+      setSearchParams({ filter }, { replace: true });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -80,7 +92,7 @@ const SelectedWorks = () => {
           {filters.map((filter) => (
             <button
               key={filter}
-              onClick={() => setActiveFilter(filter)}
+              onClick={() => handleFilterChange(filter)}
               className={`font-body text-xs md:text-sm uppercase tracking-[0.15em] px-5 py-2.5 rounded-full border transition-all duration-300 ${
                 activeFilter === filter
                   ? "border-foreground/60 text-foreground bg-foreground/10"

@@ -697,7 +697,7 @@ const ProjectDetail = () => {
                   Discuss a project
                 </a>
                 <Link
-                  to="/work"
+                  to="/work?filter=Fashion"
                   className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.14em] uppercase px-5 py-3 border border-foreground/20 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors"
                 >
                   View related work — Fashion &amp; Culture
