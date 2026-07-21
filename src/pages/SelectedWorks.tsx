@@ -92,7 +92,7 @@ const SelectedWorks = () => {
           {filters.map((filter) => (
             <button
               key={filter}
-              onClick={() => setActiveFilter(filter)}
+              onClick={() => handleFilterChange(filter)}
               className={`font-body text-xs md:text-sm uppercase tracking-[0.15em] px-5 py-2.5 rounded-full border transition-all duration-300 ${
                 activeFilter === filter
                   ? "border-foreground/60 text-foreground bg-foreground/10"
