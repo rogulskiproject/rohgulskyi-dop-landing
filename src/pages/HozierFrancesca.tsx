@@ -321,8 +321,9 @@ const HozierFrancesca = () => {
 
             <motion.aside
               {...anim}
-              className="mt-8 border border-border bg-card p-5 md:p-6"
+              className="mt-8 border border-foreground/15 border-l-2 border-l-foreground bg-secondary p-5 md:p-6 relative"
             >
+              <Quote className="absolute top-5 right-5 w-5 h-5 text-foreground/20" />
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-muted/60 border border-border font-body text-[11px] tracking-[0.06em] text-foreground/50">
                   AB
@@ -332,23 +333,26 @@ const HozierFrancesca = () => {
                     href="https://www.instagram.com/p/CyGbtBKt7cw/?img_index=2"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-body text-sm text-foreground/85 hover:text-foreground transition-colors"
+                    className="font-body text-sm text-foreground/90 hover:text-foreground transition-colors"
                   >
                     @antobyrne75
                   </a>
-                  <p className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/35 mt-1">
-                    Instagram
-                  </p>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <Instagram className="w-3 h-3 text-foreground/35" />
+                    <p className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/35">
+                      Instagram
+                    </p>
+                  </div>
                 </div>
               </div>
-              <blockquote className="mt-5 font-body text-[15px] text-foreground/85 leading-[1.7]">
+              <blockquote className="mt-5 font-body text-[15px] text-foreground/90 leading-[1.7]">
                 "Bohdan Rohulskyi is a very talented Ukrainian camera operator
                 who has a great eye. Always paying attention and always adding
                 value. I was very lucky to have hugely talented camera operators
                 on this."
               </blockquote>
               <p className="mt-4 font-body text-[11px] tracking-[0.08em] uppercase text-foreground/40">
-                — Anthony Byrne, director, on Instagram
+                — Anthony Byrne, director
               </p>
             </motion.aside>
           </MediaBlock>
