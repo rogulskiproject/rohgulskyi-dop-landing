@@ -316,7 +316,7 @@ const HozierFrancesca = () => {
           >
             <span className="block font-body text-[13px] text-foreground/60 leading-[1.7]">
               Five RED cameras running at once — coverage coordinated in real
-              time rather than to a fixed shot list.
+              time as the scene unfolded.
             </span>
 
             <motion.aside
@@ -421,8 +421,8 @@ const HozierFrancesca = () => {
               around one emotional beat, a handheld move that lives inside the
               scene reads differently to a locked-off or planned camera watching
               from outside it. It gave that particular set-up presence rather
-              than polish — closer to how the moment actually felt than to how
-              it might have been storyboarded. That contrast, not any single
+              than polish — closer to how the moment actually felt than to a
+              polished, pre-planned frame. That contrast, not any single
               technical choice, is what Anthony was responding to on the radio.
             </P>
             <P>
@@ -437,7 +437,7 @@ const HozierFrancesca = () => {
               This was a proper multi-camera music video shoot: five RED
               cameras, a full lighting and grip department, and three camera
               operators working alongside DP Ilya Maksymenko, coordinating in
-              real time rather than to a fixed shot list. On a set that size, an
+              real time as the performance unfolded. On a set that size, an
               operator's job isn't only to execute a frame — it's to know when to
               hold a plan and when a director is actually asking for a point of
               view.
