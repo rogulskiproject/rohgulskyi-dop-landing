@@ -283,7 +283,7 @@ const HozierFrancesca = () => {
       {/* Body */}
       <article className="border-t border-border">
         <div className="container py-16 md:py-24 space-y-16 md:space-y-24">
-          <div className="max-w-[780px] space-y-6">
+          <div className="max-w-[780px] mx-auto space-y-6">
             <P>
               I had just moved to the UK, and this was my first music video
               since arriving. My English was still shaky, and on a set with five
