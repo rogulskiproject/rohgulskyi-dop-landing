@@ -124,7 +124,7 @@ const H2 = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-/* Editorial two-column section: sticky heading on the left, copy on the right */
+/* Editorial section: heading above the body, text flowing vertically in a long, readable column */
 const Section = ({
   title,
   children,
@@ -134,16 +134,10 @@ const Section = ({
 }) => (
   <motion.section
     {...anim}
-    className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16"
+    className="space-y-6 max-w-[780px]"
   >
-    <div className="lg:col-span-4">
-      <div className="lg:sticky lg:top-32">
-        <H2>{title}</H2>
-      </div>
-    </div>
-    <div className="lg:col-span-7 lg:col-start-6 space-y-6 max-w-[640px]">
-      {children}
-    </div>
+    <H2>{title}</H2>
+    <div className="space-y-6">{children}</div>
   </motion.section>
 );
 
@@ -289,7 +283,7 @@ const HozierFrancesca = () => {
       {/* Body */}
       <article className="border-t border-border">
         <div className="container py-16 md:py-24 space-y-16 md:space-y-24">
-          <Section title="The brief nobody wrote down">
+          <div className="max-w-[780px] space-y-6">
             <P>
               I had just moved to the UK, and this was my first music video
               since arriving. My English was still shaky, and on a set with five
@@ -305,7 +299,7 @@ const HozierFrancesca = () => {
               shot."
             </P>
             <P>I had no idea what to do with that.</P>
-          </Section>
+          </div>
 
           <MediaBlock
             src={bts1.url}
