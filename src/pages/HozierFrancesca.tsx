@@ -450,7 +450,11 @@ const HozierFrancesca = () => {
           </Section>
 
           <Section title="Reflection">
-            <P>A few things I took from that day, beyond the video itself:</P>
+            <P>
+              That distinction — between executing a frame and knowing when a
+              director is asking for a point of view — stayed with me after the
+              shoot. A few things I took from that day, beyond the video itself:
+            </P>
             <ul className="space-y-4 pl-0">
               {[
                 "Technical competence gets you hired. A point of view is what a director like Anthony is actually listening for. Camera handling and set discipline are assumed. What he kept asking me for was a decision.",
