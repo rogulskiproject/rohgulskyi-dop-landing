@@ -119,32 +119,67 @@ const P = ({ children }: { children: React.ReactNode }) => (
 );
 
 const H2 = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight text-foreground">
+  <h2 className="font-display text-xl md:text-[26px] font-semibold tracking-tight text-foreground leading-[1.15]">
     {children}
   </h2>
 );
 
-const Figure = ({
+/* Editorial two-column section: sticky heading on the left, copy on the right */
+const Section = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <motion.section
+    {...anim}
+    className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16"
+  >
+    <div className="lg:col-span-4">
+      <div className="lg:sticky lg:top-32">
+        <H2>{title}</H2>
+      </div>
+    </div>
+    <div className="lg:col-span-7 lg:col-start-6 space-y-6 max-w-[640px]">
+      {children}
+    </div>
+  </motion.section>
+);
+
+/* Full-width media block: frame on the left, its note on the right */
+const MediaBlock = ({
   src,
   alt,
   caption,
+  children,
 }: {
   src: string;
   alt: string;
   caption: string;
+  children?: React.ReactNode;
 }) => (
-  <figure className="my-4">
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      className="w-full aspect-[3/2] object-cover bg-card"
-    />
-    <figcaption className="mt-3 font-body text-[11px] tracking-[0.06em] text-foreground/40">
-      {caption}
+  <motion.figure
+    {...anim}
+    className="grid grid-cols-1 lg:grid-cols-12 gap-y-5 gap-x-10 xl:gap-x-16 items-center"
+  >
+    <div className="lg:col-span-7">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="w-full aspect-[3/2] object-cover bg-card"
+      />
+    </div>
+    <figcaption className="lg:col-span-4 lg:col-start-9 space-y-4">
+      <span className="block font-body text-[11px] tracking-[0.06em] text-foreground/40 leading-relaxed">
+        {caption}
+      </span>
+      {children}
     </figcaption>
-  </figure>
+  </motion.figure>
 );
+
 
 const HozierFrancesca = () => {
   useEffect(() => {
