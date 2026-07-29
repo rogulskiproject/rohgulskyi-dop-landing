@@ -251,24 +251,26 @@ const HozierFrancesca = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="max-w-[800px]"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 gap-x-10 xl:gap-x-16"
         >
-          <p className="font-body text-[10px] md:text-[11px] tracking-[0.14em] uppercase text-foreground/40">
-            Camera Operator — Hozier, "Francesca" (dir. Anthony Byrne) — London,
-            2023
-          </p>
-          <h1 className="mt-5 font-display text-3xl md:text-5xl font-semibold tracking-tight leading-[1.1]">
-            Find Your Own Shot: What I Learned Operating Camera on Hozier's
-            "Francesca"
-          </h1>
-          <p className="mt-5 font-body text-sm text-foreground/50 tracking-[0.04em]">
-            By{" "}
-            <Link to="/about" className="hover:text-foreground transition-colors underline underline-offset-4">
-              Bohdan Rohulskyi
-            </Link>
-          </p>
+          <div className="lg:col-span-7">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.14em] uppercase text-foreground/40">
+              Camera Operator — Hozier, "Francesca" (dir. Anthony Byrne) —
+              London, 2023
+            </p>
+            <h1 className="mt-5 font-display text-3xl md:text-5xl font-semibold tracking-tight leading-[1.1]">
+              Find Your Own Shot: What I Learned Operating Camera on Hozier's
+              "Francesca"
+            </h1>
+            <p className="mt-5 font-body text-sm text-foreground/50 tracking-[0.04em]">
+              By{" "}
+              <Link to="/about" className="hover:text-foreground transition-colors underline underline-offset-4">
+                Bohdan Rohulskyi
+              </Link>
+            </p>
+          </div>
 
-          <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 border-t border-border pt-8">
+          <dl className="lg:col-span-4 lg:col-start-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-x-12 gap-y-6 border-t border-border pt-8 lg:pt-2 lg:border-t-0 lg:border-l lg:pl-10">
             {meta.map((m) => (
               <div key={m.label}>
                 <dt className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
@@ -282,6 +284,7 @@ const HozierFrancesca = () => {
           </dl>
         </motion.div>
       </section>
+
 
       {/* Body */}
       <article className="border-t border-border">
