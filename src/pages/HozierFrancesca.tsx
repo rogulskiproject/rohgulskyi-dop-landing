@@ -124,7 +124,7 @@ const H2 = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-/* Editorial two-column section: sticky heading on the left, copy on the right */
+/* Editorial section: heading above the body, text flowing vertically in a long, readable column */
 const Section = ({
   title,
   children,
@@ -134,16 +134,10 @@ const Section = ({
 }) => (
   <motion.section
     {...anim}
-    className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16"
+    className="space-y-6 max-w-[780px]"
   >
-    <div className="lg:col-span-4">
-      <div className="lg:sticky lg:top-32">
-        <H2>{title}</H2>
-      </div>
-    </div>
-    <div className="lg:col-span-7 lg:col-start-6 space-y-6 max-w-[640px]">
-      {children}
-    </div>
+    <H2>{title}</H2>
+    <div className="space-y-6">{children}</div>
   </motion.section>
 );
 
