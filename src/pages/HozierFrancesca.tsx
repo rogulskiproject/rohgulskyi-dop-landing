@@ -482,18 +482,24 @@ const HozierFrancesca = () => {
                 <H2>Credits</H2>
               </div>
             </div>
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-8">
-              {creditGroups.map((group, gi) => (
-                <ul key={gi} className="space-y-1.5">
-                  {group.items.map((item) => (
-                    <li
-                      key={item}
-                      className="font-body text-[13px] text-foreground/60 leading-relaxed"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+              {creditGroups.map((group) => (
+                <div key={group.title}>
+                  <h3 className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40 mb-4">
+                    {group.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={`${item.role}-${item.name}`}
+                        className="flex items-baseline justify-between gap-4 font-body text-[13px] text-foreground/70 leading-relaxed"
+                      >
+                        <span className="text-foreground/45">{item.role}</span>
+                        <span className="text-right">{item.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </motion.div>
