@@ -290,7 +290,7 @@ const HozierFrancesca = () => {
 
       {/* Body */}
       <article className="border-t border-border">
-        <div className="container py-16 md:py-24 space-y-16 md:space-y-24">
+        <div className="container py-12 md:py-16 lg:py-20 space-y-12 md:space-y-14 lg:space-y-12">
           <Section title="The brief nobody wrote down">
             <P>
               I had just moved to the UK, and this was my first music video
