@@ -134,7 +134,7 @@ const Section = ({
 }) => (
   <motion.section
     {...anim}
-    className="space-y-6 max-w-[780px]"
+    className="space-y-6 max-w-[780px] mx-auto"
   >
     <H2>{title}</H2>
     <div className="space-y-6">{children}</div>
