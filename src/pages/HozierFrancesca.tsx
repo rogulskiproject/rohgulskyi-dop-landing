@@ -456,8 +456,6 @@ const HozierFrancesca = () => {
                 "Technical competence gets you hired. A point of view is what a director like Anthony is actually listening for. Camera handling and set discipline are assumed. What he kept asking me for was a decision.",
                 "\"Find your own shot\" is not the absence of direction — it's a different kind of direction. It only works if you trust yourself enough to commit to an answer.",
                 "The anxiety was real, and it nearly kept me cautious rather than useful. Worrying about getting it wrong is not the same as protecting the work; at a certain point it just gets in the way of it.",
-                "Language wasn't the barrier I thought it was. Once I stopped translating instructions literally and started listening to the music and the scene, the communication that mattered was already there.",
-                "That day changed how I show up on set since. I bring a point of view now rather than waiting to be told exactly where to stand.",
               ].map((item, i) => (
                 <li
                   key={i}
