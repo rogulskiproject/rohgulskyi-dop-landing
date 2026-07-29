@@ -136,7 +136,7 @@ const Section = ({
 }) => (
   <motion.section
     {...anim}
-    className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16"
+    className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16 items-start"
   >
     <div className="lg:col-span-4">
       <div className="lg:sticky lg:top-32">
