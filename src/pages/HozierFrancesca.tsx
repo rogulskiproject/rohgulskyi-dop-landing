@@ -291,7 +291,7 @@ const HozierFrancesca = () => {
       {/* Body */}
       <article className="border-t border-border">
         <div className="container py-12 md:py-16 lg:py-20 space-y-12 md:space-y-14 lg:space-y-12">
-          <Section title="The brief nobody wrote down">
+          <Section title="Find your own shot">
             <P>
               I had just moved to the UK, and this was my first music video
               since arriving. My English was still shaky, and on a set with five
@@ -357,16 +357,9 @@ const HozierFrancesca = () => {
             </motion.aside>
           </MediaBlock>
 
-          <Section title="The brief: what was actually there">
+          <Section title="What guided me">
             <P>
-              There was no shot list I could see, and no storyboard I was
-              handed. What there was: a scene, a piece of music, and a visual
-              reference Anthony had shared for tone and emotional temperature.
-              Above me in the chain of command sat Anthony as director and Ilya
-              Maksymenko as DP, each almost certainly working from their own
-              plan for the wider coverage. My job, as I understood it in the
-              moment, was to read the room — to sense what each set-up needed
-              rather than wait to be told.
+              What guided me was a scene, a piece of music, and a visual reference Anthony had shared for tone and emotional temperature. Above me in the chain of command sat Anthony as director and Ilya Maksymenko as DP, each working from their own plan for the wider coverage. My job, as I understood it in the moment, was to read the room — to sense what each set-up needed rather than wait to be told.
             </P>
             <P>
               With five cameras running at once, my instinct was caution. If I
@@ -376,9 +369,7 @@ const HozierFrancesca = () => {
               completely certain.
             </P>
             <P>
-              It didn't feel like confidence. It felt like walking on a set
-              where I was the only one without the map — and the map, it turned
-              out, wasn't the point.
+              It didn't feel like confidence. It felt like standing in a scene without a fixed reference point to hold onto — and that turned out to be exactly the point.
             </P>
           </Section>
 
