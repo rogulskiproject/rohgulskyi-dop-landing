@@ -136,7 +136,7 @@ const Section = ({
 }) => (
   <motion.section
     {...anim}
-    className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16"
+    className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16 items-start"
   >
     <div className="lg:col-span-4">
       <div className="lg:sticky lg:top-32">
@@ -290,7 +290,7 @@ const HozierFrancesca = () => {
 
       {/* Body */}
       <article className="border-t border-border">
-        <div className="container py-16 md:py-24 space-y-16 md:space-y-24">
+        <div className="container py-12 md:py-16 lg:py-20 space-y-12 md:space-y-14 lg:space-y-12">
           <Section title="The brief nobody wrote down">
             <P>
               I had just moved to the UK, and this was my first music video
@@ -471,7 +471,7 @@ const HozierFrancesca = () => {
           {/* Credits */}
           <motion.div
             {...anim}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 gap-x-10 xl:gap-x-16 border-t border-border pt-12 md:pt-16"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 gap-x-10 xl:gap-x-16 items-start border-t border-border pt-10 md:pt-12"
           >
             <div className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
