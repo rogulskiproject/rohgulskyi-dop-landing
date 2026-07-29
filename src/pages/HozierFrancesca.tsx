@@ -291,7 +291,7 @@ const HozierFrancesca = () => {
       {/* Body */}
       <article className="border-t border-border">
         <div className="container py-12 md:py-16 lg:py-20 space-y-12 md:space-y-14 lg:space-y-12">
-          <Section title="The brief nobody wrote down">
+          <Section title="Find your own shot">
             <P>
               I had just moved to the UK, and this was my first music video
               since arriving. My English was still shaky, and on a set with five
@@ -316,7 +316,7 @@ const HozierFrancesca = () => {
           >
             <span className="block font-body text-[13px] text-foreground/60 leading-[1.7]">
               Five RED cameras running at once — coverage coordinated in real
-              time rather than to a fixed shot list.
+              time as the scene unfolded.
             </span>
 
             <motion.aside
@@ -357,16 +357,9 @@ const HozierFrancesca = () => {
             </motion.aside>
           </MediaBlock>
 
-          <Section title="The brief: what was actually there">
+          <Section title="What guided me">
             <P>
-              There was no shot list I could see, and no storyboard I was
-              handed. What there was: a scene, a piece of music, and a visual
-              reference Anthony had shared for tone and emotional temperature.
-              Above me in the chain of command sat Anthony as director and Ilya
-              Maksymenko as DP, each almost certainly working from their own
-              plan for the wider coverage. My job, as I understood it in the
-              moment, was to read the room — to sense what each set-up needed
-              rather than wait to be told.
+              What guided me was a scene, a piece of music, and a visual reference Anthony had shared for tone and emotional temperature. Above me in the chain of command sat Anthony as director and Ilya Maksymenko as DP, each working from their own plan for the wider coverage. My job, as I understood it in the moment, was to read the room — to sense what each set-up needed rather than wait to be told.
             </P>
             <P>
               With five cameras running at once, my instinct was caution. If I
@@ -376,9 +369,7 @@ const HozierFrancesca = () => {
               completely certain.
             </P>
             <P>
-              It didn't feel like confidence. It felt like walking on a set
-              where I was the only one without the map — and the map, it turned
-              out, wasn't the point.
+              It didn't feel like confidence. It felt like standing in a scene without a fixed reference point to hold onto — and that turned out to be exactly the point.
             </P>
           </Section>
 
@@ -430,8 +421,8 @@ const HozierFrancesca = () => {
               around one emotional beat, a handheld move that lives inside the
               scene reads differently to a locked-off or planned camera watching
               from outside it. It gave that particular set-up presence rather
-              than polish — closer to how the moment actually felt than to how
-              it might have been storyboarded. That contrast, not any single
+              than polish — closer to how the moment actually felt than to a
+              polished, pre-planned frame. That contrast, not any single
               technical choice, is what Anthony was responding to on the radio.
             </P>
             <P>
@@ -446,7 +437,7 @@ const HozierFrancesca = () => {
               This was a proper multi-camera music video shoot: five RED
               cameras, a full lighting and grip department, and three camera
               operators working alongside DP Ilya Maksymenko, coordinating in
-              real time rather than to a fixed shot list. On a set that size, an
+              real time as the performance unfolded. On a set that size, an
               operator's job isn't only to execute a frame — it's to know when to
               hold a plan and when a director is actually asking for a point of
               view.
