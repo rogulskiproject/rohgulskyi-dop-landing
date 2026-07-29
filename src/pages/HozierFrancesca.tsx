@@ -471,7 +471,7 @@ const HozierFrancesca = () => {
           {/* Credits */}
           <motion.div
             {...anim}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 gap-x-10 xl:gap-x-16 border-t border-border pt-12 md:pt-16"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 gap-x-10 xl:gap-x-16 items-start border-t border-border pt-10 md:pt-12"
           >
             <div className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
