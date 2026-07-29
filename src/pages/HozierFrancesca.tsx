@@ -357,12 +357,6 @@ const HozierFrancesca = () => {
             </motion.aside>
           </MediaBlock>
 
-          <Section title="What guided me">
-            <P>
-              What guided me was a scene, a piece of music, and a visual reference Anthony had shared for tone and emotional temperature. Above me in the chain of command sat Anthony as director and Ilya Maksymenko as DP, each working from their own plan for the wider coverage. My job, as I understood it in the moment, was to read the room — to sense what each set-up needed rather than wait to be told.
-            </P>
-            <P>
-              With five cameras running at once, my instinct was caution. If I
               moved somewhere, I might drift into someone else's frame or step
               on a plan I couldn't see. So I stayed careful, watching for cues,
               trying not to be a problem on a set where everyone else looked
