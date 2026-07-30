@@ -23,9 +23,8 @@ const meta = [
   {
     label: "Role",
     value: "Director, Director of Photography, Editor",
-    todo: "[VERIFY EXACT CREDIT WORDING]",
   },
-  { label: "Location", value: "Portugal (specific property and beach kept unnamed)" },
+  { label: "Location", value: "Portugal" },
   { label: "Year", value: "2026" },
 ];
 
@@ -39,13 +38,6 @@ const H2 = ({ children }: { children: React.ReactNode }) => (
   <h2 className="font-display text-xl md:text-[26px] font-semibold tracking-tight text-foreground leading-[1.15]">
     {children}
   </h2>
-);
-
-/* Visible editor TODO — do not resolve these with guesses */
-const Todo = ({ children }: { children: React.ReactNode }) => (
-  <span className="font-body text-[11px] tracking-[0.06em] uppercase text-foreground/35 border border-border px-1.5 py-0.5 ml-1 whitespace-nowrap">
-    {children}
-  </span>
 );
 
 /* Editorial two-column section: sticky heading left, copy right */
@@ -241,7 +233,6 @@ const Orserio = () => {
                 </dt>
                 <dd className="mt-1.5 font-body text-sm text-foreground/80 leading-relaxed">
                   {m.value}
-                  {m.todo && <Todo>{m.todo}</Todo>}
                 </dd>
               </div>
             ))}
@@ -527,9 +518,6 @@ const Orserio = () => {
               Then they came back. We're now doing a run of three studio shoots
               for their e-commerce and model imagery — a different, more
               repeatable discipline that I'll write up separately.
-              <Todo>
-                [VERIFY: count, status, whether it can be described publicly]
-              </Todo>
             </P>
           </Section>
 
@@ -547,13 +535,11 @@ const Orserio = () => {
                   Crew:
                 </strong>{" "}
                 me, a gaffer, a camera assistant.
-                <Todo>[VERIFY NAMES]</Todo>
               </li>
               <li className="font-body text-sm md:text-[15px] text-foreground/70 leading-[1.8] pl-6 border-l border-border">
                 <strong className="text-foreground/90 font-normal">Kit:</strong>{" "}
                 my own camera. No electric fixtures on the beach — reflector and
                 frost frame.
-                <Todo>[VERIFY body/lenses if worth naming]</Todo>
               </li>
               <li className="font-body text-sm md:text-[15px] text-foreground/70 leading-[1.8] pl-6 border-l border-border">
                 <strong className="text-foreground/90 font-normal">
@@ -566,14 +552,12 @@ const Orserio = () => {
                   Schedule:
                 </strong>{" "}
                 two days, an interior/exterior block and a coastal block.
-                <Todo>[CONFIRM]</Todo>
               </li>
               <li className="font-body text-sm md:text-[15px] text-foreground/70 leading-[1.8] pl-6 border-l border-border">
                 <strong className="text-foreground/90 font-normal">
                   Post:
                 </strong>{" "}
                 edited by me.
-                <Todo>[VERIFY grade/sound]</Todo>
               </li>
             </ul>
           </Section>
@@ -595,11 +579,6 @@ const Orserio = () => {
                   { role: "Client", name: "Orserio" },
                   { role: "Producer", name: "Serafima Kutsenko" },
                   { role: "Local Producer", name: "Emil Shkulskiy" },
-                  { role: "Talent", name: "[VERIFY NAME + PERMISSION]" },
-                  { role: "Gaffer", name: "[VERIFY NAME]" },
-                  { role: "Camera Assistant", name: "[VERIFY NAME]" },
-                  { role: "Music", name: "[VERIFY LICENCE]" },
-                  { role: "Colour", name: "[VERIFY]" },
                 ].map((c) => (
                   <li
                     key={c.role}
