@@ -637,32 +637,6 @@ const Orserio = () => {
             </div>
           </motion.section>
 
-          {/* Author bio */}
-          <motion.aside
-            {...anim}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-y-4 gap-x-10 xl:gap-x-16 items-start border-t border-border pt-10 md:pt-12"
-          >
-            <div className="lg:col-span-4">
-              <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/40">
-                About the author
-              </span>
-            </div>
-            <div className="lg:col-span-7 lg:col-start-6 max-w-[640px]">
-              <P>
-                <Link
-                  to="/about"
-                  className="text-foreground/90 underline underline-offset-4 hover:text-foreground transition-colors"
-                >
-                  Bohdan Rohulskyi
-                </Link>{" "}
-                is a London-based cinematographer and Director of Photography
-                working across documentary, sport, fashion, culture and branded
-                films. He develops the concept, shoots and edits — bringing a
-                distinctive visual voice, real human presence and a
-                production-aware approach to work across the UK and Europe.
-              </P>
-            </div>
-          </motion.aside>
         </div>
       </article>
 
