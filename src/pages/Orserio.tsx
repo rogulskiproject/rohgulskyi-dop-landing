@@ -16,8 +16,7 @@ const anim = {
 const meta = [
   {
     label: "Client",
-    value:
-      "Orserio (launched under the name Orserio; developed early under the working name īdos)",
+    value: "Orserio",
   },
   { label: "Category", value: "Brand Storytelling / Fashion & Culture" },
   {
