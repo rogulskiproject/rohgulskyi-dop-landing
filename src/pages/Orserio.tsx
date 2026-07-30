@@ -506,9 +506,11 @@ const Orserio = () => {
 
           {/* Do not name the specific property or beach in caption or alt text */}
           <ImageSlot
-            alt="Crew carrying camera equipment down a coastal path in Portugal"
-            caption="Behind the scenes — carrying gear in to the replacement location. [ADD IMAGE]"
+            videoSrc={climbAsset.url}
+            alt="Crew climbing back up the cliff path after the shoot"
+            caption="Behind the scenes — climbing back up the cliff after wrapping. The beach was hard to reach; everything went in and out on our backs."
           />
+
 
           <Section title="What the client got">
             <ul className="space-y-4 pl-0">
