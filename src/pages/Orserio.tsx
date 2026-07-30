@@ -71,17 +71,30 @@ const ImageSlot = ({
   alt,
   caption,
   src,
+  videoSrc,
 }: {
   alt: string;
   caption: string;
   src?: string;
+  videoSrc?: string;
 }) => (
   <motion.figure
     {...anim}
     className="grid grid-cols-1 lg:grid-cols-12 gap-y-5 gap-x-10 xl:gap-x-16 items-center"
   >
     <div className="lg:col-span-7">
-      {src ? (
+      {videoSrc ? (
+        <video
+          src={videoSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-label={alt}
+          className="w-full aspect-[3/2] object-cover bg-card"
+        />
+      ) : src ? (
         <img
           src={src}
           alt={alt}
