@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
 import climbAsset from "@/assets/orserio/orserio-climb.mp4.asset.json";
+import bts2Asset from "@/assets/orserio/orserio-bts-2.mp4.asset.json";
 
 const anim = {
   initial: { opacity: 0, y: 20 },
@@ -511,6 +512,14 @@ const Orserio = () => {
             alt="Crew climbing back up the cliff path after the shoot"
             caption="Behind the scenes — climbing back up the cliff after wrapping. The beach was hard to reach; everything went in and out on our backs."
           />
+
+          <ImageSlot
+            videoSrc={bts2Asset.url}
+            alt="Behind the scenes on the coastal shoot"
+            caption="Behind the scenes — working the coast between setups."
+          />
+
+
 
 
           <Section title="What the client got">
