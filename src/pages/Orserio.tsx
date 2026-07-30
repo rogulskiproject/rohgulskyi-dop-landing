@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
+import climbAsset from "@/assets/orserio/orserio-climb.mp4.asset.json";
 
 const anim = {
   initial: { opacity: 0, y: 20 },
