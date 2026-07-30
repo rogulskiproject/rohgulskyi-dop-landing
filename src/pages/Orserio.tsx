@@ -512,6 +512,14 @@ const Orserio = () => {
             caption="Behind the scenes — climbing back up the cliff after wrapping. The beach was hard to reach; everything went in and out on our backs."
           />
 
+          <ImageSlot
+            videoSrc={bts2Asset.url}
+            alt="Behind the scenes on the coastal shoot"
+            caption="Behind the scenes — working the coast between setups."
+          />
+
+
+
 
           <Section title="What the client got">
             <ul className="space-y-4 pl-0">
