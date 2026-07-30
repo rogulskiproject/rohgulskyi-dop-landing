@@ -5,8 +5,6 @@ import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
-import climbAsset from "@/assets/orserio/orserio-climb.mp4.asset.json";
-import bts2Asset from "@/assets/orserio/orserio-bts-2.mp4.asset.json";
 
 const anim = {
   initial: { opacity: 0, y: 20 },
@@ -73,30 +71,17 @@ const ImageSlot = ({
   alt,
   caption,
   src,
-  videoSrc,
 }: {
   alt: string;
   caption: string;
   src?: string;
-  videoSrc?: string;
 }) => (
   <motion.figure
     {...anim}
     className="grid grid-cols-1 lg:grid-cols-12 gap-y-5 gap-x-10 xl:gap-x-16 items-center"
   >
     <div className="lg:col-span-7">
-      {videoSrc ? (
-        <video
-          src={videoSrc}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label={alt}
-          className="w-full aspect-[3/2] object-cover bg-card"
-        />
-      ) : src ? (
+      {src ? (
         <img
           src={src}
           alt={alt}
@@ -508,19 +493,9 @@ const Orserio = () => {
 
           {/* Do not name the specific property or beach in caption or alt text */}
           <ImageSlot
-            videoSrc={climbAsset.url}
-            alt="Crew climbing back up the cliff path after the shoot"
-            caption="Behind the scenes — climbing back up the cliff after wrapping. The beach was hard to reach; everything went in and out on our backs."
+            alt="Crew carrying camera equipment down a coastal path in Portugal"
+            caption="Behind the scenes — carrying gear in to the replacement location. [ADD IMAGE]"
           />
-
-          <ImageSlot
-            videoSrc={bts2Asset.url}
-            alt="Behind the scenes on the coastal shoot"
-            caption="Behind the scenes — working the coast between setups."
-          />
-
-
-
 
           <Section title="What the client got">
             <ul className="space-y-4 pl-0">
