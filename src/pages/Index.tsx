@@ -13,6 +13,30 @@ const TITLE =
 const DESCRIPTION =
   "London-based cinematographer working across documentary, sport, fashion, culture and branded films. Available for productions across the UK and Europe.";
 
+const PERSON_DESCRIPTION =
+  "Bohdan Rohulskyi is a London-based cinematographer working across documentary, sport, fashion, culture and branded storytelling.";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Bohdan Rohulskyi",
+  jobTitle: ["Cinematographer", "Director of Photography"],
+  description: PERSON_DESCRIPTION,
+  url: `${window.location.origin}/`,
+  sameAs: [
+    "https://www.instagram.com/rogulskiproject/",
+    "https://www.imdb.com/name/nm14191117/",
+    "https://vimeo.com/user135704204",
+    "https://www.linkedin.com/in/bohdan-rohulskyi-aaab43183/",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "London",
+    addressCountry: "GB",
+  },
+  areaServed: "London, United Kingdom, Europe",
+};
+
 const Index = () => {
   useEffect(
     () =>
@@ -30,6 +54,8 @@ const Index = () => {
             content: `${window.location.origin}${cover}`,
           },
         ],
+        jsonLd: personSchema,
+        jsonLdId: "home-person",
       }),
     [],
   );
