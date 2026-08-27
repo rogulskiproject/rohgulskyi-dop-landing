@@ -19,53 +19,53 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-background/50" />
       </div>
 
-      <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center lg:items-center gap-6 lg:gap-10 w-full max-w-7xl mx-auto">
-        {/* Left column — text + CTA (60-65%) */}
-        <div className="flex flex-col gap-0 lg:w-[62%] text-center lg:text-left">
-          {/* Headline — single H1 with semantic subtitle for SEO */}
+      <div
+        className="relative z-10 grid w-full max-w-7xl mx-auto items-center gap-6 lg:gap-10 [grid-template-areas:'visual'_'text'] lg:[grid-template-areas:'text_visual'] [grid-template-columns:1fr] lg:[grid-template-columns:minmax(0,_62%)_minmax(0,_38%)]"
+      >
+        {/* Left column — text + CTA */}
+        <div className="[grid-area:text] flex flex-col gap-0 text-center lg:text-left">
+          {/* Single H1: DOM order is name → role → subtitle, visual order keeps role/subtitle on the left */}
           <motion.h1
             className="font-body uppercase text-foreground leading-tight mb-6 flex flex-col gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
+            <span className="absolute w-px h-px overflow-hidden [clip-path:inset(50%)]">
+              Bohdan Rohulskyi
+            </span>
             <span className="text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-[0.15em] font-semibold">
               Cinematographer
             </span>
             <span className="text-xs tracking-[0.2em] text-foreground/60 font-medium">
-              Documentary, Fashion and Commercial
+              Documentary, Sport, Fashion, Culture and Brands
             </span>
           </motion.h1>
 
-          {/* Text groups with spacing between, tight within */}
           <motion.div
             className="max-w-2xl font-body text-xs md:text-sm lg:text-base leading-relaxed text-foreground/75 font-medium text-left flex flex-col gap-3"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <div className="flex flex-col gap-3">
-              <p>
-                Bohdan Rohulskyi is a London-based cinematograher working across sport, fashion, culture and branded storytelling.
-              </p>
-              <p>
-                With a background in documentary and performance-led work, he creates cinematic imagery rooted in real human presence, textured realism and emotional precision.
-              </p>
-              <p>
-                The result is work that feels immediate and true, while remaining carefully designed.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 mt-3">
-              <p>
-                A strong visual partner for directors. A reliable, production-aware DoP for producers.
-              </p>
-              <p>
-                Own kit. Lean setups. London-based, available across the UK and Europe.
-              </p>
-            </div>
+            <p>
+              Bohdan Rohulskyi is a London-based cinematographer working across documentary, sport, fashion, culture and branded storytelling.
+            </p>
+            <p>
+              With a background in documentary and performance-led work, he creates cinematic imagery rooted in real human presence, textured realism and emotional precision.
+            </p>
+            <p>
+              The result is work that feels immediate and true, while remaining carefully designed.
+            </p>
+            <p>
+              A collaborative visual partner for directors. A prepared, production-aware DoP for producers.
+            </p>
+            <p>
+              London-based, available across the UK and Europe.
+            </p>
           </motion.div>
 
-          {/* CTA buttons — 10-15% larger */}
+          {/* CTA buttons */}
           <motion.div
             className="mt-4 flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0, y: 16 }}
@@ -73,31 +73,29 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.65 }}
           >
             <a
-              href="/book"
+              href="/contact"
               className="inline-flex items-center justify-center px-9 py-[18px] border border-foreground/30 text-foreground font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground hover:text-background transition-colors"
             >
-              Book a Call
+              Discuss a Project
             </a>
             <a
               href="/work"
               className="inline-flex items-center justify-center px-9 py-[18px] bg-foreground text-background font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
             >
-              See My Work
+              View Selected Work
             </a>
           </motion.div>
         </div>
 
-        {/* Right column — name/logo (35-40%), reduced scale */}
-        <div className="lg:w-[38%] flex items-center justify-center">
-          <motion.img
-            src={logoWhite}
-            alt="Bohdan Rohulskyi"
-            className="w-[280px] md:w-[360px] lg:w-full lg:max-w-[500px] max-h-[55vh] object-contain h-auto"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          />
-        </div>
+        {/* Right column — name/logo visual */}
+        <motion.img
+          src={logoWhite}
+          alt="Bohdan Rohulskyi"
+          className="[grid-area:visual] justify-self-center w-[280px] md:w-[360px] lg:w-full lg:max-w-[500px] max-h-[55vh] object-contain h-auto"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        />
       </div>
 
     </section>
