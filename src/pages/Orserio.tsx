@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
@@ -21,7 +21,7 @@ const meta = [
   { label: "Category", value: "Brand Storytelling / Fashion & Culture" },
   {
     label: "Role",
-    value: "Director, Director of Photography, Editor",
+    value: "Director / DoP",
   },
   { label: "Location", value: "Portugal" },
   { label: "Year", value: "2026" },
@@ -330,7 +330,9 @@ const Orserio = () => {
             <P>
               I directed, shot and edited this. On a project this size that
               isn't a budget compromise — it's the mechanism that made the
-              deadline safe.
+              deadline safe. Colour and sound design were mine as well, though
+              those matter less to the argument than the three that shaped the
+              shoot.
             </P>
             <P>
               When concept, camera and cut live in separate people, every stage
@@ -455,6 +457,14 @@ const Orserio = () => {
               wasn't guessing.
             </P>
             <P>
+              The whole thing ran on a Blackmagic Pocket 6K Pro and two lenses — an
+              18–35mm and a 15mm. One week of prep, two days scouting, two days
+              filming, four days of post. Two lenses is a constraint you feel on day
+              one and stop noticing by the afternoon: it removes the pause where
+              someone asks what else we could try, and it makes the coverage decisions
+              in advance rather than on the sand.
+            </P>
+            <P>
               That precision is what keeps a budget honest. When you can say
               exactly what you need and what you don't, you stop paying for
               insurance kit and contingency time. Nothing gets rented "just in
@@ -574,20 +584,49 @@ const Orserio = () => {
             <div className="lg:col-span-8">
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3">
                 {[
-                  { role: "Director, DoP, Editor", name: "Bohdan Rohulskyi" },
-                  { role: "Client", name: "Orserio" },
-                  { role: "Producer", name: "Serafima Kutsenko" },
-                  { role: "Local Producer", name: "Emil Shkulskiy" },
-                ].map((c) => (
-                  <li
-                    key={c.role}
-                    className="flex items-baseline justify-between gap-4 font-body text-[13px] text-foreground/70 leading-relaxed border-b border-border/40 pb-2"
-                  >
-                    <span className="text-foreground/45">{c.role}</span>
-                    <span className="text-right">{c.name}</span>
-                  </li>
-                ))}
+                  "Client: Orserio",
+                  "Director and Director of Photography: Bohdan Rohulskyi",
+                  "Produced by: Serafima Kutsenko",
+                  "Producer: Serafima Kutsenko",
+                  "Producer: Emil Shkulskiy",
+                  "Talent: [VERIFY FULL NAME — Instagram handle @axilevich]",
+                  "Location: Portugal",
+                ].map((c) => {
+                  const [label, value] = c.split(/:\s*/, 2);
+                  return (
+                    <li
+                      key={c}
+                      className="flex items-baseline justify-between gap-4 font-body text-[13px] text-foreground/70 leading-relaxed border-b border-border/40 pb-2"
+                    >
+                      <span className="text-foreground/45">{label}</span>
+                      <span className="text-right">{value}</span>
+                    </li>
+                  );
+                })}
               </ul>
+            </div>
+          </motion.div>
+
+          {/* External reference */}
+          <motion.div
+            {...anim}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16 items-start border-t border-border pt-10 md:pt-12"
+          >
+            <div className="lg:col-span-4">
+              <div className="lg:sticky lg:top-32">
+                <H2>External reference</H2>
+              </div>
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6">
+              <a
+                href="https://www.serafimakutsenko.com/work/orserio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-sm text-foreground/70 hover:text-foreground transition-colors underline underline-offset-4"
+              >
+                Project page — Serafima Kutsenko, producer
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
           </motion.div>
 
