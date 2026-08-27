@@ -1,6 +1,34 @@
+import { useEffect } from "react";
+import cover from "@/assets/alessandro-michele-cover.png";
+import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 
-const AlessandroMicheleBof = () => (
+const AlessandroMicheleBof = () => {
+  useEffect(
+    () =>
+      applySeo({
+        title: "Alessandro Michele, The BoF Podcast — DOP | Bohdan Rohulskyi",
+        description:
+          "A long-form interview film with Alessandro Michele for The Business of Fashion Podcast, lit and framed as a cinematic portrait session.",
+        canonical: "/work/alessandro-michele-bof",
+        meta: [
+          { property: "og:title", content: "Alessandro Michele, The BoF Podcast — DOP | Bohdan Rohulskyi" },
+          {
+            property: "og:description",
+            content: "A long-form interview film with Alessandro Michele for The Business of Fashion Podcast, lit and framed as a cinematic portrait session.",
+          },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/alessandro-michele-bof" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
+  return (
   <ProjectCaseStudy
     project={{
       title: "Alessandro Michele — The BoF Podcast",
@@ -23,6 +51,7 @@ const AlessandroMicheleBof = () => (
         "This project demonstrated that even the most traditional format — the seated interview — can be transformed through intentional cinematography. When the visual approach matches the intellectual depth of the conversation, the result is something that transcends its format.",
     }}
   />
-);
+  );
+};
 
 export default AlessandroMicheleBof;

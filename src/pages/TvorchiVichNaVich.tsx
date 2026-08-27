@@ -1,6 +1,34 @@
+import { useEffect } from "react";
+import cover from "@/assets/tvorchi-cover.png";
+import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 
-const TvorchiVichNaVich = () => (
+const TvorchiVichNaVich = () => {
+  useEffect(
+    () =>
+      applySeo({
+        title: "TVORCHI, Vich-na-Vich — DOP | Bohdan Rohulskyi",
+        description:
+          "A music video for Ukrainian electronic duo TVORCHI, translating the track's tension and release into light, shadow and camera movement.",
+        canonical: "/work/tvorchi-vich-na-vich",
+        meta: [
+          { property: "og:title", content: "TVORCHI, Vich-na-Vich — DOP | Bohdan Rohulskyi" },
+          {
+            property: "og:description",
+            content: "A music video for Ukrainian electronic duo TVORCHI, translating the track's tension and release into light, shadow and camera movement.",
+          },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/tvorchi-vich-na-vich" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
+  return (
   <ProjectCaseStudy
     project={{
       title: "TVORCHI — Віч-на-Віч",
@@ -23,6 +51,7 @@ const TvorchiVichNaVich = () => (
         "Working with TVORCHI on this music video was an opportunity to push the visual language into more expressive territory. The best music video cinematography doesn't just serve the performance — it becomes part of the performance. This project embodies that principle.",
     }}
   />
-);
+  );
+};
 
 export default TvorchiVichNaVich;

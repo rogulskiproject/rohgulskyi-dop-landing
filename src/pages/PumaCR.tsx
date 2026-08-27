@@ -1,6 +1,34 @@
+import { useEffect } from "react";
+import cover from "@/assets/puma-cr-cover.jpg";
+import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 
-const PumaCR = () => (
+const PumaCR = () => {
+  useEffect(
+    () =>
+      applySeo({
+        title: "Puma CR — DOP / Director | Bohdan Rohulskyi",
+        description:
+          "A character-driven PUMA brand film built around real athletic stories, shot closer to documentary than traditional advertising.",
+        canonical: "/work/puma-cr",
+        meta: [
+          { property: "og:title", content: "Puma CR — DOP / Director | Bohdan Rohulskyi" },
+          {
+            property: "og:description",
+            content: "A character-driven PUMA brand film built around real athletic stories, shot closer to documentary than traditional advertising.",
+          },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/puma-cr" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
+  return (
   <ProjectCaseStudy
     project={{
       title: "Puma CR",
@@ -23,6 +51,7 @@ const PumaCR = () => (
         "This collaboration with PUMA reinforced the value of restraint in commercial filmmaking. When you trust the subject and the environment, the brand story tells itself — and the audience responds to that honesty.",
     }}
   />
-);
+  );
+};
 
 export default PumaCR;
