@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import kotexCover from "@/assets/kotex-cover.png";
@@ -16,6 +16,7 @@ import chernayaCover from "@/assets/chernaya-cover.jpg";
 import alessandroCover from "@/assets/alessandro-michele-cover.png";
 import vogueMexicoCover from "@/assets/vogue-mexico-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
+import { applySeo } from "@/lib/seo";
 
 interface Project {
   title: string;
