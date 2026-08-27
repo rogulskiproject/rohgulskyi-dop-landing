@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
@@ -584,19 +584,25 @@ const Orserio = () => {
             <div className="lg:col-span-8">
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3">
                 {[
-                  { role: "Director, DoP, Editor", name: "Bohdan Rohulskyi" },
-                  { role: "Client", name: "Orserio" },
-                  { role: "Producer", name: "Serafima Kutsenko" },
-                  { role: "Local Producer", name: "Emil Shkulskiy" },
-                ].map((c) => (
-                  <li
-                    key={c.role}
-                    className="flex items-baseline justify-between gap-4 font-body text-[13px] text-foreground/70 leading-relaxed border-b border-border/40 pb-2"
-                  >
-                    <span className="text-foreground/45">{c.role}</span>
-                    <span className="text-right">{c.name}</span>
-                  </li>
-                ))}
+                  "Client: Orserio",
+                  "Director and Director of Photography: Bohdan Rohulskyi",
+                  "Produced by: Serafima Kutsenko",
+                  "Producer: Serafima Kutsenko",
+                  "Producer: Emil Shkulskiy",
+                  "Talent: [VERIFY FULL NAME — Instagram handle @axilevich]",
+                  "Location: Portugal",
+                ].map((c) => {
+                  const [label, value] = c.split(/:\s*/, 2);
+                  return (
+                    <li
+                      key={c}
+                      className="flex items-baseline justify-between gap-4 font-body text-[13px] text-foreground/70 leading-relaxed border-b border-border/40 pb-2"
+                    >
+                      <span className="text-foreground/45">{label}</span>
+                      <span className="text-right">{value}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </motion.div>
