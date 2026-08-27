@@ -14,12 +14,12 @@ const SiteFooter = ({ hideCta = false }: { hideCta?: boolean }) => {
               If you're a brand, agency or producer looking for a cinematographer and hybrid director-operator in London — for commercial video production, documentary-style brand films or cinematic campaign work — get in touch.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="/book"
+              <Link
+                to="/contact"
                 className="inline-flex items-center justify-center px-6 py-3 bg-foreground text-background font-body text-[11px] font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
               >
-                Book a call
-              </a>
+                Discuss a project
+              </Link>
               <Link
                 to="/work"
                 className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/60 hover:text-foreground transition-colors"

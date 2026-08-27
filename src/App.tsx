@@ -23,6 +23,7 @@ import KotexArtsMissingPeriod from "./pages/KotexArtsMissingPeriod.tsx";
 import MooveFire from "./pages/MooveFire.tsx";
 import VogueMexico from "./pages/VogueMexico.tsx";
 import About from "./pages/About.tsx";
+import Contact from "./pages/Contact.tsx";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/work" element={<SelectedWorks />} />
           <Route path="/work/dylan-bachelet" element={<ProjectDetail />} />
           <Route path="/work/yaroslava-mohushih" element={<YaroslavaMohushih />} />
