@@ -4,11 +4,38 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { applySeo } from "@/lib/seo";
+import cover from "@/assets/moove-fire-cover.jpg";
+
+const TITLE = "Moove — Fire — [VERIFY] | Bohdan Rohulskyi";
+const DESCRIPTION =
+  "A music video for Moove's \"Fire\", filmed in Kyiv before the war in Ukraine — translating the song's raw energy into metaphorical imagery.";
 
 const MooveFire = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(
+    () =>
+      applySeo({
+        title: TITLE,
+        description: DESCRIPTION,
+        canonical: "/work/moove-fire",
+        meta: [
+          { property: "og:title", content: TITLE },
+          { property: "og:description", content: DESCRIPTION },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/moove-fire" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
 
   return (
     <div className="min-h-screen bg-background text-foreground">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
 import kotexCover from "@/assets/kotex-cover.png";
@@ -16,6 +16,7 @@ import chernayaCover from "@/assets/chernaya-cover.jpg";
 import alessandroCover from "@/assets/alessandro-michele-cover.png";
 import vogueMexicoCover from "@/assets/vogue-mexico-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
+import { applySeo } from "@/lib/seo";
 
 interface Project {
   title: string;
@@ -62,12 +63,38 @@ const getThumbnail = (project: Project) => {
   return "/placeholder.svg";
 };
 
+const SEO_TITLE =
+  "Selected Work — Cinematographer & Director of Photography | Bohdan Rohulskyi";
+const SEO_DESCRIPTION =
+  "Selected documentary, commercial, music video and fashion work by Bohdan Rohulskyi, including projects for PUMA, The Business of Fashion, Vogue Mexico and Sail GP.";
+
 const SelectedWorks = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const filterParam = searchParams.get("filter");
   const initialFilter = filters.find((f) => f.toLowerCase() === (filterParam ?? "").toLowerCase()) ?? "All";
   const [activeFilter, setActiveFilter] = useState(initialFilter);
   const navigate = useNavigate();
+
+  useEffect(
+    () =>
+      applySeo({
+        title: SEO_TITLE,
+        description: SEO_DESCRIPTION,
+        canonical: "/work",
+        meta: [
+          { property: "og:title", content: SEO_TITLE },
+          { property: "og:description", content: SEO_DESCRIPTION },
+          { property: "og:type", content: "website" },
+          { property: "og:url", content: "/work" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${dylanCover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
 
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter);

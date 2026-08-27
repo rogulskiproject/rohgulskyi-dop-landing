@@ -1,6 +1,34 @@
+import { useEffect } from "react";
+import cover from "@/assets/bof-500-cover.png";
+import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 
-const BoF500 = () => (
+const BoF500 = () => {
+  useEffect(
+    () =>
+      applySeo({
+        title: "The Best of BoF 500 2023 — DOP | Bohdan Rohulskyi",
+        description:
+          "A highlight film capturing the atmosphere, conversations and defining moments of The Business of Fashion's annual BoF 500 gala.",
+        canonical: "/work/bof-500-2023",
+        meta: [
+          { property: "og:title", content: "The Best of BoF 500 2023 — DOP | Bohdan Rohulskyi" },
+          {
+            property: "og:description",
+            content: "A highlight film capturing the atmosphere, conversations and defining moments of The Business of Fashion's annual BoF 500 gala.",
+          },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/bof-500-2023" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
+  return (
   <ProjectCaseStudy
     project={{
       title: "The Best of BoF 500 2023",
@@ -24,6 +52,7 @@ const BoF500 = () => (
         "Working with The Business of Fashion on the BoF 500 recap underscored the importance of editorial sensibility in event filmmaking. The goal isn't to document everything — it's to distil the feeling. This project is a clear example of how a documentary DOP's eye can elevate commercial event content.",
     }}
   />
-);
+  );
+};
 
 export default BoF500;

@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { applySeo } from "@/lib/seo";
+import cover from "@/assets/vogue-mexico-cover.jpg";
 
 const sectionAnim = {
   initial: { opacity: 0, y: 20 },
@@ -12,10 +14,36 @@ const sectionAnim = {
   transition: { duration: 0.6 },
 };
 
+const TITLE =
+  "Vogue Mexico — Director / Director of Photography | Bohdan Rohulskyi";
+const DESCRIPTION =
+  "A documentary film for Vogue Mexico, directed and shot by Bohdan Rohulskyi.";
+
 const VogueMexico = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(
+    () =>
+      applySeo({
+        title: TITLE,
+        description: DESCRIPTION,
+        canonical: "/work/vogue-mexico",
+        meta: [
+          { property: "og:title", content: TITLE },
+          { property: "og:description", content: DESCRIPTION },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/vogue-mexico" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
 
   return (
     <div className="min-h-screen bg-background text-foreground">

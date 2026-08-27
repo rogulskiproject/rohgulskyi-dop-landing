@@ -1,6 +1,34 @@
+import { useEffect } from "react";
+import cover from "@/assets/chernaya-cover.jpg";
+import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 
-const ChernayaRamiKallas = () => (
+const ChernayaRamiKallas = () => {
+  useEffect(
+    () =>
+      applySeo({
+        title: "Chernaya, Rami Kallas — Director | Bohdan Rohulskyi",
+        description:
+          "A music video for Rami Kallas' track 'Chernaya' — a layered piece built on atmosphere, expressive lighting and movement, directed by Bohdan Rohulskyi.",
+        canonical: "/work/chernaya-rami-kallas",
+        meta: [
+          { property: "og:title", content: "Chernaya, Rami Kallas — Director | Bohdan Rohulskyi" },
+          {
+            property: "og:description",
+            content: "A music video for Rami Kallas' track 'Chernaya' — a layered piece built on atmosphere, expressive lighting and movement, directed by Bohdan Rohulskyi.",
+          },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/chernaya-rami-kallas" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
+  return (
   <ProjectCaseStudy
     project={{
       title: "Chernaya — Rami Kallas",
@@ -23,6 +51,7 @@ const ChernayaRamiKallas = () => (
         "Directing 'Chernaya' was an exercise in visual storytelling at its most instinctive. The best music videos don't explain the song — they expand it. This project aimed to do exactly that, creating a visual experience that lives alongside the music rather than beneath it.",
     }}
   />
-);
+  );
+};
 
 export default ChernayaRamiKallas;

@@ -1,6 +1,34 @@
+import { useEffect } from "react";
+import cover from "@/assets/puma-fit-23-cover.jpg";
+import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 
-const PumaFit23 = () => (
+const PumaFit23 = () => {
+  useEffect(
+    () =>
+      applySeo({
+        title: "PUMA FIT 23 — DOP / Director | Bohdan Rohulskyi",
+        description:
+          "A high-energy commercial campaign for PUMA's FIT 23 line, blending athletic performance with cinematic storytelling. Shot and directed by Bohdan Rohulskyi.",
+        canonical: "/work/puma-fit-23",
+        meta: [
+          { property: "og:title", content: "PUMA FIT 23 — DOP / Director | Bohdan Rohulskyi" },
+          {
+            property: "og:description",
+            content: "A high-energy commercial campaign for PUMA's FIT 23 line, blending athletic performance with cinematic storytelling. Shot and directed by Bohdan Rohulskyi.",
+          },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/puma-fit-23" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
+  return (
   <ProjectCaseStudy
     project={{
       title: "PUMA FIT 23",
@@ -24,6 +52,7 @@ const PumaFit23 = () => (
         "This project demonstrated that commercial sport content doesn't need to sacrifice visual depth for energy. By treating each frame with the same intention as a narrative film, the result feels both commercially effective and cinematically compelling.",
     }}
   />
-);
+  );
+};
 
 export default PumaFit23;
