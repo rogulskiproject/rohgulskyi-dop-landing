@@ -607,6 +607,29 @@ const Orserio = () => {
             </div>
           </motion.div>
 
+          {/* External reference */}
+          <motion.div
+            {...anim}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16 items-start border-t border-border pt-10 md:pt-12"
+          >
+            <div className="lg:col-span-4">
+              <div className="lg:sticky lg:top-32">
+                <H2>External reference</H2>
+              </div>
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6">
+              <a
+                href="https://www.serafimakutsenko.com/work/orserio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-sm text-foreground/70 hover:text-foreground transition-colors underline underline-offset-4"
+              >
+                Project page — Serafima Kutsenko, producer
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </motion.div>
+
           {/* Work with Bohdan */}
           <motion.section
             {...anim}
