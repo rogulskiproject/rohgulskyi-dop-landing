@@ -5,7 +5,7 @@ import logoBR from "@/assets/logo-br-white.png";
 const navItems = [
   { label: "About", href: "/about" },
   { label: "Work", href: "/work" },
-  
+  { label: "Contact", href: "/contact" },
 ];
 
 const SCROLL_THRESHOLD = 8;

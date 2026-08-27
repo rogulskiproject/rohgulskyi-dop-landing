@@ -134,10 +134,10 @@ const About = () => {
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/book"
+                  to="/contact"
                   className="inline-flex items-center justify-center px-9 py-[18px] bg-foreground text-background font-body text-xs font-medium tracking-[0.15em] uppercase hover:bg-foreground/90 transition-colors"
                 >
-                  Book a Call
+                  Discuss a Project
                 </Link>
                 <Link
                   to="/work"
