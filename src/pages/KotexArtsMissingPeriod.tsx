@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import cover from "@/assets/kotex-cover.png";
+import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 
 const project = {
@@ -22,6 +25,32 @@ const project = {
     "This project was a meaningful exploration of how documentary filmmaking can challenge cultural norms. Contributing B-roll footage to a story about visibility and representation reinforced the power of cinema as a tool for social conversation.",
 };
 
-const KotexArtsMissingPeriod = () => <ProjectCaseStudy project={project} />;
+const KotexArtsMissingPeriod = () => {
+  useEffect(
+    () =>
+      applySeo({
+        title: "Kotex: Art's Missing Period — B-Roll Camera Operator | Bohdan Rohulskyi",
+        description:
+          "A documentary uncovering the long history of censorship around menstruation in art. Bohdan Rohulskyi shot B-roll across artworks and gallery spaces.",
+        canonical: "/work/kotex-arts-missing-period",
+        meta: [
+          { property: "og:title", content: "Kotex: Art's Missing Period — B-Roll Camera Operator | Bohdan Rohulskyi" },
+          {
+            property: "og:description",
+            content: "A documentary uncovering the long history of censorship around menstruation in art. Bohdan Rohulskyi shot B-roll across artworks and gallery spaces.",
+          },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: "/work/kotex-arts-missing-period" },
+          {
+            property: "og:image",
+            content: `${window.location.origin}${cover}`,
+          },
+        ],
+      }),
+    [],
+  );
+
+  return <ProjectCaseStudy project={project} />;
+};
 
 export default KotexArtsMissingPeriod;
