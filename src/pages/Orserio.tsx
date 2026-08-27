@@ -21,7 +21,7 @@ const meta = [
   { label: "Category", value: "Brand Storytelling / Fashion & Culture" },
   {
     label: "Role",
-    value: "Director, Director of Photography, Editor",
+    value: "Director / DoP",
   },
   { label: "Location", value: "Portugal" },
   { label: "Year", value: "2026" },
@@ -330,7 +330,9 @@ const Orserio = () => {
             <P>
               I directed, shot and edited this. On a project this size that
               isn't a budget compromise — it's the mechanism that made the
-              deadline safe.
+              deadline safe. Colour and sound design were mine as well, though
+              those matter less to the argument than the three that shaped the
+              shoot.
             </P>
             <P>
               When concept, camera and cut live in separate people, every stage
