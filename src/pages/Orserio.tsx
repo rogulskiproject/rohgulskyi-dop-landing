@@ -457,6 +457,14 @@ const Orserio = () => {
               wasn't guessing.
             </P>
             <P>
+              The whole thing ran on a Blackmagic Pocket 6K Pro and two lenses — an
+              18–35mm and a 15mm. One week of prep, two days scouting, two days
+              filming, four days of post. Two lenses is a constraint you feel on day
+              one and stop noticing by the afternoon: it removes the pause where
+              someone asks what else we could try, and it makes the coverage decisions
+              in advance rather than on the sand.
+            </P>
+            <P>
               That precision is what keeps a budget honest. When you can say
               exactly what you need and what you don't, you stop paying for
               insurance kit and contingency time. Nothing gets rented "just in
