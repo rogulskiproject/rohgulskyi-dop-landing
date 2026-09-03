@@ -12,9 +12,15 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Bohdan Rohulskyi",
-  jobTitle: "Director of Photography",
+  jobTitle: ["Cinematographer", "Director of Photography"],
+  sameAs: [
+    "https://www.instagram.com/rogulskiproject/",
+    "https://www.imdb.com/name/nm14191117/",
+    "https://vimeo.com/user135704204",
+    "https://www.linkedin.com/in/bohdan-rohulskyi-aaab43183/",
+  ],
   description:
-    "London-based Director of Photography and filmmaker working across sport, fashion, music video, documentary and commercial films.",
+    "London-based cinematographer working across documentary, sport, fashion, culture and branded storytelling.",
   url: PAGE_URL,
   email: "mailto:rogulskiproject@gmail.com",
   address: {
@@ -58,8 +64,8 @@ const personSchema = {
     {
       "@type": "MusicVideo",
       name: "Rami Kallas — Black",
-      creditText: "Director",
-      award: "Berlin Music Video Awards nomination — Best Low Budget",
+      creditText:
+        "Director — Berlin Music Video Awards nomination, Best Low Budget",
     },
   ],
 };
@@ -67,25 +73,25 @@ const personSchema = {
 const About = () => {
   useEffect(() => {
     return applySeo({
-      title: "Bohdan Rohulskyi | London Cinematographer & Filmmaker",
+      title: "About Bohdan Rohulskyi | London Cinematographer",
       description:
-        "London-based Director of Photography and filmmaker working across sport, fashion, music video, documentary and commercial films.",
+        "London-based cinematographer working across documentary, sport, fashion, culture and branded storytelling.",
       canonical: PAGE_URL,
       meta: [
-        { property: "og:title", content: "Bohdan Rohulskyi | London Cinematographer & Filmmaker" },
+        { property: "og:title", content: "About Bohdan Rohulskyi | London Cinematographer" },
         {
           property: "og:description",
           content:
-            "London-based Director of Photography and filmmaker working across sport, fashion, music video, documentary and commercial films.",
+            "London-based cinematographer working across documentary, sport, fashion, culture and branded storytelling.",
         },
         { property: "og:type", content: "profile" },
         { property: "og:url", content: PAGE_URL },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Bohdan Rohulskyi | London Cinematographer & Filmmaker" },
+        { name: "twitter:title", content: "About Bohdan Rohulskyi | London Cinematographer" },
         {
           name: "twitter:description",
           content:
-            "London-based Director of Photography and filmmaker working across sport, fashion, music video, documentary and commercial films.",
+            "London-based cinematographer working across documentary, sport, fashion, culture and branded storytelling.",
         },
       ],
       jsonLd: personSchema,
@@ -110,12 +116,12 @@ const About = () => {
                 About
               </p>
               <h1 className="font-display text-4xl md:text-6xl font-semibold tracking-tight text-foreground leading-[1.05]">
-                London Cinematographer and Filmmaker
+                London Cinematographer and Director of Photography
               </h1>
               <div className="mt-10 space-y-5 font-body text-base md:text-lg leading-relaxed text-foreground/80 max-w-3xl">
                 <p>
                   Bohdan Rohulskyi is a London-based cinematographer working
-                  across sport, fashion, music video, documentary and branded
+                  across documentary, sport, fashion, culture and branded
                   films.
                 </p>
                 <p>
@@ -159,7 +165,7 @@ const About = () => {
             <div className="mt-8 space-y-5 font-body text-base leading-relaxed text-foreground/75 max-w-3xl">
               <p>
                 Bohdan&rsquo;s work is rooted in naturalistic cinematography:
-                controlled realism, physical movement and emotionally precise
+                textured realism, physical movement and emotionally precise
                 framing.
               </p>
               <p>
@@ -208,7 +214,7 @@ const About = () => {
                 As Camera Operator, Bohdan also worked on{" "}
                 <em>Hozier &mdash; &ldquo;Francesca&rdquo;</em>, directed by
                 Anthony Byrne. The official video reached more than 6.2 million
-                views.
+                views (as of 2026).
               </p>
               <blockquote className="mt-8 border-l-2 border-foreground/30 pl-6 italic text-foreground/85 font-body text-lg leading-relaxed">
                 &ldquo;A very talented young Ukrainian camera operator who has
@@ -242,17 +248,17 @@ const About = () => {
                 &ldquo;Dance on the Beat,&rdquo; &ldquo;Electrify,&rdquo;
                 &ldquo;Loco,&rdquo; &ldquo;Troublemaker,&rdquo;
                 &ldquo;Code&rdquo; and &ldquo;Alive.&rdquo; Together, these
-                videos reached more than 2.9 million views on YouTube.
+                videos reached more than 2.9 million views on YouTube (as of 2026).
               </p>
               <p>
                 He also worked as Director of Photography on{" "}
                 <em>TVORCHI &mdash; &ldquo;Віч-на-Віч&rdquo;</em>, which
-                reached approximately 1.1 million views.
+                reached approximately 1.1 million views (as of 2026).
               </p>
               <p>
                 His work as Cinematographer on{" "}
                 <em>Masha Kondratenko &mdash; &ldquo;Malaia&rdquo;</em> reached
-                more than 576,000 organic views on YouTube.
+                more than 576,000 organic views on YouTube (as of 2026).
               </p>
               <p>
                 These projects gave him a foundation in rhythm, performance,
@@ -315,7 +321,7 @@ const About = () => {
                 Budget category, selected by Indie-Eye as a festival favourite,
                 and included by SLUKH.MEDIA in its list of the top 30 Ukrainian
                 music videos of 2021. The video reached more than 119,000 views
-                on YouTube.
+                on YouTube (as of 2026).
               </p>
             </div>
           </div>
@@ -339,7 +345,7 @@ const About = () => {
                   For producers
                 </h3>
                 <p>
-                  He offers a reliable, prepared and production-aware approach.
+                  He offers a prepared and production-aware approach.
                   He understands timing, crew size, location limits, kit
                   decisions and the pressure of getting the material without
                   slowing the day down.
