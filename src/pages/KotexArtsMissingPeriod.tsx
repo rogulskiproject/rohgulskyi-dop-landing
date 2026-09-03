@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import cover from "@/assets/kotex-cover.png";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
+import { SITE_URL } from "@/lib/site";
 
 const project = {
   title: "Kotex: Art's Missing Period",
@@ -32,7 +33,7 @@ const KotexArtsMissingPeriod = () => {
         title: "Kotex: Art's Missing Period — B-Roll Camera Operator | Bohdan Rohulskyi",
         description:
           "A documentary uncovering the long history of censorship around menstruation in art. Bohdan Rohulskyi shot B-roll across artworks and gallery spaces.",
-        canonical: "/work/kotex-arts-missing-period",
+        canonical: `${SITE_URL}/work/kotex-arts-missing-period`,
         meta: [
           { property: "og:title", content: "Kotex: Art's Missing Period — B-Roll Camera Operator | Bohdan Rohulskyi" },
           {
@@ -40,10 +41,10 @@ const KotexArtsMissingPeriod = () => {
             content: "A documentary uncovering the long history of censorship around menstruation in art. Bohdan Rohulskyi shot B-roll across artworks and gallery spaces.",
           },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/kotex-arts-missing-period" },
+          { property: "og:url", content: `${SITE_URL}/work/kotex-arts-missing-period` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),

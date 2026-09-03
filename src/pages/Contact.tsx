@@ -14,8 +14,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { applySeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://bohdanrohulskyi.com";
 const PAGE_URL = `${SITE_URL}/contact`;
 
 const projectTypes = [

@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 const sectionAnim = {
   initial: { opacity: 0, y: 20 },
@@ -13,8 +14,7 @@ const sectionAnim = {
   transition: { duration: 0.6 },
 };
 
-const CANONICAL =
-  "https://bohdanrohulskyi.com/work/dylan-bachelet";
+const CANONICAL = `${SITE_URL}/work/dylan-bachelet`;
 const OFFICIAL_URL = "https://imaginemagazine.co/article/dylan-bachelet-2/";
 const BAKEOFF_URL =
   "https://thegreatbritishbakeoff.co.uk/bakers/series-15-dylan/";

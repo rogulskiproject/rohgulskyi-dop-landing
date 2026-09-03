@@ -7,6 +7,7 @@ import NotesSection from "@/components/NotesSection";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
 import cover from "@/assets/hero-eye.jpg";
+import { SITE_URL } from "@/lib/site";
 
 const TITLE =
   "Bohdan Rohulskyi | London Cinematographer & Director of Photography";
@@ -22,7 +23,7 @@ const personSchema = {
   name: "Bohdan Rohulskyi",
   jobTitle: ["Cinematographer", "Director of Photography"],
   description: PERSON_DESCRIPTION,
-  url: `${window.location.origin}/`,
+  url: `${SITE_URL}/`,
   sameAs: [
     "https://www.instagram.com/rogulskiproject/",
     "https://www.imdb.com/name/nm14191117/",
@@ -43,15 +44,15 @@ const Index = () => {
       applySeo({
         title: TITLE,
         description: DESCRIPTION,
-        canonical: "/",
+        canonical: `${SITE_URL}/`,
         meta: [
           { property: "og:title", content: TITLE },
           { property: "og:description", content: DESCRIPTION },
           { property: "og:type", content: "website" },
-          { property: "og:url", content: "/" },
+          { property: "og:url", content: `${SITE_URL}/` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
         jsonLd: personSchema,

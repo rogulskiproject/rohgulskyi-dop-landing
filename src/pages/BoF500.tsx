@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import cover from "@/assets/bof-500-cover.png";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
+import { SITE_URL } from "@/lib/site";
 
 const BoF500 = () => {
   useEffect(
@@ -10,7 +11,7 @@ const BoF500 = () => {
         title: "The Best of BoF 500 2023 — DOP | Bohdan Rohulskyi",
         description:
           "A highlight film capturing the atmosphere, conversations and defining moments of The Business of Fashion's annual BoF 500 gala.",
-        canonical: "/work/bof-500-2023",
+        canonical: `${SITE_URL}/work/bof-500-2023`,
         meta: [
           { property: "og:title", content: "The Best of BoF 500 2023 — DOP | Bohdan Rohulskyi" },
           {
@@ -18,10 +19,10 @@ const BoF500 = () => {
             content: "A highlight film capturing the atmosphere, conversations and defining moments of The Business of Fashion's annual BoF 500 gala.",
           },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/bof-500-2023" },
+          { property: "og:url", content: `${SITE_URL}/work/bof-500-2023` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),

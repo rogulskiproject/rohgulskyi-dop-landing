@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import cover from "@/assets/tvorchi-cover.png";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
+import { SITE_URL } from "@/lib/site";
 
 const TvorchiVichNaVich = () => {
   useEffect(
@@ -10,7 +11,7 @@ const TvorchiVichNaVich = () => {
         title: "TVORCHI, Vich-na-Vich — DOP | Bohdan Rohulskyi",
         description:
           "A music video for Ukrainian electronic duo TVORCHI, translating the track's tension and release into light, shadow and camera movement.",
-        canonical: "/work/tvorchi-vich-na-vich",
+        canonical: `${SITE_URL}/work/tvorchi-vich-na-vich`,
         meta: [
           { property: "og:title", content: "TVORCHI, Vich-na-Vich — DOP | Bohdan Rohulskyi" },
           {
@@ -18,10 +19,10 @@ const TvorchiVichNaVich = () => {
             content: "A music video for Ukrainian electronic duo TVORCHI, translating the track's tension and release into light, shadow and camera movement.",
           },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/tvorchi-vich-na-vich" },
+          { property: "og:url", content: `${SITE_URL}/work/tvorchi-vich-na-vich` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),

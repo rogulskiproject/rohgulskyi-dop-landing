@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 const anim = {
   initial: { opacity: 0, y: 20 },
@@ -77,7 +78,7 @@ const YaroslavaMohushih = () => {
         "Directing Performance: Behind the PUMA FIT Shoot with Yaroslava Mahuchikh | Bohdan Rohulskyi",
       description:
         "A behind-the-scenes look at the PUMA FIT campaign with Ukrainian high jumper and Olympic champion Yaroslava Mahuchikh — directed and shot by Bohdan Rohulskyi in Belek, Turkey.",
-      canonical: "/work/yaroslava-mohushih",
+      canonical: `${SITE_URL}/work/yaroslava-mohushih`,
       meta: [
         {
           property: "og:title",
@@ -90,7 +91,7 @@ const YaroslavaMohushih = () => {
             "How a PUMA Ukraine campaign balanced athletic performance, fashion silhouette and documentary authenticity with Olympic high jumper Yaroslava Mahuchikh.",
         },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: "/work/yaroslava-mohushih" },
+        { property: "og:url", content: `${SITE_URL}/work/yaroslava-mohushih` },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       jsonLdId: "yaroslava-mohushih",

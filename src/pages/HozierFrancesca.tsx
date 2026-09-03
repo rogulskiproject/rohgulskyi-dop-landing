@@ -7,6 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
 import bts1 from "@/assets/hozier/hozier-bts-1.jpg.asset.json";
 import bts2 from "@/assets/hozier/hozier-bts-2.jpg.asset.json";
+import { SITE_URL } from "@/lib/site";
 
 const anim = {
   initial: { opacity: 0, y: 20 },
@@ -191,7 +192,7 @@ const HozierFrancesca = () => {
         'Operating Camera on Hozier\'s "Francesca" — Behind the Scenes | Bohdan Rohulskyi',
       description:
         'Behind the scenes as camera operator on Hozier\'s "Francesca" music video, directed by Anthony Byrne, shot in London with five RED cameras and DP Ilya Maksymenko.',
-      canonical: "/work/hozier-francesca",
+      canonical: `${SITE_URL}/work/hozier-francesca`,
       meta: [
         {
           property: "og:title",
@@ -204,7 +205,7 @@ const HozierFrancesca = () => {
             'Behind the scenes on Hozier\'s "Francesca" music video, directed by Anthony Byrne — London, 2023.',
         },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: "/work/hozier-francesca" },
+        { property: "og:url", content: `${SITE_URL}/work/hozier-francesca` },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       jsonLdId: "hozier-francesca",

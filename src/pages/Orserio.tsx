@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 const anim = {
   initial: { opacity: 0, y: 20 },
@@ -112,7 +113,7 @@ const Orserio = () => {
         "Orserio Launch Film in Portugal | Director & DoP Bohdan Rohulskyi",
       description:
         "A storm wiped out a location mid-shoot. How the Orserio menswear launch film was cast, shot and cut on a fixed deadline — with a lean crew in Portugal.",
-      canonical: "/work/orserio",
+      canonical: `${SITE_URL}/work/orserio`,
       meta: [
         {
           property: "og:title",
@@ -125,7 +126,7 @@ const Orserio = () => {
             "A new menswear label needed a launch film with the release date fixed. A storm wiped out a location mid-shoot. It still shipped on time.",
         },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: "/work/orserio" },
+        { property: "og:url", content: `${SITE_URL}/work/orserio` },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       jsonLdId: "orserio",

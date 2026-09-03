@@ -9,6 +9,7 @@ import btsVideo1 from "@/assets/valentin/valentin-bts-1.mp4.asset.json";
 import btsVideo2 from "@/assets/valentin/valentin-bts-2.mp4.asset.json";
 import btsVideo3 from "@/assets/valentin/valentin-bts-3.mp4.asset.json";
 import btsPhoto1 from "@/assets/valentin/valentin-bts-1.jpg.asset.json";
+import { SITE_URL } from "@/lib/site";
 
 const stillsGallery: { type: "video" | "image"; src: string; alt: string }[] = [
   { type: "video", src: btsVideo1.url, alt: "Behind the scenes on the Zielinski & Rozen Valentine's shoot in Madrid" },
@@ -54,7 +55,7 @@ const ValentinDay = () => {
       title: "Valentine's Campaign for Zielinski & Rozen | Director-DP",
       description:
         "Behind the scenes on a documentary-style Valentine's campaign for perfume house Zielinski & Rozen — directed, shot and edited by a London hybrid director-DP.",
-      canonical: "/work/valentin-day",
+      canonical: `${SITE_URL}/work/valentin-day`,
       meta: [
         { property: "og:title", content: "Valentine's Campaign for Zielinski & Rozen | Director-DP" },
         {
@@ -63,7 +64,7 @@ const ValentinDay = () => {
             "Documentary-style Valentine's brand film for Zielinski & Rozen, shot in Madrid by London-based hybrid director-operator Bohdan Rohulskyi.",
         },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: "/work/valentin-day" },
+        { property: "og:url", content: `${SITE_URL}/work/valentin-day` },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "Valentine's Campaign for Zielinski & Rozen | Director-DP" },
         {
