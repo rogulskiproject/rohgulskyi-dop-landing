@@ -83,15 +83,15 @@ const ImageSlot = ({
   >
     <div className="lg:col-span-7">
       {src ? (
-              <img
-                src={src}
-                alt={alt}
-                loading="lazy"
-                decoding="async"
-                width={1200}
-                height={800}
-                className="w-full aspect-[3/2] object-cover bg-card"
-              />
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          width={1200}
+          height={800}
+          className="w-full aspect-[3/2] object-cover bg-card"
+        />
       ) : (
         <div className="w-full aspect-[3/2] bg-card border border-border/60 flex items-center justify-center">
           <span className="font-body text-[10px] tracking-[0.14em] uppercase text-foreground/30 px-6 text-center">
