@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import logoBR from "@/assets/logo-br-white.png";
+import logoBR from "@/assets/logo-br-white.webp";
 
 const navItems = [
   { label: "About", href: "/about" },

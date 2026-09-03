@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import cover from "@/assets/uncharted-sailgp-cover.png";
+import cover from "@/assets/uncharted-sailgp-cover.webp";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
 import { SITE_URL } from "@/lib/site";
