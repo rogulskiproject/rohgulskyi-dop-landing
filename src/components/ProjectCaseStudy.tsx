@@ -18,6 +18,8 @@ interface ProjectData {
   overview: string[];
   approach: string[];
   reflection: string;
+  credits?: string[];
+  externalReferences?: { label: string; url: string }[];
 }
 
 const sectionAnim = {
@@ -244,6 +246,45 @@ const ProjectCaseStudy = ({ project }: { project: ProjectData }) => {
           </motion.div>
         </div>
       </section>
+
+      {/* Credits & External References */}
+      {(project.credits || project.externalReferences?.length) && (
+        <section className="border-t border-border">
+          <div className="container py-16 md:py-24">
+            <motion.div {...sectionAnim} className="max-w-2xl">
+              {project.credits && (
+                <>
+                  <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight mb-6">
+                    Credits
+                  </h2>
+                  <ul className="space-y-2 mb-10">
+                    {project.credits.map((credit, i) => (
+                      <li
+                        key={i}
+                        className="font-body text-sm text-foreground/70 leading-relaxed"
+                      >
+                        {credit}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {project.externalReferences?.map((ref, i) => (
+                <a
+                  key={i}
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-body text-[11px] tracking-[0.1em] uppercase text-foreground/50 hover:text-foreground/80 transition-colors"
+                >
+                  {ref.label}
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       <SiteFooter />
     </div>
