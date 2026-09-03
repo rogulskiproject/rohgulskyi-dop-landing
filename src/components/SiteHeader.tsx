@@ -56,7 +56,7 @@ const SiteHeader = () => {
       {/* Content layer — always crisp above glass */}
       <div className="relative z-10 flex items-center justify-between h-14 md:h-[72px] pl-4 md:pl-6 pr-6 md:pr-10 lg:pr-12">
         <Link to="/" className="flex items-center">
-          <img src={logoBR} alt="BR" className="h-9 md:h-12 w-auto" />
+          <img src={logoBR} alt="BR" width={1920} height={1920} className="h-9 md:h-12 w-auto" />
         </Link>
         <nav className="flex items-center gap-8 md:gap-10">
           {navItems.map((item) => (
