@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import cover from "@/assets/uncharted-sailgp-cover.png";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
+import { SITE_URL } from "@/lib/site";
 
 const project = {
   title: "Uncharted: Sail GP",
@@ -32,7 +33,7 @@ const UnchartedSailGP = () => {
         title: "Uncharted: Sail GP — DOP / London crew | Bohdan Rohulskyi",
         description:
           "A documentary film on the London leg of the Sail GP championship, following the athletes, the F50 catamarans and the pursuit of speed on water.",
-        canonical: "/work/uncharted-sail-gp",
+        canonical: `${SITE_URL}/work/uncharted-sail-gp`,
         meta: [
           { property: "og:title", content: "Uncharted: Sail GP — DOP / London crew | Bohdan Rohulskyi" },
           {
@@ -40,10 +41,10 @@ const UnchartedSailGP = () => {
             content: "A documentary film on the London leg of the Sail GP championship, following the athletes, the F50 catamarans and the pursuit of speed on water.",
           },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/uncharted-sail-gp" },
+          { property: "og:url", content: `${SITE_URL}/work/uncharted-sail-gp` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),

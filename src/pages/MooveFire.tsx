@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
 import cover from "@/assets/moove-fire-cover.jpg";
+import { SITE_URL } from "@/lib/site";
 
 const TITLE = "Moove — Fire — [VERIFY] | Bohdan Rohulskyi";
 const DESCRIPTION =
@@ -21,15 +22,15 @@ const MooveFire = () => {
       applySeo({
         title: TITLE,
         description: DESCRIPTION,
-        canonical: "/work/moove-fire",
+        canonical: `${SITE_URL}/work/moove-fire`,
         meta: [
           { property: "og:title", content: TITLE },
           { property: "og:description", content: DESCRIPTION },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/moove-fire" },
+          { property: "og:url", content: `${SITE_URL}/work/moove-fire` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),

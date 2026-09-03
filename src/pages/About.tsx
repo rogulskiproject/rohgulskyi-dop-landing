@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://bohdanrohulskyi.com";
 const PAGE_URL = `${SITE_URL}/about`;
 
 const personSchema = {

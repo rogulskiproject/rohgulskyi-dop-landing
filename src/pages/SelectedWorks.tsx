@@ -17,6 +17,7 @@ import alessandroCover from "@/assets/alessandro-michele-cover.png";
 import vogueMexicoCover from "@/assets/vogue-mexico-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import { applySeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 interface Project {
   title: string;
@@ -80,15 +81,15 @@ const SelectedWorks = () => {
       applySeo({
         title: SEO_TITLE,
         description: SEO_DESCRIPTION,
-        canonical: "/work",
+        canonical: `${SITE_URL}/work`,
         meta: [
           { property: "og:title", content: SEO_TITLE },
           { property: "og:description", content: SEO_DESCRIPTION },
           { property: "og:type", content: "website" },
-          { property: "og:url", content: "/work" },
+          { property: "og:url", content: `${SITE_URL}/work` },
           {
             property: "og:image",
-            content: `${window.location.origin}${dylanCover}`,
+            content: `${SITE_URL}${dylanCover}`,
           },
         ],
       }),

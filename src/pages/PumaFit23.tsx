@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import cover from "@/assets/puma-fit-23-cover.jpg";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
+import { SITE_URL } from "@/lib/site";
 
 const PumaFit23 = () => {
   useEffect(
@@ -10,7 +11,7 @@ const PumaFit23 = () => {
         title: "PUMA FIT 23 — Director, Editor and Colourist | Bohdan Rohulskyi",
         description:
           "A high-energy commercial campaign for PUMA Ukraine's FIT 23 line, blending athletic performance with a fast, rhythmic visual language. Directed, edited and coloured by Bohdan Rohulskyi.",
-        canonical: "/work/puma-fit-23",
+        canonical: `${SITE_URL}/work/puma-fit-23`,
         meta: [
           { property: "og:title", content: "PUMA FIT 23 — Director, Editor and Colourist | Bohdan Rohulskyi" },
           {
@@ -19,10 +20,10 @@ const PumaFit23 = () => {
               "A high-energy commercial campaign for PUMA Ukraine's FIT 23 line, blending athletic performance with a fast, rhythmic visual language. Directed, edited and coloured by Bohdan Rohulskyi.",
           },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/puma-fit-23" },
+          { property: "og:url", content: `${SITE_URL}/work/puma-fit-23` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
           { name: "twitter:title", content: "PUMA FIT 23 — Director, Editor and Colourist | Bohdan Rohulskyi" },
           {

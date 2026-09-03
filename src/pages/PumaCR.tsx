@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import cover from "@/assets/puma-cr-cover.jpg";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
+import { SITE_URL } from "@/lib/site";
 
 const PumaCR = () => {
   useEffect(
@@ -10,7 +11,7 @@ const PumaCR = () => {
         title: "Puma CR — DOP / Director | Bohdan Rohulskyi",
         description:
           "A character-driven PUMA brand film built around real athletic stories, shot closer to documentary than traditional advertising.",
-        canonical: "/work/puma-cr",
+        canonical: `${SITE_URL}/work/puma-cr`,
         meta: [
           { property: "og:title", content: "Puma CR — DOP / Director | Bohdan Rohulskyi" },
           {
@@ -18,10 +19,10 @@ const PumaCR = () => {
             content: "A character-driven PUMA brand film built around real athletic stories, shot closer to documentary than traditional advertising.",
           },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/puma-cr" },
+          { property: "og:url", content: `${SITE_URL}/work/puma-cr` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),

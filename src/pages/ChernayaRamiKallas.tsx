@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import cover from "@/assets/chernaya-cover.jpg";
 import { applySeo } from "@/lib/seo";
 import ProjectCaseStudy from "@/components/ProjectCaseStudy";
+import { SITE_URL } from "@/lib/site";
 
 const ChernayaRamiKallas = () => {
   useEffect(
@@ -10,7 +11,7 @@ const ChernayaRamiKallas = () => {
         title: "Chernaya, Rami Kallas — Director | Bohdan Rohulskyi",
         description:
           "A music video for Rami Kallas' track 'Chernaya' — a layered piece built on atmosphere, expressive lighting and movement, directed by Bohdan Rohulskyi.",
-        canonical: "/work/chernaya-rami-kallas",
+        canonical: `${SITE_URL}/work/chernaya-rami-kallas`,
         meta: [
           { property: "og:title", content: "Chernaya, Rami Kallas — Director | Bohdan Rohulskyi" },
           {
@@ -18,10 +19,10 @@ const ChernayaRamiKallas = () => {
             content: "A music video for Rami Kallas' track 'Chernaya' — a layered piece built on atmosphere, expressive lighting and movement, directed by Bohdan Rohulskyi.",
           },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/chernaya-rami-kallas" },
+          { property: "og:url", content: `${SITE_URL}/work/chernaya-rami-kallas` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),

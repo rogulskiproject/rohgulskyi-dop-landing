@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
 import cover from "@/assets/vogue-mexico-cover.jpg";
+import { SITE_URL } from "@/lib/site";
 
 const sectionAnim = {
   initial: { opacity: 0, y: 20 },
@@ -29,15 +30,15 @@ const VogueMexico = () => {
       applySeo({
         title: TITLE,
         description: DESCRIPTION,
-        canonical: "/work/vogue-mexico",
+        canonical: `${SITE_URL}/work/vogue-mexico`,
         meta: [
           { property: "og:title", content: TITLE },
           { property: "og:description", content: DESCRIPTION },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: "/work/vogue-mexico" },
+          { property: "og:url", content: `${SITE_URL}/work/vogue-mexico` },
           {
             property: "og:image",
-            content: `${window.location.origin}${cover}`,
+            content: `${SITE_URL}${cover}`,
           },
         ],
       }),
