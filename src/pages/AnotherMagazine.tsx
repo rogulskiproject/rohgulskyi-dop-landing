@@ -4,10 +4,65 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { applySeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 const AnotherMagazine = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    return applySeo({
+      title:
+        "AnOther Magazine x Simone Rocha | Editorial Film — Bohdan Rohulskyi",
+      description:
+        "An editorial fashion film for AnOther Magazine and Simone Rocha, directed and shot by London cinematographer Bohdan Rohulskyi. Intimate movement, texture and cinematic portraiture.",
+      canonical: `${SITE_URL}/work/another-magazine`,
+      meta: [
+        {
+          property: "og:title",
+          content:
+            "AnOther Magazine x Simone Rocha | Editorial Film — Bohdan Rohulskyi",
+        },
+        {
+          property: "og:description",
+          content:
+            "An editorial fashion film for AnOther Magazine and Simone Rocha, directed and shot by London cinematographer Bohdan Rohulskyi.",
+        },
+        { property: "og:type", content: "article" },
+        {
+          property: "og:url",
+          content: `${SITE_URL}/work/another-magazine`,
+        },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      jsonLdId: "another-magazine",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline:
+            "AnOther Magazine x Simone Rocha | Editorial Film — Bohdan Rohulskyi",
+          description:
+            "An editorial fashion film for AnOther Magazine and Simone Rocha, directed and shot by London cinematographer Bohdan Rohulskyi.",
+          datePublished: "2025-01-01",
+          dateModified: "2025-01-01",
+          author: {
+            "@type": "Person",
+            name: "Bohdan Rohulskyi",
+            url: "/about",
+          },
+          mainEntityOfPage: "/work/another-magazine",
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: "AnOther Magazine — Simone Rocha",
+          description:
+            "Editorial fashion film for AnOther Magazine and Simone Rocha.",
+          uploadDate: "2025-01-01",
+          embedUrl: "https://player.vimeo.com/video/1010017917",
+        },
+      ],
+    });
   }, []);
 
   return (
