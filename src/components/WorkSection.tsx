@@ -322,6 +322,9 @@ const WorkSection = () => {
                       alt={project.title}
                       className="absolute inset-0 w-full h-full object-cover"
                       loading="lazy"
+                      decoding="async"
+                      width={1200}
+                      height={800}
                     />
                   ) : (
                     <div className="absolute inset-0 bg-muted/20" />

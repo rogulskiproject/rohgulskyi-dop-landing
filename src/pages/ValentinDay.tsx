@@ -333,6 +333,9 @@ const ValentinDay = () => {
                       src={item.src}
                       alt={item.alt}
                       loading="lazy"
+                      decoding="async"
+                      width={1080}
+                      height={1920}
                       className="w-full h-full object-cover"
                     />
                   )}

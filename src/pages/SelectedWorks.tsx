@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import unchartedCover from "@/assets/uncharted-sailgp-cover.png";
-import kotexCover from "@/assets/kotex-cover.png";
-import bofCover from "@/assets/bof-500-cover.png";
-import tvorchiCover from "@/assets/tvorchi-cover.png";
-import hozierCover from "@/assets/hozier-cover.png";
+import unchartedCover from "@/assets/uncharted-sailgp-cover.webp";
+import kotexCover from "@/assets/kotex-cover.webp";
+import bofCover from "@/assets/bof-500-cover.webp";
+import tvorchiCover from "@/assets/tvorchi-cover.webp";
+import hozierCover from "@/assets/hozier-cover.webp";
 import orserioCover from "@/assets/orserio-cover.jpg";
 import dylanCover from "@/assets/dylan-bachelet-cover.jpg";
 import yaroslavaCover from "@/assets/yaroslava-mohushih-cover.jpg";
@@ -13,7 +13,7 @@ import anotherMagCover from "@/assets/another-magazine-cover.jpg";
 import pumaFitCover from "@/assets/puma-fit-23-cover.jpg";
 import pumaCrCover from "@/assets/puma-cr-cover.jpg";
 import chernayaCover from "@/assets/chernaya-cover.jpg";
-import alessandroCover from "@/assets/alessandro-michele-cover.png";
+import alessandroCover from "@/assets/alessandro-michele-cover.webp";
 import vogueMexicoCover from "@/assets/vogue-mexico-cover.jpg";
 import SiteHeader from "@/components/SiteHeader";
 import { applySeo } from "@/lib/seo";
@@ -155,6 +155,9 @@ const SelectedWorks = () => {
                     alt={project.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
+                    width={1200}
+                    height={800}
                   />
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-background/10 transition-colors duration-500" />
 

@@ -87,6 +87,9 @@ const ImageSlot = ({
           src={src}
           alt={alt}
           loading="lazy"
+          decoding="async"
+          width={1200}
+          height={800}
           className="w-full aspect-[3/2] object-cover bg-card"
         />
       ) : (
