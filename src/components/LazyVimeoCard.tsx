@@ -227,9 +227,6 @@ const LazyVimeoCard = ({
           zIndex: showPoster ? 2 : 0,
         }}
         loading="lazy"
-        decoding="async"
-        width={1280}
-        height={720}
       />
 
       {/* Spinner — only while prewarming AND hovered */}

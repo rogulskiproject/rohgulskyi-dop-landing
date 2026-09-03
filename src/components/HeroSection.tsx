@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import logoWhite from "@/assets/logo-v2.webp";
+import logoWhite from "@/assets/logo-v2.png";
 
 const HeroSection = () => {
   return (
@@ -12,10 +12,6 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          preload="metadata"
-          poster="/videos/hero-bg-poster.webp"
-          width={1600}
-          height={1136}
           className="w-full h-full object-cover grayscale opacity-70"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
