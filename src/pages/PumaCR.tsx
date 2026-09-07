@@ -8,12 +8,12 @@ const PumaCR = () => {
   useEffect(
     () =>
       applySeo({
-        title: "Puma CR — DOP / Director | Bohdan Rohulskyi",
+        title: "PUMA CR — Director and DoP | Bohdan Rohulskyi",
         description:
           "A character-driven PUMA brand film built around real athletic stories, shot closer to documentary than traditional advertising.",
         canonical: `${SITE_URL}/work/puma-cr`,
         meta: [
-          { property: "og:title", content: "Puma CR — DOP / Director | Bohdan Rohulskyi" },
+          { property: "og:title", content: "PUMA CR — Director and DoP | Bohdan Rohulskyi" },
           {
             property: "og:description",
             content: "A character-driven PUMA brand film built around real athletic stories, shot closer to documentary than traditional advertising.",
@@ -32,17 +32,18 @@ const PumaCR = () => {
   return (
   <ProjectCaseStudy
     project={{
-      title: "Puma CR",
-      subtitle: "PUMA",
+      title: "PUMA CR",
+      subtitle: "PUMA Ukraine",
       category: "Commercial / Sport",
-      role: "DOP / Director",
+      role: "Director / DoP",
+      year: "[VERIFY YEAR]",
       vimeoId: "1010036272",
       externalUrl: "https://vimeo.com/1010036272",
       introduction:
         "A brand film for PUMA that centres on real athletic stories — capturing the grit, focus, and humanity behind performance. The piece was conceived as a character-driven commercial that feels closer to documentary than traditional advertising.",
       overview: [
         "The brief called for something beyond the typical sport commercial. Rather than choreographed action, we followed real athletes through their environments — training spaces, recovery moments, and the quiet determination that defines their daily lives.",
-        "The result is a piece that serves PUMA's brand identity while maintaining an authenticity that resonates with audiences looking for substance over spectacle.",
+        "The result is a piece that serves PUMA's brand identity while maintaining an authenticity closer to documentary than to traditional advertising.",
       ],
       approach: [
         "We adopted a vérité-inflected approach — minimal staging, natural light, and a camera that moves with the subject rather than directing them. This created a sense of immediacy and intimacy that distinguishes the film from conventional commercial work.",
