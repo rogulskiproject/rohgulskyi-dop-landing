@@ -36,7 +36,7 @@ const PumaCR = () => {
       subtitle: "PUMA Ukraine",
       category: "Commercial / Sport",
       role: "Director / DoP",
-      year: "[VERIFY YEAR]",
+      year: "2021",
       vimeoId: "1010036272",
       externalUrl: "https://vimeo.com/1010036272",
       introduction:
