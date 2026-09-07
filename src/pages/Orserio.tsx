@@ -587,10 +587,9 @@ const Orserio = () => {
                 {[
                   "Client: Orserio",
                   "Director and Director of Photography: Bohdan Rohulskyi",
-                  "Produced by: Serafima Kutsenko",
                   "Producer: Serafima Kutsenko",
-                  "Producer: Emil Shkulskiy",
-                  "Talent: [VERIFY FULL NAME — Instagram handle @axilevich]",
+                  "Local Producer: Emil Shkulskiy",
+                  "Talent: Andriy Khylevych",
                   "Location: Portugal",
                 ].map((c) => {
                   const [label, value] = c.split(/:\s*/, 2);
@@ -604,30 +603,19 @@ const Orserio = () => {
                     </li>
                   );
                 })}
+                <li className="flex items-baseline justify-between gap-4 font-body text-[13px] text-foreground/70 leading-relaxed border-b border-border/40 pb-2">
+                  <span className="text-foreground/45">Producer's project page</span>
+                  <a
+                    href="https://www.serafimakutsenko.com/work/orserio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-right hover:text-foreground transition-colors underline underline-offset-4"
+                  >
+                    serafimakutsenko.com
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </li>
               </ul>
-            </div>
-          </motion.div>
-
-          {/* External reference */}
-          <motion.div
-            {...anim}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-10 xl:gap-x-16 items-start border-t border-border pt-10 md:pt-12"
-          >
-            <div className="lg:col-span-4">
-              <div className="lg:sticky lg:top-32">
-                <H2>External reference</H2>
-              </div>
-            </div>
-            <div className="lg:col-span-7 lg:col-start-6">
-              <a
-                href="https://www.serafimakutsenko.com/work/orserio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-body text-sm text-foreground/70 hover:text-foreground transition-colors underline underline-offset-4"
-              >
-                Project page — Serafima Kutsenko, producer
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
             </div>
           </motion.div>
 
