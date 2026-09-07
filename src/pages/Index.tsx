@@ -69,7 +69,8 @@ const Index = () => {
         <HeroSection />
         <WorkSection />
         <GenresSection />
-        <NotesSection />
+        {/* Journal section — re-enable when the first article is published */}
+        {/* <NotesSection /> */}
       </main>
       <SiteFooter />
     </div>
