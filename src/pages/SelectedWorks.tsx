@@ -28,6 +28,8 @@ interface Project {
   vimeoId?: string;
   youtubeId?: string;
   coverImage?: string;
+  coverWidth?: number;
+  coverHeight?: number;
 }
 
 const projects: Project[] = [
