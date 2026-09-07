@@ -69,7 +69,6 @@ const Index = () => {
         <HeroSection />
         <WorkSection />
         <GenresSection />
-        <NotesSection />
       </main>
       <SiteFooter />
     </div>
