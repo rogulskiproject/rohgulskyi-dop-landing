@@ -6,10 +6,10 @@ import { SITE_URL } from "@/lib/site";
 
 const project = {
   title: "Kotex: Art's Missing Period",
-  subtitle: "Kotex",
+  subtitle: "Kotex — DAVID London & Ogilvy Singapore",
   category: "Documentary Film",
   role: "B-Roll Camera Operator",
-  year: "2024",
+  year: "2026",
   youtubeId: "EmCZ8EqEVKE",
   externalUrl: "https://www.youtube.com/watch?v=EmCZ8EqEVKE",
   introduction:
@@ -20,10 +20,27 @@ const project = {
   ],
   approach: [
     "As B-roll camera operator, the focus was on creating evocative supplementary footage — detail shots of artworks, atmospheric gallery interiors, and candid moments that enriched the storytelling. The visual approach favoured natural light and subtle movement to maintain authenticity.",
-    "Every shot was designed to complement the interview-driven structure, ensuring the visual language felt cohesive and respectful of the subject matter.",
   ],
   reflection:
-    "This project was a meaningful exploration of how documentary filmmaking can challenge cultural norms. Contributing B-roll footage to a story about visibility and representation reinforced the power of cinema as a tool for social conversation.",
+    "This project was a meaningful exploration of how documentary filmmaking can challenge cultural norms. Contributing B-roll footage to a story about visibility and representation reinforced its role in opening up social conversation.",
+  credits: [
+    "Client: Kotex",
+    "Agencies: DAVID London, Ogilvy Singapore",
+    "Production: Object & Animal",
+    "Director: Kathryn Everett",
+    "Executive Producer: Dom Thomas",
+    "Producer: Serafima Kutsenko",
+    "Director of Photography: Will Atherton",
+    "B-Roll Camera Operator: Bohdan Rohulskyi",
+    "Offline Editor: Collin Kriner",
+    "Composer: Pam Autuori",
+  ],
+  externalReferences: [
+    {
+      label: "Campaign coverage — LBBOnline",
+      url: "https://lbbonline.com/news/kotex-art-s-missing-period",
+    },
+  ],
 };
 
 const KotexArtsMissingPeriod = () => {
