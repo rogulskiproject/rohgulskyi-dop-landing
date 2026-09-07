@@ -389,9 +389,8 @@ const About = () => {
                 a cinematographer and Director / DoP.
               </p>
               <p>
-                He is available for documentary films, commercial campaigns,
-                fashion films, branded content, interviews, sport films, music
-                videos, event films and social-first video production.
+                He is available for documentary and real stories, sport and
+                performance, fashion and culture, and brand storytelling.
               </p>
               <p>
                 For projects that need a London cinematographer with
