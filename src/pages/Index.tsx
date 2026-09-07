@@ -3,7 +3,7 @@ import SiteHeader from "@/components/SiteHeader";
 import HeroSection from "@/components/HeroSection";
 import WorkSection from "@/components/WorkSection";
 import GenresSection from "@/components/GenresSection";
-import NotesSection from "@/components/NotesSection";
+
 import SiteFooter from "@/components/SiteFooter";
 import { applySeo } from "@/lib/seo";
 import cover from "@/assets/hero-eye.jpg";
@@ -69,7 +69,6 @@ const Index = () => {
         <HeroSection />
         <WorkSection />
         <GenresSection />
-        <NotesSection />
       </main>
       <SiteFooter />
     </div>
