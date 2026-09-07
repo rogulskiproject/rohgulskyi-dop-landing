@@ -8,12 +8,12 @@ const BoF500 = () => {
   useEffect(
     () =>
       applySeo({
-        title: "The Best of BoF 500 2023 — DOP | Bohdan Rohulskyi",
+        title: "The Best of BoF 500 2023 — DoP | Bohdan Rohulskyi",
         description:
           "A highlight film capturing the atmosphere, conversations and defining moments of The Business of Fashion's annual BoF 500 gala.",
         canonical: `${SITE_URL}/work/bof-500-2023`,
         meta: [
-          { property: "og:title", content: "The Best of BoF 500 2023 — DOP | Bohdan Rohulskyi" },
+          { property: "og:title", content: "The Best of BoF 500 2023 — DoP | Bohdan Rohulskyi" },
           {
             property: "og:description",
             content: "A highlight film capturing the atmosphere, conversations and defining moments of The Business of Fashion's annual BoF 500 gala.",
@@ -35,7 +35,7 @@ const BoF500 = () => {
       title: "The Best of BoF 500 2023",
       subtitle: "The Business of Fashion",
       category: "Fashion Recap",
-      role: "DOP",
+      role: "DoP",
       year: "2023",
       youtubeId: "zNdnPu8L9_Y",
       externalUrl: "https://www.youtube.com/watch?v=zNdnPu8L9_Y",

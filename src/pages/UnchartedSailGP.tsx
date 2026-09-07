@@ -7,9 +7,9 @@ import { SITE_URL } from "@/lib/site";
 const project = {
   title: "Uncharted: Sail GP",
   subtitle: "Sail GP",
-  category: "Documentary Film",
-  role: "DOP / London crew",
-  year: "2024",
+  category: "Documentary Series",
+  role: "Cinematographer",
+  year: "2024 [VERIFY]",
   youtubeId: "PDfaMsRMGY8",
   externalUrl: "https://www.youtube.com/watch?v=PDfaMsRMGY8&t=32s",
   introduction:
@@ -30,15 +30,15 @@ const UnchartedSailGP = () => {
   useEffect(
     () =>
       applySeo({
-        title: "Uncharted: Sail GP — DOP / London crew | Bohdan Rohulskyi",
+        title: "Uncharted: Sail GP — Cinematographer | Bohdan Rohulskyi",
         description:
-          "A documentary film on the London leg of the Sail GP championship, following the athletes, the F50 catamarans and the pursuit of speed on water.",
+          "Cinematography by Bohdan Rohulskyi for a documentary series on the London leg of the Sail GP championship — the athletes, the F50 catamarans and the pursuit of speed on water.",
         canonical: `${SITE_URL}/work/uncharted-sail-gp`,
         meta: [
-          { property: "og:title", content: "Uncharted: Sail GP — DOP / London crew | Bohdan Rohulskyi" },
+          { property: "og:title", content: "Uncharted: Sail GP — Cinematographer | Bohdan Rohulskyi" },
           {
             property: "og:description",
-            content: "A documentary film on the London leg of the Sail GP championship, following the athletes, the F50 catamarans and the pursuit of speed on water.",
+            content: "Cinematography by Bohdan Rohulskyi for a documentary series on the London leg of the Sail GP championship — the athletes, the F50 catamarans and the pursuit of speed on water.",
           },
           { property: "og:type", content: "article" },
           { property: "og:url", content: `${SITE_URL}/work/uncharted-sail-gp` },

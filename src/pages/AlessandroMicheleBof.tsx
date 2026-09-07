@@ -8,12 +8,12 @@ const AlessandroMicheleBof = () => {
   useEffect(
     () =>
       applySeo({
-        title: "Alessandro Michele, The BoF Podcast — DOP | Bohdan Rohulskyi",
+        title: "Alessandro Michele, The BoF Podcast — DoP | Bohdan Rohulskyi",
         description:
           "A long-form interview film with Alessandro Michele for The Business of Fashion Podcast, lit and framed as a cinematic portrait session.",
         canonical: `${SITE_URL}/work/alessandro-michele-bof`,
         meta: [
-          { property: "og:title", content: "Alessandro Michele, The BoF Podcast — DOP | Bohdan Rohulskyi" },
+          { property: "og:title", content: "Alessandro Michele, The BoF Podcast — DoP | Bohdan Rohulskyi" },
           {
             property: "og:description",
             content: "A long-form interview film with Alessandro Michele for The Business of Fashion Podcast, lit and framed as a cinematic portrait session.",
@@ -35,7 +35,7 @@ const AlessandroMicheleBof = () => {
       title: "Alessandro Michele — The BoF Podcast",
       subtitle: "The Business of Fashion",
       category: "Interview / Fashion",
-      role: "DOP",
+      role: "DoP",
       youtubeId: "qtJqYEtbrBA",
       externalUrl: "https://www.youtube.com/watch?v=qtJqYEtbrBA",
       introduction:

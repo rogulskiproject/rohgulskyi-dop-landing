@@ -8,12 +8,12 @@ const TvorchiVichNaVich = () => {
   useEffect(
     () =>
       applySeo({
-        title: "TVORCHI, Vich-na-Vich — DOP | Bohdan Rohulskyi",
+        title: "TVORCHI, Vich-na-Vich — DoP | Bohdan Rohulskyi",
         description:
           "A music video for Ukrainian electronic duo TVORCHI, translating the track's tension and release into light, shadow and camera movement.",
         canonical: `${SITE_URL}/work/tvorchi-vich-na-vich`,
         meta: [
-          { property: "og:title", content: "TVORCHI, Vich-na-Vich — DOP | Bohdan Rohulskyi" },
+          { property: "og:title", content: "TVORCHI, Vich-na-Vich — DoP | Bohdan Rohulskyi" },
           {
             property: "og:description",
             content: "A music video for Ukrainian electronic duo TVORCHI, translating the track's tension and release into light, shadow and camera movement.",
@@ -35,7 +35,7 @@ const TvorchiVichNaVich = () => {
       title: "TVORCHI — Віч-на-Віч",
       subtitle: "TVORCHI",
       category: "Music Video",
-      role: "DOP",
+      role: "DoP",
       youtubeId: "Y5QMUv7H0ic",
       externalUrl: "https://www.youtube.com/watch?v=Y5QMUv7H0ic",
       introduction:
