@@ -223,6 +223,9 @@ const About = () => {
                   &mdash; <cite>Anthony Byrne, director, Hozier &mdash; &ldquo;Francesca&rdquo;</cite>
                 </footer>
               </blockquote>
+              <p className="mt-3 pl-6 font-body text-[11px] uppercase tracking-[0.15em] text-foreground/40">
+                Posted by Anthony Byrne on Instagram
+              </p>
             </div>
           </div>
         </section>
