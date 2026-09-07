@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import notesBg from "@/assets/notes-bg.jpg";
 
 const NotesSection = () => {
+  // Set to true when the first article is published
+  const SHOW_NOTES_CONTENT = false;
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
