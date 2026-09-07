@@ -22,7 +22,7 @@ const NotesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 border-t border-border overflow-hidden"
+      className="relative py-24 md:py-32 min-h-[420px] md:min-h-[520px] border-t border-border overflow-hidden"
     >
       <motion.img
         src={notesBg}
