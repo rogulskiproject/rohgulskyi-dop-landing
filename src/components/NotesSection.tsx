@@ -32,26 +32,28 @@ const NotesSection = () => {
       />
       <div className="absolute inset-0 bg-background/60" />
 
-      <div className="relative z-10 container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
-            Notes / FAQ
-          </h2>
-          <p className="mt-6 font-body text-sm font-normal text-foreground/55 max-w-xl leading-[1.55]">
-            A future space for articles, thoughts, process notes and practical answers around cinematography, directing and production.
-          </p>
-          <div className="mt-10 h-32 border border-dashed border-border flex items-center justify-center">
-            <span className="font-body text-[10px] tracking-[0.15em] uppercase text-foreground/40 font-normal">
-              Coming soon
-            </span>
-          </div>
-        </motion.div>
-      </div>
+      {SHOW_NOTES_CONTENT && (
+        <div className="relative z-10 container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
+              Notes / FAQ
+            </h2>
+            <p className="mt-6 font-body text-sm font-normal text-foreground/55 max-w-xl leading-[1.55]">
+              A future space for articles, thoughts, process notes and practical answers around cinematography, directing and production.
+            </p>
+            <div className="mt-10 h-32 border border-dashed border-border flex items-center justify-center">
+              <span className="font-body text-[10px] tracking-[0.15em] uppercase text-foreground/40 font-normal">
+                Coming soon
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
