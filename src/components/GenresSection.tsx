@@ -2,17 +2,17 @@ import { motion } from "framer-motion";
 
 const categories = [
   {
-    title: "Fashion & culture",
+    title: "Documentary & real stories",
     items: [
-      "Fashion campaigns",
-      "Fashion films",
-      "Fashion show videography",
-      "Editorial video content",
-      "Social media content for fashion brands",
+      "Documentary films",
+      "Documentary cinematography",
+      "Interview-led films",
+      "Portrait documentaries",
+      "Concert films and live performance",
     ],
   },
   {
-    title: "Sports & performance",
+    title: "Sport & performance",
     items: [
       "Sports campaigns",
       "Athlete stories",
@@ -22,13 +22,13 @@ const categories = [
     ],
   },
   {
-    title: "Documentary & real stories",
+    title: "Fashion & culture",
     items: [
-      "Documentary films",
-      "Documentary cinematography",
-      "Interview-led films",
-      "Portrait documentaries",
-      "Concert films and live performance",
+      "Fashion campaigns",
+      "Fashion films",
+      "Fashion show films",
+      "Editorial video content",
+      "Social media content for fashion brands",
     ],
   },
   {
