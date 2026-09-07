@@ -33,22 +33,22 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion", link: "/work/dylan-bachelet", vimeoId: "1107691277", coverImage: dylanCover },
-  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Commercial", link: "/work/yaroslava-mohushih", vimeoId: "1010047613", coverImage: yaroslavaCover },
-  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771", coverImage: orserioCover },
-  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Commercial", link: "/work/valentin-day", vimeoId: "1166656782", coverImage: valentinCover },
-  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion", link: "/work/another-magazine", vimeoId: "1010017917", coverImage: anotherMagCover },
-  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover },
-  { title: "PUMA FIT 23", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-fit-23", vimeoId: "948342341", coverImage: pumaFitCover },
-  { title: "Puma CR", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-cr", vimeoId: "1010036272", coverImage: pumaCrCover },
-  { title: "Chernaya — Rami Kallas", subtitle: "Rami Kallas", category: "Music Video", filterGroup: "Music Video", link: "/work/chernaya-rami-kallas", vimeoId: "1010028819", coverImage: chernayaCover },
-  { title: "The Best of BoF 500 2023", subtitle: "The Business of Fashion", category: "Fashion Recap", filterGroup: "Documentary", link: "/work/bof-500-2023", youtubeId: "zNdnPu8L9_Y", coverImage: bofCover },
-  { title: "Alessandro Michele — The BoF Podcast", subtitle: "The Business of Fashion", category: "Interview / Fashion", filterGroup: "Documentary", link: "/work/alessandro-michele-bof", youtubeId: "qtJqYEtbrBA", coverImage: alessandroCover },
-  { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", filterGroup: "Music Video", link: "/work/tvorchi-vich-na-vich", youtubeId: "Y5QMUv7H0ic", coverImage: tvorchiCover },
-  { title: "Kotex: Art's Missing Period", subtitle: "Kotex", category: "Documentary Film", filterGroup: "Documentary", link: "/work/kotex-arts-missing-period", youtubeId: "EmCZ8EqEVKE", coverImage: kotexCover },
-  { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8", coverImage: unchartedCover },
+  { title: "Dylan Bachelet", subtitle: "Imagine Magazine", category: "Editorial", filterGroup: "Fashion", link: "/work/dylan-bachelet", vimeoId: "1107691277", coverImage: dylanCover, coverWidth: 1920, coverHeight: 1440 },
+  { title: "Yaroslava Mohushih", subtitle: "PUMA", category: "Documentary Film", filterGroup: "Commercial", link: "/work/yaroslava-mohushih", vimeoId: "1010047613", coverImage: yaroslavaCover, coverWidth: 1920, coverHeight: 1080 },
+  { title: "Orserio", subtitle: "Orserio", category: "E-Commerce Brand Film", filterGroup: "Commercial", link: "/work/orserio", vimeoId: "1172857771", coverImage: orserioCover, coverWidth: 1920, coverHeight: 1242 },
+  { title: "Valentin Day", subtitle: "Zielinski & Rozen", category: "Documentary Campaign Film", filterGroup: "Commercial", link: "/work/valentin-day", vimeoId: "1166656782", coverImage: valentinCover, coverWidth: 1920, coverHeight: 1392 },
+  { title: "AnOther Magazine", subtitle: "Simone Rocha", category: "Editorial", filterGroup: "Fashion", link: "/work/another-magazine", vimeoId: "1010017917", coverImage: anotherMagCover, coverWidth: 1920, coverHeight: 1235 },
+  { title: "Hozier — Francesca", subtitle: "Hozier", category: "Music Video", filterGroup: "Music Video", link: "/work/hozier-francesca", youtubeId: "K1u_hL11auM", coverImage: hozierCover, coverWidth: 1920, coverHeight: 960 },
+  { title: "PUMA FIT 23", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-fit-23", vimeoId: "948342341", coverImage: pumaFitCover, coverWidth: 1920, coverHeight: 1080 },
+  { title: "Puma CR", subtitle: "PUMA", category: "Commercial / Sport", filterGroup: "Commercial", link: "/work/puma-cr", vimeoId: "1010036272", coverImage: pumaCrCover, coverWidth: 1920, coverHeight: 1081 },
+  { title: "Chernaya — Rami Kallas", subtitle: "Rami Kallas", category: "Music Video", filterGroup: "Music Video", link: "/work/chernaya-rami-kallas", vimeoId: "1010028819", coverImage: chernayaCover, coverWidth: 1920, coverHeight: 1080 },
+  { title: "The Best of BoF 500 2023", subtitle: "The Business of Fashion", category: "Fashion Recap", filterGroup: "Documentary", link: "/work/bof-500-2023", youtubeId: "zNdnPu8L9_Y", coverImage: bofCover, coverWidth: 1920, coverHeight: 1075 },
+  { title: "Alessandro Michele — The BoF Podcast", subtitle: "The Business of Fashion", category: "Interview / Fashion", filterGroup: "Documentary", link: "/work/alessandro-michele-bof", youtubeId: "qtJqYEtbrBA", coverImage: alessandroCover, coverWidth: 1920, coverHeight: 1074 },
+  { title: "TVORCHI — Віч-на-Віч", subtitle: "TVORCHI", category: "Music Video", filterGroup: "Music Video", link: "/work/tvorchi-vich-na-vich", youtubeId: "Y5QMUv7H0ic", coverImage: tvorchiCover, coverWidth: 1824, coverHeight: 1026 },
+  { title: "Kotex: Art's Missing Period", subtitle: "Kotex", category: "Documentary Film", filterGroup: "Documentary", link: "/work/kotex-arts-missing-period", youtubeId: "EmCZ8EqEVKE", coverImage: kotexCover, coverWidth: 1920, coverHeight: 1070 },
+  { title: "Uncharted: Sail GP", subtitle: "Sail GP", category: "Documentary Film", filterGroup: "Documentary", link: "/work/uncharted-sail-gp", youtubeId: "PDfaMsRMGY8", coverImage: unchartedCover, coverWidth: 1920, coverHeight: 1440 },
   { title: "Moove — Fire", subtitle: "Moove", category: "Music Video", filterGroup: "Music Video", link: "/work/moove-fire", vimeoId: "1179879918" },
-  { title: "Vogue Mexico — Michelle Salas / Dolce & Gabbana", subtitle: "Vogue Mexico", category: "Documentary", filterGroup: "Documentary", link: "/work/vogue-mexico", youtubeId: "Nh1ZWDz44no", coverImage: vogueMexicoCover },
+  { title: "Vogue Mexico — Michelle Salas / Dolce & Gabbana", subtitle: "Vogue Mexico", category: "Documentary", filterGroup: "Documentary", link: "/work/vogue-mexico", youtubeId: "Nh1ZWDz44no", coverImage: vogueMexicoCover, coverWidth: 1920, coverHeight: 1083 },
 ];
 
 const filters = ["All", "Documentary", "Commercial", "Music Video", "Fashion"];
